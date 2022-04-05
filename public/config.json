@@ -1,0 +1,123 @@
+﻿[
+    {
+        "AUTHOR": "County of Los Angeles",
+        "TITLE": "Mapping Outside the Box",
+        "PATH": "county-of-la",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+				"CSV_PATH": "data.csv",
+        "HOME_LATLNG": [34.159777, -118.246560],
+        "HOME_LEVEL": 10,
+        "MIN_ZOOM": 8,
+        "MAX_ZOOM": 16,
+        "SCALE_DENOMINATOR": 300000,
+        "DIRECTIONS": "<ul><li>Solve a series of questions.</li><li>Each question hints at a location somewhere in California.</li><li>To answer the question, frame the solution within the viewfinder using the map's pan/zoom functions.</li><li>The greener the viewfinder, the closer you're getting!</li></ul>"
+    },
+    {
+        "AUTHOR": "USC Spatial Sciences Institute",
+        "TITLE": "USC Treasure Hunt",
+        "PATH": "usc",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv",
+        "HOME_LATLNG": [34.020711, -118.284807],
+        "HOME_LEVEL": 16,
+        "MIN_ZOOM": 13,
+        "MAX_ZOOM": 19,
+        "SCALE_DENOMINATOR": 800,
+        "DIRECTIONS": "<ul><li>Solve a series of questions.</li><li>Each question hints at a location somewhere on the USC campus.</li><li>To answer the question, frame the solution within the viewfinder using the map's pan/zoom functions.</li><li>Go Trojans!</li></ul>"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Virginia State Trivia",
+        "PATH": "virginia",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv",
+        "HOME_LATLNG": [37.51, -78.76],
+        "HOME_LEVEL": 9,
+        "MIN_ZOOM": 7,
+        "SCALE_DENOMINATOR": 200000,
+        "DIRECTIONS": "<ul><li>Solve a series of questions.</li><li>Each question hints at a location somewhere in Virginia.</li><li>To answer the question, frame the solution within the viewfinder using the map's pan/zoom functions.</li></ul>"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Halloween Hunt",
+        "PATH": "halloween",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Famous Romances",
+        "PATH": "famous-romances",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv"
+    },                        
+    {
+        "AUTHOR": "Joseph Kerski",
+        "TITLE": "Pioneers of Geography and GIS",
+        "PATH": "pioneers",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv",
+        "DIRECTIONS": "<ul><li>Solve a series of questions.</li><li>Each question focuses on a geography or GIS pioneer and hints at a location somewhere in the world where the pioneer was born or worked.</li><li>To answer the question, frame the solution within the viewfinder using the map's pan/zoom functions.</li></ul>"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Holiday",
+        "PATH": "holiday",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv"
+    },                        
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Lyrical Places",
+        "PATH": "lyrical-places",
+        "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
+        "CSV_PATH": "data.csv"
+    },                        
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Places and Foods",
+        "PATH": "places-and-foods",
+        "DESCRIPTION": "Calling all foodies! See if you can locate the origins of each cuisine.",
+        "CSV_PATH": "data.csv"
+    },                    
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "World Heritage Sites",
+        "PATH": "heritage-sites",
+        "DESCRIPTION": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
+        "CSV_PATH": "data.csv"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Cities",
+        "PATH": "cities",
+        "DESCRIPTION": "You won't find any urban legends here—just fun facts about concrete jungles across the globe.",
+        "CSV_PATH": "data.csv"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Mountains",
+        "PATH": "mountains",
+        "DESCRIPTION": "This 10-question quiz is sure to take your geo-IQ to new heights.",
+        "CSV_PATH": "data.csv"
+    },
+    {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Beaches",
+        "PATH": "beaches",
+        "DESCRIPTION": "Do you have beaches on the brain? Put your seaside trivia skills to the test.",
+        "CSV_PATH": "data.csv"
+    },
+    {
+        "AUTHOR": "Esri Nederland",
+        "TITLE": "GeoLounge",
+        "PATH": "geolounge",
+        "DESCRIPTION": "Een speciale Treasure Hunt voor de GeoLounge!",
+        "CSV_PATH": "data.csv",
+        "HOME_LATLNG": [52.159962023981265, 5.600543715192346],
+        "HOME_LEVEL": 9,
+        "SCALE_DENOMINATOR": 125000,
+        "MIN_ZOOM": 8,
+        "DIRECTIONS": "<ul><li>Solve a series of questions.</li><li>Each question hints at a location somewhere in Holland.</li><li>To answer the question, frame the solution within the viewfinder using the map's pan/zoom functions.</li></ul>"
+    }    
+]
