@@ -49,7 +49,7 @@
         "TITLE": "Famous Romances",
         "PATH": "famous-romances",
         "DESCRIPTION": "Test your Geo-IQ with this map-based quiz",
-        "CSV_PATH": "data.csv"
+        "SERVICE_URL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_dc0094b65caa4af1a2d6761c471d7059_stakeholder/FeatureServer/0"
     },                        
     {
         "AUTHOR": "Joseph Kerski",
