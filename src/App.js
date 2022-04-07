@@ -6,6 +6,7 @@ function App() {
 
   const [config, setConfig] = useState(null);
   const [records, setRecords] = useState([]);
+  const [index, setIndex] = useState(0);
 
   useEffect(
     () => {
@@ -23,19 +24,54 @@ function App() {
 
   useEffect(
     ()=> {
-      if (config) {fetchRecords();}
-      async function fetchRecords() {
-        const response = await fetch(
-          config.SERVICE_URL+
-          "/query?where=1+%3D+1&outFields=*&returnGeometry=true&f=pjson"
-        );
-        const json = await response.json();
-        console.log(json.features);
-        setRecords(json.features);
+
+      if (config) {
+        initRecords();
       }
+
+      async function initRecords() 
+      {
+  
+        const features = await fetchRecords();
+        for (var i = 0; i < features.length; i++) {
+          features[i].attributes.imageURL = await getImageURL(features[i]);
+        }        
+        setRecords(features);  
+
+        async function fetchRecords() 
+        {
+          const response = await fetch(
+            config.SERVICE_URL+
+            "/query?where=1+%3D+1&outFields=*&returnGeometry=true&f=pjson"
+          );
+          const json = await response.json();
+          return json.features;
+        }      
+
+        async function getImageURL(feature)
+        {
+          const response = await fetch(
+            config.SERVICE_URL+
+            "/queryAttachments?objectIds="+feature.attributes.objectid+"&f=pjson"
+          );
+          const json = await response.json();
+          return config.SERVICE_URL+
+                  "/"+feature.attributes.objectid+
+                  "/attachments/"+
+                  json.attachmentGroups.shift().attachmentInfos.shift().id;
+        }
+
+      }
+
     },
     [config]
   )
+
+
+  const doNext = () => 
+  {
+    setIndex(index === records.length - 1 ? index : index+1);
+  }
 
 	const parseArgs = () =>
 	{
@@ -69,41 +105,28 @@ function App() {
           <h1>{config.TITLE}</h1>
         </header>
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
-        <section>Max Zoom: 
-          {config.MAX_ZOOM === undefined && <>Undefined</>}
-          {config.MAX_ZOOM !== undefined && <>{config.MAX_ZOOM}</>}
-        </section>
-        <section>Service URL: 
-          {config.SERVICE_URL === undefined && <>Undefined</>}
-          {config.SERVICE_URL !== undefined && <>{config.SERVICE_URL}</>}
-        </section>
         <section>
-          <table className="table table-sm small">
-
-            <thead className="sticky-top">
-              <tr>
-                <th scope="col">Prompt</th>
-                <th scope="col">Hint</th>
-                <th scope="col">Exclamation</th>
-              </tr>
-            </thead>
-
-          <tbody>
           {
-          records.map(
-            (record) => {
-              return <tr key={record.attributes.objectid}>
-                      <td dangerouslySetInnerHTML={{__html: record.attributes.prompt}}></td>
-                      <td dangerouslySetInnerHTML={{__html: record.attributes.hint}}></td>
-                      <td dangerouslySetInnerHTML={{__html: record.attributes.exclamation}}></td>
-                    </tr>
-            }
-          )
+            records.length &&
+            <div className="card">
+              <div className="card-header">Question #{index+1}</div>
+              <img src={records[index].attributes.imageURL} className="card-img-top" alt="..."></img>              
+              <div className="card-body">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item" 
+                      dangerouslySetInnerHTML={{__html: records[index].attributes.prompt}}>    
+                  </li>
+                  <li className="list-group-item" 
+                      dangerouslySetInnerHTML={{__html: records[index].attributes.hint}}>    
+                  </li>
+                  <li className="list-group-item" 
+                      dangerouslySetInnerHTML={{__html: records[index].attributes.exclamation}}>    
+                  </li>
+                </ul>
+                <button className="btn btn-primary" onClick={doNext}>Next</button>
+              </div>
+            </div>
           }
-          </tbody>
-
-          </table>
-
         </section>
         <footer>⌐■_■</footer>
       </>
