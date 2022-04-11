@@ -24,7 +24,6 @@ function App() {
 
   useEffect(
     ()=> {
-
       if (config) {
         (async () => {
           const features = await fetchFeatures(config.SERVICE_URL);
@@ -37,11 +36,9 @@ function App() {
           setRecords(features);
         })();
       }
-
     },
     [config]
   )
-
 
   const doNext = () => {
     setIndex(index === records.length - 1 ? index : index+1);
