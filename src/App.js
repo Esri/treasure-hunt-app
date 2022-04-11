@@ -32,13 +32,13 @@ function App() {
       async function initRecords() 
       {
   
-        const features = await fetchRecords();
+        const features = await fetchFeatures();
         for (var i = 0; i < features.length; i++) {
           features[i].attributes.imageURL = await getImageURL(features[i]);
         }        
         setRecords(features);  
 
-        async function fetchRecords() 
+        async function fetchFeatures() 
         {
           const response = await fetch(
             config.SERVICE_URL+
@@ -123,7 +123,10 @@ function App() {
                       dangerouslySetInnerHTML={{__html: records[index].attributes.exclamation}}>    
                   </li>
                 </ul>
-                <button className="btn btn-primary" onClick={doNext}>Next</button>
+                <div className="d-flex  mt-2 border border-success justify-content-between">
+                  <button className="btn btn-success">Prev</button>
+                  <button className="btn btn-primary" onClick={doNext}>Next</button>
+                </div>
               </div>
             </div>
           }

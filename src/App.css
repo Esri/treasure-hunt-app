@@ -1,3 +1,10 @@
 .card {
     max-width: 400px;
 }
+
+.card-body ul {
+    background-color: aliceblue;
+    overflow: hidden;
+    height: 100vh;
+    max-height: 300px;
+}
