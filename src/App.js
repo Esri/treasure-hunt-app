@@ -27,13 +27,21 @@ function App() {
       if (config) {
         (async () => {
           const features = await fetchFeatures(config.SERVICE_URL);
-          for (var i = 0; i < features.length; i++) {
-            features[i].attributes.imageURL = await getImageURL(
-              config.SERVICE_URL, 
-              features[i].attributes.objectid
-            );
-          }        
-          setRecords(features);
+          setRecords(            
+            await Promise.all(
+              features.map(
+                async (feature)=>{
+                  return {
+                    ...feature.attributes, 
+                    imageURL: await getImageURL(
+                      config.SERVICE_URL, 
+                      feature.attributes.objectid
+                    )  
+                  }
+                }
+              ) // features.map           
+            ) // await Promise.all
+          ); // setRecords
         })();
       }
     },
@@ -59,17 +67,17 @@ function App() {
             records.length &&
             <div className="card">
               <div className="card-header">Question #{index+1}</div>
-              <img src={records[index].attributes.imageURL} className="card-img-top" alt="..."></img>              
+              <img src={records[index].imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].attributes.prompt}}>    
+                      dangerouslySetInnerHTML={{__html: records[index].prompt}}>    
                   </li>
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].attributes.hint}}>    
+                      dangerouslySetInnerHTML={{__html: records[index].hint}}>    
                   </li>
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].attributes.exclamation}}>    
+                      dangerouslySetInnerHTML={{__html: records[index].exclamation}}>    
                   </li>
                 </ul>
                 <div className="d-flex  mt-2 border border-success justify-content-between">
