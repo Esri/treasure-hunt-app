@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState} from "react";
 
 function App() {
@@ -31,36 +32,14 @@ function App() {
 
       async function initRecords() 
       {
-  
-        const features = await fetchFeatures();
+        const features = await fetchFeatures(config.SERVICE_URL);
         for (var i = 0; i < features.length; i++) {
-          features[i].attributes.imageURL = await getImageURL(features[i]);
+          features[i].attributes.imageURL = await getImageURL(
+            config.SERVICE_URL, 
+            features[i].attributes.objectid
+          );
         }        
-        setRecords(features);  
-
-        async function fetchFeatures() 
-        {
-          const response = await fetch(
-            config.SERVICE_URL+
-            "/query?where=1+%3D+1&outFields=*&returnGeometry=true&f=pjson"
-          );
-          const json = await response.json();
-          return json.features;
-        }      
-
-        async function getImageURL(feature)
-        {
-          const response = await fetch(
-            config.SERVICE_URL+
-            "/queryAttachments?objectIds="+feature.attributes.objectid+"&f=pjson"
-          );
-          const json = await response.json();
-          return config.SERVICE_URL+
-                  "/"+feature.attributes.objectid+
-                  "/attachments/"+
-                  json.attachmentGroups.shift().attachmentInfos.shift().id;
-        }
-
+        setRecords(features);
       }
 
     },
@@ -72,28 +51,6 @@ function App() {
   {
     setIndex(index === records.length - 1 ? index : index+1);
   }
-
-	const parseArgs = () =>
-	{
-		
-		var parts = decodeURIComponent(document.location.href).split("?");
-		var args = {};
-		
-		if (parts.length > 1) {
-			args = parts[1].toLowerCase().split("&").reduce(
-				function(accumulator, value) {
-					var temp = value.split("=");
-					if (temp.length > 1) {accumulator[temp[0]] = temp[1];}
-					return accumulator; 
-				}, 
-				args
-			);
-		}
-
-		return args;
-	
-	}	  
-
 
   return (
 
