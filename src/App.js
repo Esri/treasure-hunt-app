@@ -27,19 +27,16 @@ function App() {
     ()=> {
 
       if (config) {
-        initRecords();
-      }
-
-      async function initRecords() 
-      {
-        const features = await fetchFeatures(config.SERVICE_URL);
-        for (var i = 0; i < features.length; i++) {
-          features[i].attributes.imageURL = await getImageURL(
-            config.SERVICE_URL, 
-            features[i].attributes.objectid
-          );
-        }        
-        setRecords(features);
+        (async () => {
+          const features = await fetchFeatures(config.SERVICE_URL);
+          for (var i = 0; i < features.length; i++) {
+            features[i].attributes.imageURL = await getImageURL(
+              config.SERVICE_URL, 
+              features[i].attributes.objectid
+            );
+          }        
+          setRecords(features);
+        })();
       }
 
     },
