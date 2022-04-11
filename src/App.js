@@ -13,12 +13,11 @@ function App() {
     () => {
       const args = parseArgs();
       const edition = args.edition || "famous-romances";
-      fetchJSON();
-      async function fetchJSON() {
+      (async () => {
         const response = await fetch("./config.json");
         const json = await response.json();
         setConfig(json.filter((value)=>value.PATH === edition).shift());
-      }
+      })();      
     },
     []
   );
@@ -44,8 +43,7 @@ function App() {
   )
 
 
-  const doNext = () => 
-  {
+  const doNext = () => {
     setIndex(index === records.length - 1 ? index : index+1);
   }
 
