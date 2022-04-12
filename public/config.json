@@ -85,7 +85,7 @@
         "TITLE": "World Heritage Sites",
         "PATH": "heritage-sites",
         "DESCRIPTION": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
-        "CSV_PATH": "data.csv"
+        "SERVICE_URL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0"
     },
     {
         "AUTHOR": "Esri Story Maps",
