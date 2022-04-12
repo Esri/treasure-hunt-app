@@ -54,7 +54,7 @@ function App() {
 
   return (
 
-    <div className="App">
+    <div className="App vh-100 p-md-5 p-sm-3 p-3 d-flex flex-column">
       {
       config && 
       <>
@@ -62,14 +62,15 @@ function App() {
           <h1>{config.TITLE}</h1>
         </header>
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
-        <section>
+        <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
           {
             records.length &&
-            <div className="card">
+            <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
               <div className="card-header">Question #{index+1}</div>
               <img src={records[index].imageURL} className="card-img-top" alt="..."></img>              
-              <div className="card-body">
-                <ul className="list-group list-group-flush">
+              <div className="card-body overflow-hidden d-flex flex-column">
+
+                <ul className="flex-grow-1 border overflow-auto list-group list-group-flush">
                   <li className="list-group-item" 
                       dangerouslySetInnerHTML={{__html: records[index].prompt}}>    
                   </li>
@@ -80,10 +81,12 @@ function App() {
                       dangerouslySetInnerHTML={{__html: records[index].exclamation}}>    
                   </li>
                 </ul>
-                <div className="d-flex  mt-2 border border-success justify-content-between">
+
+                <div className="d-flex mt-2 justify-content-between">
                   <button className="btn btn-success">Prev</button>
                   <button className="btn btn-primary" onClick={doNext}>Next</button>
                 </div>
+
               </div>
             </div>
           }
