@@ -1,3 +1,4 @@
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
@@ -87,21 +88,42 @@ function App() {
               <img src={current.imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body overflow-hidden d-flex flex-column">
 
-                <ul className="flex-grow-1 border overflow-auto list-group list-group-flush">
-                  <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: current.prompt}}>    
-                  </li>
-                  <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: current.hint}}>    
-                  </li>
-                  <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: current.exclamation}}>    
-                  </li>
-                </ul>
+                <div className="flex-grow-1 border overflow-auto accordion" id="accordionExample">
+                  <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingOne">
+                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Prompt
+                      </button>
+                    </h2>
+                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.prompt}}></div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingTwo">
+                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Hint
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.hint}}></div>
+                    </div>
+                  </div>
+                  <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Well done!
+                      </button>
+                    </h2>
+                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
+                    </div>
+                  </div>
+                </div>                
 
                 <div className="d-flex mt-2 justify-content-between">
-                  <button className="btn btn-success" onClick={doPrev}>Prev</button>
-                  <button className="btn btn-primary" onClick={doNext}>Next</button>
+                  <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
+                  <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
                 </div>
 
               </div>
