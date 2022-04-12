@@ -61,9 +61,17 @@ function App() {
     );
   }
 
+  const doPrev = () => {
+    setCurrent(
+      records.indexOf(current) !== 0 ? 
+      records[records.indexOf(current)-1] :
+      current 
+    );
+  }
+
   return (
 
-    <div className="App vh-100 p-md-5 p-sm-3 p-3 d-flex flex-column">
+    <div className="App vh-100 p-md-4 p-sm-3 p-2 d-flex flex-column">
       {
       config && 
       <>
@@ -92,7 +100,7 @@ function App() {
                 </ul>
 
                 <div className="d-flex mt-2 justify-content-between">
-                  <button className="btn btn-success">Prev</button>
+                  <button className="btn btn-success" onClick={doPrev}>Prev</button>
                   <button className="btn btn-primary" onClick={doNext}>Next</button>
                 </div>
 
@@ -100,7 +108,7 @@ function App() {
             </div>
           }
         </section>
-        <footer>⌐■_■</footer>
+        <footer className="d-flex justify-content-end">⌐■_■</footer>
       </>
       }
     </div>
