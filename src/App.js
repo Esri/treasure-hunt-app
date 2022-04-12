@@ -7,7 +7,7 @@ function App() {
 
   const [config, setConfig] = useState(null);
   const [records, setRecords] = useState([]);
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState(null);
 
   useEffect(
     () => {
@@ -48,8 +48,17 @@ function App() {
     [config]
   )
 
+  useEffect(
+    ()=>{setCurrent(records.slice().shift())},
+    [records]
+  )
+
   const doNext = () => {
-    setIndex(index === records.length - 1 ? index : index+1);
+    setCurrent(
+      records.indexOf(current) < records.length - 1 ? 
+      records[records.indexOf(current)+1] :
+      current 
+    );
   }
 
   return (
@@ -64,21 +73,21 @@ function App() {
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
         <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
           {
-            records.length &&
+            current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
-              <div className="card-header">Question #{index+1}</div>
-              <img src={records[index].imageURL} className="card-img-top" alt="..."></img>              
+              <div className="card-header">Question #{records.indexOf(current)+1}</div>
+              <img src={current.imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body overflow-hidden d-flex flex-column">
 
                 <ul className="flex-grow-1 border overflow-auto list-group list-group-flush">
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].prompt}}>    
+                      dangerouslySetInnerHTML={{__html: current.prompt}}>    
                   </li>
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].hint}}>    
+                      dangerouslySetInnerHTML={{__html: current.hint}}>    
                   </li>
                   <li className="list-group-item" 
-                      dangerouslySetInnerHTML={{__html: records[index].exclamation}}>    
+                      dangerouslySetInnerHTML={{__html: current.exclamation}}>    
                   </li>
                 </ul>
 
