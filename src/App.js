@@ -9,6 +9,7 @@ function App() {
   const [config, setConfig] = useState(null);
   const [records, setRecords] = useState([]);
   const [current, setCurrent] = useState(null);
+  const [solvedCount, setSolvedCount] = useState(0);
 
   useEffect(
     () => {
@@ -37,7 +38,8 @@ function App() {
                     imageURL: await getImageURL(
                       config.SERVICE_URL, 
                       feature.attributes.objectid
-                    )  
+                    ),
+                    solved: false  
                   }
                 }
               ) // features.map           
@@ -50,7 +52,9 @@ function App() {
   )
 
   useEffect(
-    ()=>{setCurrent(records.slice().shift())},
+    ()=>{
+      setCurrent(records.slice().shift())
+    },
     [records]
   )
 
@@ -68,6 +72,11 @@ function App() {
       records[records.indexOf(current)-1] :
       current 
     );
+  }
+
+  const doSimulateAnswer = () => {
+    current.solved = true;
+    setSolvedCount(solvedCount+1);
   }
 
   return (
@@ -88,7 +97,26 @@ function App() {
               <img src={current.imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body overflow-hidden d-flex flex-column">
 
+                {
+                  !current.solved &&
+                  <button className="btn btn-primary mb-3" onClick={doSimulateAnswer}>Simulate correct answer</button>
+                }
+                
+
                 <div className="flex-grow-1 border overflow-auto accordion" id="accordionExample">
+                  {
+                    current.solved &&
+                    <div className="accordion-item">
+                    <h2 className="accordion-header" id="headingThree">
+                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Answer
+                      </button>
+                    </h2>
+                    <div id="collapseThree" className="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
+                    </div>
+                  </div>
+                  }
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
                       <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -107,16 +135,6 @@ function App() {
                     </h2>
                     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                       <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.hint}}></div>
-                    </div>
-                  </div>
-                  <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingThree">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Well done!
-                      </button>
-                    </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
                     </div>
                   </div>
                 </div>                
