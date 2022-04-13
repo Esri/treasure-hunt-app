@@ -1,4 +1,11 @@
-@media (min-width: 575px) {
+.card-img-top {
+    display: none;
+}
+
+@media (min-height: 1000px) {
+    .card-img-top {
+        display: block;
+    }
     .card-body {
         background-image: none!important;
     }

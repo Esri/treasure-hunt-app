@@ -115,9 +115,7 @@ function App() {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
               <div className="card-header">Question #{records.indexOf(current)+1}</div>
-              <img src={current.imageURL} 
-                  className="card-img-top d-none d-sm-block" 
-                  alt="..."></img>              
+              <img src={current.imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
                       backgroundImage: `url(${current.imageURL})`,
