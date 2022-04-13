@@ -116,8 +116,16 @@ function App() {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
               <div className="card-header">Question #{records.indexOf(current)+1}</div>
-              <img src={current.imageURL} className="card-img-top" alt="..."></img>              
-              <div className="card-body overflow-hidden d-flex flex-column">                
+              <img src={current.imageURL} 
+                  className="card-img-top d-none d-sm-block" 
+                  alt="..."></img>              
+              <div className="card-body overflow-hidden d-flex flex-column"
+                    style={{
+                      backgroundImage: `url(${current.imageURL})`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center"      
+                    }}>                
                 <div className="flex-grow-1 border overflow-auto accordion" id="accordionExample">
                   {
                     current.solved &&

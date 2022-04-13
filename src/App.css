@@ -1,0 +1,5 @@
+@media (min-width: 575px) {
+    .card-body {
+        background-image: none!important;
+    }
+}
