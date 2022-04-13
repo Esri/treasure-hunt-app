@@ -1,6 +1,7 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import background from "./blank-world-map.jpg";
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState} from "react";
 
@@ -88,21 +89,35 @@ function App() {
         <header>
           <h1>{config.TITLE}</h1>
         </header>
+
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
+
+        {
+        current && 
+        <section className="flex-grow-1 d-flex justify-content-center">
+          <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
+              style={{
+                minHeight:"200px", 
+                backgroundImage: `url(${background})`, 
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center"
+              }}>
+            {
+            !current.solved &&  
+            <button className="btn btn-primary mt-2 mb-2" onClick={doSimulateAnswer}>Simulate correct answer</button>
+            }
+          </div>
+        </section>
+        }
+
         <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
           {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
               <div className="card-header">Question #{records.indexOf(current)+1}</div>
               <img src={current.imageURL} className="card-img-top" alt="..."></img>              
-              <div className="card-body overflow-hidden d-flex flex-column">
-
-                {
-                  !current.solved &&
-                  <button className="btn btn-primary mb-3" onClick={doSimulateAnswer}>Simulate correct answer</button>
-                }
-                
-
+              <div className="card-body overflow-hidden d-flex flex-column">                
                 <div className="flex-grow-1 border overflow-auto accordion" id="accordionExample">
                   {
                     current.solved &&
@@ -139,14 +154,13 @@ function App() {
                   </div>
                 </div>                
 
-                <div className="d-flex mt-2 justify-content-between">
-                  <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
-                  <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
-                </div>
-
               </div>
             </div>
           }
+        </section>
+        <section className="d-flex mt-2 justify-content-around">
+          <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
+          <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
         </section>
         <footer className="d-flex justify-content-end">⌐■_■</footer>
       </>
