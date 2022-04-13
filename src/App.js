@@ -10,6 +10,7 @@ function App() {
   const [records, setRecords] = useState([]);
   const [current, setCurrent] = useState(null);
   const [solvedCount, setSolvedCount] = useState(0);
+  const [hintActivatedCount, setHintActivatedCount] = useState(0);
 
   useEffect(
     () => {
@@ -79,6 +80,11 @@ function App() {
     setSolvedCount(solvedCount+1);
   }
 
+  const activateHint = () => {
+    current.hintActivated = true;
+    setHintActivatedCount(hintActivatedCount+1);
+  }
+
   return (
 
     <div className="App vh-100 p-md-4 p-sm-3 p-2 d-flex flex-column">
@@ -125,10 +131,21 @@ function App() {
                     }}>
                   {
                   current.solved &&
-                  <div className="alert alert-success" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
+                  <div className="alert alert-success" 
+                      dangerouslySetInnerHTML={{__html: "<strong>Answer:</strong> "+current.exclamation}}></div>
                   }
-                  <div className="alert alert-warning" dangerouslySetInnerHTML={{__html: current.prompt}}></div>
-                  <div className="alert alert-secondary" dangerouslySetInnerHTML={{__html: current.hint}}></div>
+                  {
+                  current.hintActivated &&
+                  <div className={`alert ${current.solved ? "alert-secondary" : "alert-info"}`} 
+                      dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+current.hint}}></div>
+                  }
+                  <div className={`alert ${current.hintActivated || current.solved ? "alert-secondary" : "alert-info"}`} 
+                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>
+                  {
+                  !current.hintActivated &&
+                  <button className="btn btn-info" onClick={activateHint}>Psst...need a hint?</button>
+                  }
+                  
               </div>
             </div>
           }
