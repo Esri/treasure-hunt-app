@@ -99,7 +99,7 @@ function App() {
 
         {
         current && 
-        <section className="flex-grow-1 d-flex justify-content-center">
+        <section className="flex-grow-1 d-flex justify-content-center" style={{flexBasis: "35%"}}>
           <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
               style={{
                 minHeight:"200px", 
@@ -116,7 +116,7 @@ function App() {
         </section>
         }
 
-        <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
+        <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center" style={{flexBasis: "65%"}}>
           {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
