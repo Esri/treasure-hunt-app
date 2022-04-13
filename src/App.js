@@ -1,4 +1,3 @@
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import background from "./blank-world-map.jpg";
@@ -119,49 +118,19 @@ function App() {
               <img src={current.imageURL} 
                   className="card-img-top d-none d-sm-block" 
                   alt="..."></img>              
-              <div className="card-body overflow-hidden d-flex flex-column"
+              <div className="card-body overflow-auto d-flex flex-column"
                     style={{
                       backgroundImage: `url(${current.imageURL})`,
                       backgroundSize: "cover",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center"      
-                    }}>                
-                <div className="flex-grow-1 border overflow-auto accordion" id="accordionExample">
+                    }}>
                   {
-                    current.solved &&
-                    <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingThree">
-                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Answer
-                      </button>
-                    </h2>
-                    <div id="collapseThree" className="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
-                    </div>
-                  </div>
+                  current.solved &&
+                  <div className="alert alert-success" dangerouslySetInnerHTML={{__html: current.exclamation}}></div>
                   }
-                  <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingOne">
-                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Prompt
-                      </button>
-                    </h2>
-                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.prompt}}></div>
-                    </div>
-                  </div>
-                  <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingTwo">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Hint
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                      <div className="accordion-body" dangerouslySetInnerHTML={{__html: current.hint}}></div>
-                    </div>
-                  </div>
-                </div>                
-
+                  <div className="alert alert-warning" dangerouslySetInnerHTML={{__html: current.prompt}}></div>
+                  <div className="alert alert-secondary" dangerouslySetInnerHTML={{__html: current.hint}}></div>
               </div>
             </div>
           }
