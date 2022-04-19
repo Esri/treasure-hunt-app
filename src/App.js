@@ -140,18 +140,17 @@ function App() {
                       dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+current.hint}}></div>
                   }
                   <div className={`alert ${current.hintActivated || current.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>
-                  {
-                  !current.hintActivated &&
-                  <button className="btn btn-info" onClick={activateHint}>Psst...need a hint?</button>
-                  }
-                  
+                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>                  
               </div>
             </div>
           }
         </section>
-        <section className="d-flex mt-2 justify-content-around">
+        <section className="d-flex mt-2 justify-content-between ms-3 me-3">
           <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
+          {
+            current && !current.hintActivated && !current.solved &&
+            <button className="btn btn-outline-dark" onClick={activateHint}>Psst...need a hint?</button>
+          }
           <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
         </section>
         <footer className="d-flex justify-content-end">⌐■_■</footer>
