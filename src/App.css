@@ -2,7 +2,7 @@
     display: none;
 }
 
-@media (min-height: 1000px) {
+@media (min-height: 800px) {
     .card-img-top {
         display: block;
     }
