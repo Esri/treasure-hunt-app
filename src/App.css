@@ -2,11 +2,25 @@
     display: none;
 }
 
-@media (min-height: 800px) {
+@media (min-height: 1000px) {
     .card-img-top {
         display: block;
     }
     .card-body {
         background-image: none!important;
+    }
+}
+
+section#main > div:nth-child(1) {
+    flex-basis: 35%;
+}
+
+section#main > div:nth-child(2) {
+    flex-basis: 65%;
+}
+
+@media (min-width: 576px) {
+    section#main > div:nth-child(2) {
+        flex-basis: auto;
     }
 }

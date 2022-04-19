@@ -97,11 +97,11 @@ function App() {
 
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
 
-        <section className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
+        <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
 
           {
           current && 
-          <div className="flex-grow-1 d-flex justify-content-center" style={{flexBasis: "35%"}}>
+          <div className="flex-grow-1 flex-shrink-0 d-flex justify-content-center">
             <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
                 style={{
                   minHeight:"200px", 
@@ -118,7 +118,7 @@ function App() {
           </div>
           }
 
-          <div className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center" style={{flexBasis: "65%"}}>
+          <div className="flex-sm-grow-0 flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
           {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
