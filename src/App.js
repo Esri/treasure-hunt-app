@@ -117,6 +117,7 @@ function App() {
         }
 
         <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center" style={{flexBasis: "65%"}}>
+
           {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
@@ -140,19 +141,21 @@ function App() {
                       dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+current.hint}}></div>
                   }
                   <div className={`alert ${current.hintActivated || current.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>                  
+                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>                                  
               </div>
             </div>
           }
+          <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3" style={{maxWidth: "400px"}}>
+            <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
+            {
+              current && !current.hintActivated && !current.solved &&
+              <button className="btn btn-outline-dark" onClick={activateHint}>Psst...need a hint?</button>
+            }
+            <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
+          </div>
+
         </section>
-        <section className="d-flex mt-2 justify-content-between ms-3 me-3">
-          <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
-          {
-            current && !current.hintActivated && !current.solved &&
-            <button className="btn btn-outline-dark" onClick={activateHint}>Psst...need a hint?</button>
-          }
-          <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
-        </section>
+
         <footer className="d-flex justify-content-end">⌐■_■</footer>
       </>
       }
