@@ -119,8 +119,8 @@ function App() {
           }
           {
           current &&
-          <div className="flex-sm-grow-0 flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center">
-            <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
+          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" style={{maxWidth: "400px"}}>
+            <div className="card flex-grow-1 overflow-hidden">
               <div className="card-header">Question #{records.indexOf(current)+1}</div>
               <img src={current.imageURL} className="card-img-top" alt="..."></img>              
               <div className="card-body overflow-auto d-flex flex-column"
@@ -144,7 +144,7 @@ function App() {
                       dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>                                  
               </div>
             </div>
-            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3" style={{maxWidth: "400px"}}>
+            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
               <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
               {
                 !current.hintActivated && !current.solved &&
