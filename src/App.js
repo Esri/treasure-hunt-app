@@ -97,27 +97,28 @@ function App() {
 
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
 
-        {
-        current && 
-        <section className="flex-grow-1 d-flex justify-content-center" style={{flexBasis: "35%"}}>
-          <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
-              style={{
-                minHeight:"200px", 
-                backgroundImage: `url(${background})`, 
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center"
-              }}>
-            {
-            !current.solved &&  
-            <button className="btn btn-primary mt-2 mb-2" onClick={doSimulateAnswer}>Simulate correct answer</button>
-            }
+        <section className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
+
+          {
+          current && 
+          <div className="flex-grow-1 d-flex justify-content-center" style={{flexBasis: "35%"}}>
+            <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
+                style={{
+                  minHeight:"200px", 
+                  backgroundImage: `url(${background})`, 
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center"
+                }}>
+              {
+              !current.solved &&  
+              <button className="btn btn-primary mt-2 mb-2" onClick={doSimulateAnswer}>Simulate correct answer</button>
+              }
+            </div>
           </div>
-        </section>
-        }
+          }
 
-        <section className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center" style={{flexBasis: "65%"}}>
-
+          <div className="flex-grow-1 overflow-hidden d-flex flex-column p-3 align-items-center" style={{flexBasis: "65%"}}>
           {
             current &&
             <div className="card flex-grow-1 overflow-hidden" style={{maxWidth: "400px"}}>
@@ -145,16 +146,19 @@ function App() {
               </div>
             </div>
           }
-          <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3" style={{maxWidth: "400px"}}>
-            <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
-            {
-              current && !current.hintActivated && !current.solved &&
-              <button className="btn btn-outline-dark" onClick={activateHint}>Psst...need a hint?</button>
-            }
-            <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
+            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3" style={{maxWidth: "400px"}}>
+              <button className="btn btn-outline-dark" onClick={doPrev}>Prev</button>
+              {
+                current && !current.hintActivated && !current.solved &&
+                <button className="btn btn-outline-dark" onClick={activateHint}>Psst...need a hint?</button>
+              }
+              <button className="btn btn-outline-dark" onClick={doNext}>Next</button>
+            </div>
           </div>
 
+
         </section>
+
 
         <footer className="d-flex justify-content-end">⌐■_■</footer>
       </>
