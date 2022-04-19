@@ -87,12 +87,12 @@ function App() {
 
   return (
 
-    <div className="App vh-100 p-md-4 p-sm-3 p-2 d-flex flex-column">
+    <div className="App vh-100 p-md-3 p-sm-2 p-1 d-flex flex-column">
       {
       config && 
       <>
         <header>
-          <h1>{config.TITLE}</h1>
+          <h1 className='h3'>{config.TITLE}</h1>
         </header>
 
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
@@ -119,10 +119,11 @@ function App() {
           }
           {
           current &&
-          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" style={{maxWidth: "400px"}}>
+          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" 
+                style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
               <div className="card-header">Question #{records.indexOf(current)+1}</div>
-              <img src={current.imageURL} className="card-img-top" alt="..."></img>              
+              <img src={current.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{width:"55%"}}></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
                       backgroundImage: `url(${current.imageURL})`,
@@ -161,7 +162,7 @@ function App() {
         </section>
 
 
-        <footer className="d-flex justify-content-end">⌐■_■</footer>
+        <footer className="d-flex justify-content-end small">⌐■_■</footer>
       </>
       }
     </div>

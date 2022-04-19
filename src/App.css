@@ -6,7 +6,7 @@
     background-size: 0%;
 }
 
-@media (max-height: 725px), (max-width: 576px) {
+@media (max-height: 700px), (max-width: 576px) {
     .card-img-top {
         display: none;
     }
