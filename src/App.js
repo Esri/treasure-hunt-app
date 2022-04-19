@@ -126,7 +126,6 @@ function App() {
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
                       backgroundImage: `url(${current.imageURL})`,
-                      backgroundSize: "cover",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center"      
                     }}>

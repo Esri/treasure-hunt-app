@@ -1,13 +1,17 @@
 .card-img-top {
-    display: none;
+    display: block;
 }
 
-@media (min-height: 1000px) {
+.card-body {
+    background-size: 0%;
+}
+
+@media (max-height: 725px), (max-width: 576px) {
     .card-img-top {
-        display: block;
+        display: none;
     }
     .card-body {
-        background-image: none!important;
+        background-size: cover
     }
 }
 
