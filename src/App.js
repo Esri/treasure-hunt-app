@@ -145,13 +145,15 @@ function App() {
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
-              <button className="btn btn-outline-dark" 
+              <button className={`btn ${records.indexOf(current) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
                       disabled={records.indexOf(current) === 0}
                       onClick={doPrev}>Prev</button>
+              {
+              !current.hintActivated && !current.solved &&
               <button className="btn btn-outline-dark" 
-                      disabled={current.hintActivated || current.solved}
                       onClick={activateHint}>Psst...need a hint?</button>
-              <button className="btn btn-outline-dark" 
+              }
+              <button className={`btn ${current.solved ? "btn-primary" : "btn-outline-secondary"}`} 
                       disabled={!current.solved || records.indexOf(current) === records.length - 1}
                       onClick={doNext}>Next</button>
             </div>
