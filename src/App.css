@@ -7,15 +7,17 @@
 }
 
 .alert-info {
-    background-color: rgba(207,244,252,0.7);
+    background-color: rgba(207,244,252,0.85);
+    animation: swoopy .5s linear;
 }
 
 .alert-secondary {
-    background-color: rgba(226,227,220,0.7);
+    background-color: rgba(226,227,220,0.85);
 }
 
 .alert-success {
-    background-color: rgba(209,231,221,0.7);
+    background-color: rgba(209,231,221,0.85);
+    animation: swoopy .5s linear;
 }
 
 @media (max-height: 700px), (max-width: 576px) {
@@ -39,4 +41,15 @@ section#main > div:nth-child(2) {
     section#main > div:nth-child(2) {
         flex-basis: auto;
     }
+}
+
+@keyframes swoopy {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
 }
