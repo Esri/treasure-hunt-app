@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import background from "./blank-world-map.jpg";
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState} from "react";
+import {THMap} from './components/THMap';
 
 function App() {
 
@@ -75,7 +75,7 @@ function App() {
     );
   }
 
-  const doSimulateAnswer = () => {
+  const doSolved = () => {
     current.solved = true;
     setSolvedCount(solvedCount+1);
   }
@@ -101,21 +101,9 @@ function App() {
 
           {
           current && 
-          <div className="flex-grow-1 flex-shrink-0 d-flex justify-content-center">
-            <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center" 
-                style={{
-                  minHeight:"200px", 
-                  backgroundImage: `url(${background})`, 
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center"
-                }}>
-              {
-              !current.solved &&  
-              <button className="btn btn-primary mt-2 mb-2" onClick={doSimulateAnswer}>Simulate correct answer</button>
-              }
-            </div>
-          </div>
+          <THMap className="flex-grow-1 flex-shrink-0 d-flex flex-column align-items-center justify-content-center"
+                showButton={!current.solved}
+                onSolve={doSolved}></THMap>
           }
           {
           current &&
