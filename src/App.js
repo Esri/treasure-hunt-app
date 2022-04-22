@@ -40,7 +40,8 @@ function App() {
                       config.SERVICE_URL, 
                       feature.attributes.objectid
                     ),
-                    solved: false  
+                    solved: false,
+                    hintActivated: false  
                   }
                 }
               ) // features.map           
