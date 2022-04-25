@@ -1,6 +1,10 @@
+import { useRef } from "react";
 import background from "../blank-world-map.jpg";
 
-export const THMap = ({className, showButton, onSolve:reportSolved}) => {
+export const THMap = ({className, current, onSolve}) => {
+    console.log("Map render")
+    const _reportSolved = useRef(onSolve);
+
     return (
     <div id="map" className={className} 
         style={{
@@ -10,10 +14,11 @@ export const THMap = ({className, showButton, onSolve:reportSolved}) => {
             backgroundPosition: "center"
           }}>
         {
-        showButton &&
+        !current.solved &&
         <button className="btn btn-primary mt-2 mb-2"
-                onClick={reportSolved}>Simulate correct answer</button>
+                onClick={()=>_reportSolved.current(current)}>Simulate correct answer</button>
         }
     </div>
     );
+    
 }

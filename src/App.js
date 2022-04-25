@@ -1,16 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 
 function App() {
 
   const [config, setConfig] = useState(null);
-  const [records, setRecords] = useState([]);
   const [current, setCurrent] = useState(null);
-  const [solvedCount, setSolvedCount] = useState(0);
-  const [hintActivatedCount, setHintActivatedCount] = useState(0);
+
+  const _records = useRef([]);
 
   useEffect(
     () => {
@@ -30,7 +29,7 @@ function App() {
       if (config) {
         (async () => {
           const features = await fetchFeatures(config.SERVICE_URL);
-          setRecords(            
+          _records.current = 
             await Promise.all(
               features.map(
                 async (feature)=>{
@@ -46,44 +45,47 @@ function App() {
                 }
               ) // features.map           
             ) // await Promise.all
-          ); // setRecords
+          setCurrent(_records.current.slice().shift())
         })();
       }
     },
     [config]
   )
 
-  useEffect(
-    ()=>{
-      setCurrent(records.slice().shift())
-    },
-    [records]
-  )
-
   const doNext = () => {
+    const idx = findItemIndex(current);
     setCurrent(
-      records.indexOf(current) < records.length - 1 ? 
-      records[records.indexOf(current)+1] :
+      idx < _records.current.length - 1 ? 
+      _records.current[idx+1] :
       current 
     );
   }
 
   const doPrev = () => {
+    const idx = findItemIndex(current);
     setCurrent(
-      records.indexOf(current) !== 0 ? 
-      records[records.indexOf(current)-1] :
+      idx !== 0 ? 
+      _records.current[idx-1] :
       current 
     );
   }
 
-  const doSolved = () => {
-    current.solved = true;
-    setSolvedCount(solvedCount+1);
+  const doSolved = (question) => {
+    const revisedCurrent = {...question, solved: true};
+    const idx = findItemIndex(question);
+    _records.current.splice(idx, 1, revisedCurrent);
+    setCurrent(revisedCurrent);
   }
 
   const activateHint = () => {
-    current.hintActivated = true;
-    setHintActivatedCount(hintActivatedCount+1);
+    const revisedCurrent = {...current, hintActivated: true};
+    const idx = findItemIndex(current);
+    _records.current.splice(idx, 1, revisedCurrent);
+    setCurrent(revisedCurrent);
+  }
+
+  const findItemIndex = (item) => {
+    return _records.current.findIndex((element)=>element.objectid === item.objectid)
   }
 
   return (
@@ -103,15 +105,15 @@ function App() {
           {
           current && 
           <THMap className="flex-grow-1 flex-shrink-0 d-flex flex-column align-items-center justify-content-center"
-                showButton={!current.solved}
-                onSolve={doSolved}></THMap>
+                current={current}
+                onSolve={(question)=>doSolved(question)}></THMap>
           }
           {
           current &&
           <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" 
                 style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
-              <div className="card-header">Question #{records.indexOf(current)+1}</div>
+              <div className="card-header">Question #{findItemIndex(current)+1}</div>
               <img src={current.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
@@ -134,8 +136,8 @@ function App() {
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
-              <button className={`btn ${records.indexOf(current) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
-                      disabled={records.indexOf(current) === 0}
+              <button className={`btn ${findItemIndex(current) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
+                      disabled={findItemIndex(current) === 0}
                       onClick={doPrev}>Prev</button>
               {
               !current.hintActivated && !current.solved &&
@@ -143,7 +145,7 @@ function App() {
                       onClick={activateHint}>Psst...need a hint?</button>
               }
               <button className={`btn ${current.solved ? "btn-primary" : "btn-outline-secondary"}`} 
-                      disabled={!current.solved || records.indexOf(current) === records.length - 1}
+                      disabled={!current.solved || findItemIndex(current) === _records.current.length - 1}
                       onClick={doNext}>Next</button>
             </div>
           </div>
