@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@arcgis/core/assets/esri/css/main.css';
 import './App.css';
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState, useRef} from "react";
@@ -104,8 +105,8 @@ function App() {
 
           {
           current && 
-          <THMap className="flex-grow-1 flex-shrink-0 d-flex flex-column align-items-center justify-content-center"
-                current={current}
+          <THMap className="flex-grow-1 flex-shrink-0"
+                selected={current}
                 onSolve={(question)=>doSolved(question)}></THMap>
           }
           {
