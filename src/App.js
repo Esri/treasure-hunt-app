@@ -79,11 +79,12 @@ function App() {
     setCurrent(marked);
   }
 
-  const activateHint = () => {
-    const revisedCurrent = {...current, hintActivated: true};
-    const idx = findItemIndex(current.objectid);
-    _records.current.splice(idx, 1, revisedCurrent);
-    setCurrent(revisedCurrent);
+  const markHintActivated = (objectid) => {
+    const idx = findItemIndex(objectid);
+    const question = _records.current[idx]
+    const marked = {...question, hintActivated: true};
+    _records.current.splice(idx, 1, marked);
+    setCurrent(marked);
   }
 
   const findItemIndex = (objectid) => {
@@ -144,7 +145,7 @@ function App() {
               {
               !current.hintActivated && !current.solved &&
               <button className="btn btn-outline-dark" 
-                      onClick={activateHint}>Psst...need a hint?</button>
+                      onClick={()=>markHintActivated(current.objectid)}>Psst...need a hint?</button>
               }
               <button className={`btn ${current.solved ? "btn-primary" : "btn-outline-secondary"}`} 
                       disabled={!current.solved || findItemIndex(current.objectid) === _records.current.length - 1}
