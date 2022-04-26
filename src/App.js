@@ -8,7 +8,7 @@ import {THMap} from './components/THMap';
 function App() {
 
   const [config, setConfig] = useState(null);
-  const [current, setCurrent] = useState(null);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
 
   const _records = useRef([]);
 
@@ -46,7 +46,7 @@ function App() {
                 }
               ) // features.map           
             ) // await Promise.all
-          setCurrent(_records.current.slice().shift())
+          setSelectedQuestion(_records.current.slice().shift())
         })();
       }
     },
@@ -54,20 +54,20 @@ function App() {
   )
 
   const doNext = () => {
-    const idx = findItemIndex(current.objectid);
-    setCurrent(
+    const idx = findItemIndex(selectedQuestion.objectid);
+    setSelectedQuestion(
       idx < _records.current.length - 1 ? 
       _records.current[idx+1] :
-      current 
+      selectedQuestion 
     );
   }
 
   const doPrev = () => {
-    const idx = findItemIndex(current.objectid);
-    setCurrent(
+    const idx = findItemIndex(selectedQuestion.objectid);
+    setSelectedQuestion(
       idx !== 0 ? 
       _records.current[idx-1] :
-      current 
+      selectedQuestion 
     );
   }
 
@@ -76,7 +76,7 @@ function App() {
     const question = _records.current[idx]
     const marked = {...question, solved: true};
     _records.current.splice(idx, 1, marked);
-    setCurrent(marked);
+    setSelectedQuestion(marked);
   }
 
   const markHintActivated = (objectid) => {
@@ -84,7 +84,7 @@ function App() {
     const question = _records.current[idx]
     const marked = {...question, hintActivated: true};
     _records.current.splice(idx, 1, marked);
-    setCurrent(marked);
+    setSelectedQuestion(marked);
   }
 
   const findItemIndex = (objectid) => {
@@ -106,49 +106,49 @@ function App() {
         <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
 
           {
-          current && 
+          selectedQuestion && 
           <THMap className="flex-grow-1 flex-shrink-0"
-                selected={current}
+                selected={selectedQuestion}
                 onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }
           {
-          current &&
+          selectedQuestion &&
           <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" 
                 style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
-              <div className="card-header">Question #{findItemIndex(current.objectid)+1}</div>
-              <img src={current.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
+              <div className="card-header">Question #{findItemIndex(selectedQuestion.objectid)+1}</div>
+              <img src={selectedQuestion.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
-                      backgroundImage: `url(${current.imageURL})`,
+                      backgroundImage: `url(${selectedQuestion.imageURL})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center"      
                     }}>
                   {
-                  current.solved &&
+                  selectedQuestion.solved &&
                   <div className="alert alert-success" 
-                      dangerouslySetInnerHTML={{__html: "<strong>Answer:</strong> "+current.exclamation}}></div>
+                      dangerouslySetInnerHTML={{__html: "<strong>Answer:</strong> "+selectedQuestion.exclamation}}></div>
                   }
                   {
-                  current.hintActivated &&
-                  <div className={`alert ${current.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+current.hint}}></div>
+                  selectedQuestion.hintActivated &&
+                  <div className={`alert ${selectedQuestion.solved ? "alert-secondary" : "alert-info"}`} 
+                      dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+selectedQuestion.hint}}></div>
                   }
-                  <div className={`alert ${current.hintActivated || current.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+current.prompt}}></div>                                  
+                  <div className={`alert ${selectedQuestion.hintActivated || selectedQuestion.solved ? "alert-secondary" : "alert-info"}`} 
+                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></div>                                  
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
-              <button className={`btn ${findItemIndex(current.objectid) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
-                      disabled={findItemIndex(current.objectid) === 0}
+              <button className={`btn ${findItemIndex(selectedQuestion.objectid) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
+                      disabled={findItemIndex(selectedQuestion.objectid) === 0}
                       onClick={doPrev}>Prev</button>
               {
-              !current.hintActivated && !current.solved &&
+              !selectedQuestion.hintActivated && !selectedQuestion.solved &&
               <button className="btn btn-outline-dark" 
-                      onClick={()=>markHintActivated(current.objectid)}>Psst...need a hint?</button>
+                      onClick={()=>markHintActivated(selectedQuestion.objectid)}>Psst...need a hint?</button>
               }
-              <button className={`btn ${current.solved ? "btn-primary" : "btn-outline-secondary"}`} 
-                      disabled={!current.solved || findItemIndex(current.objectid) === _records.current.length - 1}
+              <button className={`btn ${selectedQuestion.solved ? "btn-primary" : "btn-outline-secondary"}`} 
+                      disabled={!selectedQuestion.solved || findItemIndex(selectedQuestion.objectid) === _records.current.length - 1}
                       onClick={doNext}>Next</button>
             </div>
           </div>
