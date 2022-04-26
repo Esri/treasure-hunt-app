@@ -54,7 +54,7 @@ function App() {
   )
 
   const doNext = () => {
-    const idx = findItemIndex(current);
+    const idx = findItemIndex(current.objectid);
     setCurrent(
       idx < _records.current.length - 1 ? 
       _records.current[idx+1] :
@@ -63,7 +63,7 @@ function App() {
   }
 
   const doPrev = () => {
-    const idx = findItemIndex(current);
+    const idx = findItemIndex(current.objectid);
     setCurrent(
       idx !== 0 ? 
       _records.current[idx-1] :
@@ -73,20 +73,20 @@ function App() {
 
   const doSolved = (question) => {
     const revisedCurrent = {...question, solved: true};
-    const idx = findItemIndex(question);
+    const idx = findItemIndex(question.objectid);
     _records.current.splice(idx, 1, revisedCurrent);
     setCurrent(revisedCurrent);
   }
 
   const activateHint = () => {
     const revisedCurrent = {...current, hintActivated: true};
-    const idx = findItemIndex(current);
+    const idx = findItemIndex(current.objectid);
     _records.current.splice(idx, 1, revisedCurrent);
     setCurrent(revisedCurrent);
   }
 
-  const findItemIndex = (item) => {
-    return _records.current.findIndex((element)=>element.objectid === item.objectid)
+  const findItemIndex = (objectid) => {
+    return _records.current.findIndex((element)=>element.objectid === objectid)
   }
 
   return (
@@ -114,7 +114,7 @@ function App() {
           <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" 
                 style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
-              <div className="card-header">Question #{findItemIndex(current)+1}</div>
+              <div className="card-header">Question #{findItemIndex(current.objectid)+1}</div>
               <img src={current.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
@@ -137,8 +137,8 @@ function App() {
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
-              <button className={`btn ${findItemIndex(current) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
-                      disabled={findItemIndex(current) === 0}
+              <button className={`btn ${findItemIndex(current.objectid) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
+                      disabled={findItemIndex(current.objectid) === 0}
                       onClick={doPrev}>Prev</button>
               {
               !current.hintActivated && !current.solved &&
@@ -146,7 +146,7 @@ function App() {
                       onClick={activateHint}>Psst...need a hint?</button>
               }
               <button className={`btn ${current.solved ? "btn-primary" : "btn-outline-secondary"}`} 
-                      disabled={!current.solved || findItemIndex(current) === _records.current.length - 1}
+                      disabled={!current.solved || findItemIndex(current.objectid) === _records.current.length - 1}
                       onClick={doNext}>Next</button>
             </div>
           </div>
