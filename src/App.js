@@ -5,6 +5,12 @@ import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 
+const HOME_CENTER = [-40, 29];
+const HOME_ZOOM = 3;
+const MIN_ZOOM = 2;
+const MAX_ZOOM = 16;
+const SCALE_DENOMINATOR = 180;
+
 function App() {
 
   const [config, setConfig] = useState(null);
@@ -41,7 +47,9 @@ function App() {
                       feature.attributes.objectid
                     ),
                     solved: false,
-                    hintActivated: false  
+                    hintActivated: false,
+                    x: feature.geometry.x,
+                    y: feature.geometry.y  
                   }
                 }
               ) // features.map           
@@ -104,10 +112,14 @@ function App() {
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
 
         <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
-
           {
           selectedQuestion && 
           <THMap className="flex-grow-1 flex-shrink-0"
+                homeCenter={HOME_CENTER}
+                homeZoom={HOME_ZOOM}
+                minZoom={MIN_ZOOM}
+                maxZoom={MAX_ZOOM}
+                scaleDenominator={SCALE_DENOMINATOR}
                 selected={selectedQuestion}
                 onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }
