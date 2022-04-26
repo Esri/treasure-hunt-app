@@ -71,11 +71,12 @@ function App() {
     );
   }
 
-  const doSolved = (question) => {
-    const revisedCurrent = {...question, solved: true};
-    const idx = findItemIndex(question.objectid);
-    _records.current.splice(idx, 1, revisedCurrent);
-    setCurrent(revisedCurrent);
+  const markSolved = (objectid) => {
+    const idx = findItemIndex(objectid);
+    const question = _records.current[idx]
+    const marked = {...question, solved: true};
+    _records.current.splice(idx, 1, marked);
+    setCurrent(marked);
   }
 
   const activateHint = () => {
@@ -107,7 +108,7 @@ function App() {
           current && 
           <THMap className="flex-grow-1 flex-shrink-0"
                 selected={current}
-                onSolve={(question)=>doSolved(question)}></THMap>
+                onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }
           {
           current &&

@@ -27,7 +27,7 @@ export const THMap = ({className, selected, onSolve}) => {
             view.on(
                 "click", 
                 (event) => {
-                    _reportSolved.current(_selected.current);
+                    _reportSolved.current(_selected.current.objectid);
                 }
             );
         
