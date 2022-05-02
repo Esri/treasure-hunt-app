@@ -106,7 +106,7 @@ function App() {
       config && 
       <>
         <header>
-          <h1 className='h3'>{config.TITLE}</h1>
+          <h1 className='h4 ms-3'>Treasure Hunt: {config.TITLE}</h1>
         </header>
 
         <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
@@ -125,7 +125,7 @@ function App() {
           }
           {
           selectedQuestion &&
-          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 align-items-center" 
+          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 pt-2 pt-sm-0  pb-0 align-items-center" 
                 style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
               <div className="card-header">Question #{findItemIndex(selectedQuestion.objectid)+1}</div>
@@ -170,7 +170,7 @@ function App() {
         </section>
 
 
-        <footer className="d-flex justify-content-end small">⌐■_■</footer>
+        <footer className="d-flex justify-content-end small pt-1"></footer>
       </>
       }
     </div>
