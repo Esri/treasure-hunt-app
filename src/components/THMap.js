@@ -59,7 +59,11 @@ export const THMap = ({
                             ()=>{
                                 square.classList.remove("blinking");
                                 square.style.display = "none";
- 
+                                document.getElementById("axis-y-top").style.display = "none";
+                                document.getElementById("axis-y-bottom").style.display = "none";
+                                document.getElementById("axis-x-left").style.display = "none";
+                                document.getElementById("axis-x-right").style.display = "none";
+        
                                 view.graphics.add(
                                     new Graphic(
                                         {
@@ -150,6 +154,22 @@ export const THMap = ({
             square.setAttribute("id","square");
             view.ui.add(square, "manual");
 
+            const axisYTop = document.createElement("div");
+            axisYTop.setAttribute("id", "axis-y-top");
+            view.ui.add(axisYTop, "manual");
+
+            const axisYBottom = document.createElement("div");
+            axisYBottom.setAttribute("id", "axis-y-bottom");
+            view.ui.add(axisYBottom, "manual");
+
+            const axisXLeft = document.createElement("div");
+            axisXLeft.setAttribute("id", "axis-x-left");
+            view.ui.add(axisXLeft, "manual");
+
+            const axisXRight = document.createElement("div");
+            axisXRight.setAttribute("id", "axis-x-right")
+            view.ui.add(axisXRight, "manual");
+
             _view.current = view;
 
             view.when(
@@ -192,6 +212,10 @@ export const THMap = ({
                     ()=> {
                         _selected.current = selected;
                         document.getElementById("square").style.display = "block";
+                        document.getElementById("axis-y-top").style.display = "block";
+                        document.getElementById("axis-y-bottom").style.display = "block";
+                        document.getElementById("axis-x-left").style.display = "block";
+                        document.getElementById("axis-x-right").style.display = "block";
                         _updateCrosshairColor.current()
                         _performCrossHairTest.current();
                     }
@@ -202,7 +226,7 @@ export const THMap = ({
     );
 
     return (
-        <div id="map" className={className}></div>
+        <div id="map" className={className} style={{cursor: "grab"}}></div>
     );
     
 }
