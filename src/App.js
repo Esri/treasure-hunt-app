@@ -150,7 +150,7 @@ function App() {
                       dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></div>                                  
               </div>
             </div>
-            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3">
+            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3 mb-1">
               <button className={`btn ${findItemIndex(selectedQuestion.objectid) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
                       disabled={findItemIndex(selectedQuestion.objectid) === 0}
                       onClick={doPrev}>Prev</button>
