@@ -194,13 +194,75 @@ export const THMap = ({
 
     useEffect(
         ()=>{
-            let reset = _selected.current.objectid !== selected.objectid;
-            if (reset) {
-                _view.current.graphics.removeAll();
-                _view.current.popup.close();
+            const reset = _selected.current.objectid !== selected.objectid;
+
+            if (!reset) {
+                return;
+            }
+
+            _selected.current = selected;
+            _view.current.graphics.removeAll();
+            _view.current.popup.close();
+
+            const selectedPoint = new Point(
+                {
+                    x: _selected.current.x, 
+                    y: _selected.current.y, 
+                    spatialReference: {wkid: 4326}
+                }
+            );
+
+            if (_selected.current.solved) {
+
+                document.getElementById("square").style.display = "none";
+                document.getElementById("axis-y-top").style.display = "none";
+                document.getElementById("axis-y-bottom").style.display = "none";
+                document.getElementById("axis-x-left").style.display = "none";
+                document.getElementById("axis-x-right").style.display = "none";
+
+
                 _view.current.goTo(
                     {
-                        center: [_selected.current.x, _selected.current.y], 
+                        center: selectedPoint, 
+                        zoom: _selected.current.zoom_level
+                    },
+                    {
+                        animate: true,
+                        duration: 1000,
+                        easing: "ease-out"
+                    }
+                ).then(
+                    ()=>{
+
+                        _view.current.graphics.add(
+                            new Graphic(
+                                {
+                                    geometry: selectedPoint,
+                                    symbol: {
+                                        type: "picture-marker",
+                                        url: pngMarker,
+                                        width: "24px",
+                                        height: "32px",
+                                        yoffset: "16px"
+                                      }
+                                }
+                            )
+                        );
+
+                        _view.current.popup.dockEnabled = false;
+                        _view.current.popup.open(
+                            {
+                                location: selectedPoint, 
+                                title: _selected.current.location_name
+                            }
+                        );			                                
+
+                    }
+                )
+            } else {
+                _view.current.goTo(
+                    {
+                        /*center: [_selected.current.x, _selected.current.y],*/ 
                         zoom: _homeZoom.current
                     },
                     {
@@ -210,7 +272,6 @@ export const THMap = ({
                     }
                 ).then(
                     ()=> {
-                        _selected.current = selected;
                         document.getElementById("square").style.display = "block";
                         document.getElementById("axis-y-top").style.display = "block";
                         document.getElementById("axis-y-bottom").style.display = "block";
@@ -221,6 +282,7 @@ export const THMap = ({
                     }
                 )
             }
+
         },
         [selected]
     );
