@@ -7,6 +7,15 @@ import { whenTrue } from "@arcgis/core/core/watchUtils";
 import Graphic from "@arcgis/core/Graphic";
 import pngMarker from "./marker.png";
 
+const toggleViewFinder = (visible)=> {
+    const display = visible ? "block" : "none";
+    document.getElementById("square").style.display = display;
+    document.getElementById("axis-y-top").style.display = display;
+    document.getElementById("axis-y-bottom").style.display = display;
+    document.getElementById("axis-x-left").style.display = display;
+    document.getElementById("axis-x-right").style.display = display;
+}
+
 export const THMap = ({
     className,
     homeCenter,
@@ -58,12 +67,8 @@ export const THMap = ({
                         ).then(
                             ()=>{
                                 square.classList.remove("blinking");
-                                square.style.display = "none";
-                                document.getElementById("axis-y-top").style.display = "none";
-                                document.getElementById("axis-y-bottom").style.display = "none";
-                                document.getElementById("axis-x-left").style.display = "none";
-                                document.getElementById("axis-x-right").style.display = "none";
-        
+                                toggleViewFinder(false);
+                                
                                 view.graphics.add(
                                     new Graphic(
                                         {
@@ -214,12 +219,7 @@ export const THMap = ({
 
             if (_selected.current.solved) {
 
-                document.getElementById("square").style.display = "none";
-                document.getElementById("axis-y-top").style.display = "none";
-                document.getElementById("axis-y-bottom").style.display = "none";
-                document.getElementById("axis-x-left").style.display = "none";
-                document.getElementById("axis-x-right").style.display = "none";
-
+                toggleViewFinder(false);
 
                 _view.current.goTo(
                     {
@@ -272,11 +272,7 @@ export const THMap = ({
                     }
                 ).then(
                     ()=> {
-                        document.getElementById("square").style.display = "block";
-                        document.getElementById("axis-y-top").style.display = "block";
-                        document.getElementById("axis-y-bottom").style.display = "block";
-                        document.getElementById("axis-x-left").style.display = "block";
-                        document.getElementById("axis-x-right").style.display = "block";
+                        toggleViewFinder(true);
                         _updateCrosshairColor.current()
                         _performCrossHairTest.current();
                     }
