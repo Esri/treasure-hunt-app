@@ -79,6 +79,10 @@ function App() {
     );
   }
 
+  const showCertificate = () => {
+    window.open("../certificate.pdf", "_blank");
+  }
+
   const markSolved = (objectid) => {
     const idx = findItemIndex(objectid);
     const question = _records.current[idx]
@@ -159,9 +163,19 @@ function App() {
               <button className="btn btn-outline-dark" 
                       onClick={()=>markHintActivated(selectedQuestion.objectid)}>Psst...need a hint?</button>
               }
+              {
+              findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 &&
               <button className={`btn ${selectedQuestion.solved ? "btn-primary" : "btn-outline-secondary"}`} 
                       disabled={!selectedQuestion.solved || findItemIndex(selectedQuestion.objectid) === _records.current.length - 1}
                       onClick={doNext}>Next</button>
+              }
+              {
+              findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 &&
+              <button className="btn btn-primary"
+                      disabled={_records.current.filter((question)=>question.solved).length < _records.current.length} 
+                      onClick={showCertificate}>Claim. Your. PRIZE!!!</button>
+              }
+
             </div>
           </div>
           }
