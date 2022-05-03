@@ -1,5 +1,12 @@
 ﻿[
     {
+        "AUTHOR": "Esri Story Maps",
+        "TITLE": "Places Lee has been struck with an Egg",
+        "PATH": "egg-struck",
+        "DESCRIPTION": "This quiz only has two questions.",
+        "SERVICE_URL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_c8efe7fc207c417fa0e00e6638b3dcae_stakeholder/FeatureServer/0"
+    },
+    {
         "AUTHOR": "County of Los Angeles",
         "TITLE": "Mapping Outside the Box",
         "PATH": "county-of-la",
