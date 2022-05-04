@@ -22,8 +22,6 @@ function App() {
 
   useEffect(
     () => {
-      const args = parseArgs();
-      const edition = args.edition || "famous-romances";
       document.addEventListener(
         "keydown", 
         (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
@@ -31,7 +29,17 @@ function App() {
       (async () => {
         const response = await fetch("./config.json");
         const json = await response.json();
-        setConfig(json.filter((value)=>value.PATH === edition).shift());
+        const protoConfig = json.filter(
+          (value)=>value.PATH === "heritage-sites"
+        ).shift();
+        const args = parseArgs();
+        let editionConfig = args.edition && 
+          json.filter((value)=>value.PATH === args.edition).shift();
+        setConfig(
+          !editionConfig ? 
+          protoConfig : 
+          {...protoConfig, ...editionConfig}
+        );
       })();      
     },
     []
