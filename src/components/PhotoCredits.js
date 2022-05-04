@@ -23,7 +23,7 @@ export const PhotoCredits = ({
         /
         {
         licenseReferenceURL &&
-        <a href={sourceReferenceURL} 
+        <a href={licenseReferenceURL} 
             target="_blank" 
             rel="noreferrer" 
             className="ms-1 me-1">{license}</a>
