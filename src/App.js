@@ -24,6 +24,10 @@ function App() {
     () => {
       const args = parseArgs();
       const edition = args.edition || "famous-romances";
+      document.addEventListener(
+        "keydown", 
+        (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
+      );
       (async () => {
         const response = await fetch("./config.json");
         const json = await response.json();
