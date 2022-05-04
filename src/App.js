@@ -4,6 +4,7 @@ import './App.css';
 import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
+import { PhotoCredits } from './components/PhotoCredits';
 
 const HOME_CENTER = [-40, 29];
 const HOME_ZOOM = 3;
@@ -163,6 +164,15 @@ function App() {
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center"      
                     }}>
+                  <PhotoCredits 
+                    attribution={selectedQuestion.image_attribution}
+                    sourceReferenceURL={selectedQuestion.image_source_reference_page}
+                    license={selectedQuestion.image_license}
+                    licenseReferenceURL={selectedQuestion.image_license_reference_page}
+                    className='small'
+                    style={{
+                      marginTop: "-10px", 
+                      marginBottom: "15px"}}></PhotoCredits>
                   {
                   selectedQuestion.solved &&
                   <div className="alert alert-success" 
