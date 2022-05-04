@@ -15,6 +15,7 @@ function App() {
 
   const [config, setConfig] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [hideInstructions, setHideInstructions] = useState(false);
 
   const _records = useRef([]);
 
@@ -83,6 +84,10 @@ function App() {
     window.open("../certificate.pdf", "_blank");
   }
 
+  const dismissInstructions = () => {
+    setHideInstructions(true);
+  }
+
   const markSolved = (objectid) => {
     const idx = findItemIndex(objectid);
     const question = _records.current[idx]
@@ -109,11 +114,29 @@ function App() {
       {
       config && 
       <>
+        {
+          !hideInstructions &&
+          <div id="instructions">
+            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Instructions</h5>
+              </div>
+              <div className="modal-body" 
+                  dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></div>
+              <div className="modal-footer">
+                <button type="button" 
+                        className="btn btn-primary" 
+                        onClick={()=>dismissInstructions()}>Got it!</button>
+              </div>
+            </div>              
+            </div>            
+          </div>
+        }
+
         <header>
           <h1 className='h4 ms-3'>Treasure Hunt: {config.TITLE}</h1>
         </header>
-
-        <section dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></section>
 
         <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
           {
