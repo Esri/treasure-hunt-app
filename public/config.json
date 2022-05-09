@@ -16,5 +16,10 @@
         "TITLE": "Famous Romances",
         "PATH": "famous-romances",
         "SERVICE_URL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_dc0094b65caa4af1a2d6761c471d7059_stakeholder/FeatureServer/0"
+    },
+    {
+        "TITLE": "Cities",
+        "PATH": "cities",
+        "SERVICE_URL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_318f12a8143b4156988ad787927ad2a9_stakeholder/FeatureServer/0"
     }                        
 ]
