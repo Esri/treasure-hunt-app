@@ -10,7 +10,7 @@
         "homeZoom": 3,
         "minZoom": 2,
         "maxZoom": 16,
-        "scaleDenominator": 180
+        "scaleDenominator": 120
     },
     {
         "title": "Places Lee has been struck with an Egg",
