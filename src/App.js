@@ -6,6 +6,7 @@ import { parseArgs, fetchFeatures, getImageURL } from './Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
+import { Intro } from './components/Intro';
 
 function App() {
 
@@ -122,34 +123,29 @@ function App() {
       {
       config && 
       <>
-        {
-          !hideInstructions &&
-          <div id="instructions">
-            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Instructions</h5>
-              </div>
-              <div className="modal-body" 
-                  dangerouslySetInnerHTML={{__html: config.instructions}}></div>
-              <div className="modal-footer">
-                <button type="button" 
-                        className="btn btn-primary" 
-                        onClick={()=>dismissInstructions()}>Got it!</button>
-              </div>
-            </div>              
-            </div>            
-          </div>
-        }
 
         <header>
-          <h1 className='h4 ms-3'>Treasure Hunt: {config.title}</h1>
+          <h1 className='h4 ms-3 border-bottom border-bottom-1'>Treasure Hunt: {config.title}</h1>
         </header>
 
-        <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
+        <section id="main" 
+                className="flex-grow-1 d-flex flex-column flex-sm-row-reverse position-relative overflow-hidden">
+
+          {
+          !hideInstructions && selectedQuestion &&
+          <Intro className="position-absolute w-100 h-100"
+                style={{zIndex: 2000, backgroundColor: "rgba(0,0,0,0.6)"}} 
+                title={config.title} 
+                description={config.description}
+                instructions={config.instructions} 
+                hero={selectedQuestion.imageURL}
+                onDismiss={()=>dismissInstructions()}></Intro>
+          }
+
           {
           selectedQuestion && 
-          <THMap className="flex-grow-1 flex-shrink-0"
+          <THMap id="map" 
+                className="flex-grow-1 flex-shrink-0"
                 homeCenter={config.homeCenter}
                 homeZoom={config.homeZoom}
                 minZoom={config.minZoom}
@@ -158,9 +154,11 @@ function App() {
                 selected={selectedQuestion}
                 onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }
+
           {
           selectedQuestion &&
-          <div className="flex-sm-grow-0 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 pt-2 pt-sm-0  pb-0 align-items-center" 
+          <div id="controls"
+                className="flex-sm-grow-1 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column p-3 pt-2 pt-sm-0  pb-0 align-items-center" 
                 style={{maxWidth: "600px"}}>
             <div className="card flex-grow-1 overflow-hidden">
               <div className="card-header">Question #{findItemIndex(selectedQuestion.objectid)+1}</div>

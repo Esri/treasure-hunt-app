@@ -29,28 +29,18 @@
     }
 }
 
-section#main > div:nth-child(1) {
+section#main > div#map {
     flex-basis: 35%;
 }
 
-section#main > div:nth-child(2) {
+section#main > div#controls {
     flex-basis: 65%;
 }
 
 @media (min-width: 576px) {
-    section#main > div:nth-child(2) {
+    section#main > div#map {
         flex-basis: auto;
     }
-}
-
-#instructions {
-    background-color: rgba(255,255,255,0.7);    
-    position: fixed;
-    z-index: 2000;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
 }
 
 .esri-popup {margin-bottom: 35px;}

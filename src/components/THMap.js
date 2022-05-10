@@ -17,6 +17,7 @@ const toggleViewFinder = (visible)=> {
 }
 
 export const THMap = ({
+    id,
     className,
     homeCenter,
     homeZoom,
@@ -284,7 +285,7 @@ export const THMap = ({
     );
 
     return (
-        <div id="map" className={className} style={{cursor: "grab"}}></div>
+        <div id={id} className={className} style={{cursor: "grab"}}></div>
     );
     
 }
