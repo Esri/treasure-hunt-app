@@ -6,12 +6,6 @@ import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
 
-const HOME_CENTER = [-40, 29];
-const HOME_ZOOM = 3;
-const MIN_ZOOM = 2;
-const MAX_ZOOM = 16;
-const SCALE_DENOMINATOR = 180;
-
 function App() {
 
   const [config, setConfig] = useState(null);
@@ -155,11 +149,11 @@ function App() {
           {
           selectedQuestion && 
           <THMap className="flex-grow-1 flex-shrink-0"
-                homeCenter={HOME_CENTER}
-                homeZoom={HOME_ZOOM}
-                minZoom={MIN_ZOOM}
-                maxZoom={MAX_ZOOM}
-                scaleDenominator={SCALE_DENOMINATOR}
+                homeCenter={config.homeCenter}
+                homeZoom={config.homeZoom}
+                minZoom={config.minZoom}
+                maxZoom={config.maxZoom}
+                scaleDenominator={config.scaleDenominator}
                 selected={selectedQuestion}
                 onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }
