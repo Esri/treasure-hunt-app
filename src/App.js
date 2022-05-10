@@ -30,11 +30,11 @@ function App() {
         const response = await fetch("./config.json");
         const json = await response.json();
         const protoConfig = json.filter(
-          (value)=>value.PATH === "heritage-sites"
+          (value)=>value.path === "heritage-sites"
         ).shift();
         const args = parseArgs();
         let editionConfig = args.edition && 
-          json.filter((value)=>value.PATH === args.edition).shift();
+          json.filter((value)=>value.path === args.edition).shift();
         setConfig(
           !editionConfig ? 
           protoConfig : 
@@ -49,7 +49,7 @@ function App() {
     ()=> {
       if (config) {
         (async () => {
-          const features = await fetchFeatures(config.SERVICE_URL);
+          const features = await fetchFeatures(config.serviceURL);
           _records.current = 
             await Promise.all(
               features.map(
@@ -57,7 +57,7 @@ function App() {
                   return {
                     ...feature.attributes, 
                     imageURL: await getImageURL(
-                      config.SERVICE_URL, 
+                      config.serviceURL, 
                       feature.attributes.objectid
                     ),
                     solved: false,
@@ -136,7 +136,7 @@ function App() {
                 <h5 className="modal-title">Instructions</h5>
               </div>
               <div className="modal-body" 
-                  dangerouslySetInnerHTML={{__html: config.DIRECTIONS}}></div>
+                  dangerouslySetInnerHTML={{__html: config.instructions}}></div>
               <div className="modal-footer">
                 <button type="button" 
                         className="btn btn-primary" 
@@ -148,7 +148,7 @@ function App() {
         }
 
         <header>
-          <h1 className='h4 ms-3'>Treasure Hunt: {config.TITLE}</h1>
+          <h1 className='h4 ms-3'>Treasure Hunt: {config.title}</h1>
         </header>
 
         <section id="main" className="flex-grow-1 d-flex flex-column flex-sm-row-reverse overflow-hidden">
