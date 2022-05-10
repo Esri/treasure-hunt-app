@@ -1,0 +1,75 @@
+@keyframes swoopy {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;	
+	}
+}
+
+@keyframes blinkingBorder{
+    0%		{ border-color: green;}
+    25%		{ border-color: lime;}
+    50%		{ border-color: green;}
+    75%		{ border-color: lime;}
+    100%	{ border-color: green;}
+}
+
+#square, #axis-y-top, #axis-y-bottom, #axis-x-left, #axis-x-right {
+    touch-action: none;
+    pointer-events: none;
+}
+
+#square {
+    top: 50%;
+    left: 50%;
+    margin-left: -40px;
+    margin-top: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    background-color: rgba(255, 0, 0, 0.4);
+    border: solid;
+    border-width: 4px;
+    border-color: black;  
+  }
+
+#square.blinking {
+    animation: blinkingBorder 1s infinite;
+}
+
+#axis-y-top, #axis-y-bottom, #axis-x-left, #axis-x-right {
+    background-color: black;
+}
+
+#axis-y-top, #axis-y-bottom {
+    left: 50%;    
+    margin-left: -1px;
+    height: calc(50% - 40px);
+    width: 2px;
+}
+
+#axis-y-top {
+    top: 0px;
+}
+
+#axis-y-bottom {
+    top: calc(50% + 40px);
+}
+
+#axis-x-left, #axis-x-right {
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    width: calc(50% - 40px);
+}
+
+#axis-x-left {
+    left: 0px;
+}
+
+#axis-x-right {
+    left: calc(50% + 40px);
+}
