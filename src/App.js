@@ -7,12 +7,14 @@ import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
 import { Intro } from './components/Intro';
+import { CongratsScreen } from './components/CongratsScreen';
 
 function App() {
 
   const [config, setConfig] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [hideInstructions, setHideInstructions] = useState(false);
+  const [hideCongratsScreen, setHideCongratsScreen] = useState(true);
 
   const _records = useRef([]);
 
@@ -89,8 +91,12 @@ function App() {
     );
   }
 
-  const showCertificate = () => {
-    window.open("../certificate.pdf", "_blank");
+  const showCongratsScreen = () => {
+    setHideCongratsScreen(false);
+  }
+
+  const dismissCongratsScreen = () => {
+    setHideCongratsScreen(true);
   }
 
   const dismissInstructions = () => {
@@ -130,6 +136,16 @@ function App() {
 
         <section id="main" 
                 className="flex-grow-1 d-flex flex-column flex-sm-row-reverse position-relative overflow-hidden">
+
+          {
+          !hideCongratsScreen &&
+          <CongratsScreen className="position-absolute w-100 h-100"
+                      style={{zIndex: 2000, backgroundColor: "rgba(0,0,0,0.6)"}} 
+                      title={config.title}
+                      hero="./certificate.jpg"
+                      certificateURL="./certificate.pdf" 
+                      onDismiss={()=>dismissCongratsScreen()}></CongratsScreen>
+          }
 
           {
           !hideInstructions && selectedQuestion &&
@@ -211,7 +227,7 @@ function App() {
               findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 &&
               <button className="btn btn-primary"
                       disabled={_records.current.filter((question)=>question.solved).length < _records.current.length} 
-                      onClick={showCertificate}>Claim. Your. PRIZE!!!</button>
+                      onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
               }
 
             </div>
