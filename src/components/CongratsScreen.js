@@ -17,19 +17,19 @@ export const CongratsScreen = ({
     return(
         <div id="intro" className={className} style={style}>
             <div id="inner" 
-                className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2"
+                className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2 p-2"
                 style={{maxWidth: "800px"}}>
                 <div className="flex-grow-1 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
                     style={{
                         flexBasis: "50%",
                         backgroundColor: "rgba(255,255,255,0.8)"
                         }}>
-                        <div className="flex-grow-1 flex-shrink-1 overflow-auto">
-                            <h1>Congratulations!</h1>
-                            <p>You have successfully completed the <strong>{title}</strong> Treasure Hunt!</p>
-                            <p>In recognition of your excellence, you can:</p>
-                            <ul>
-                                <li><a className="link-primary" href={certificateURL} download>Download</a> and print the Certificate of Achievement</li>
+                        <div className="flex-grow-1 flex-shrink-1 overflow-y-auto">
+                            <h1 className="display-5 fw-bold">Congratulations!</h1>
+                            <p className="h5 mb-5" style={{fontWeight: 400}}>You have successfully completed the <strong>{title}</strong> Treasure Hunt!</p>
+                            <p className="h5" style={{fontWeight: 400}}>In recognition of your excellence, you can:</p>
+                            <ul className="h5" style={{fontWeight: 400}}>
+                                <li className="mb-1"><a className="link-primary" href={certificateURL} download>Download</a> and print the Certificate of Achievement</li>
                                 <li>
                                     <p>Share your accomplishment on social media</p>
                                     <p className="d-flex">

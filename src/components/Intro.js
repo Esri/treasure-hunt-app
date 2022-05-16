@@ -11,16 +11,16 @@ export const Intro = ({
     return(
         <div id="intro" className={className} style={style}>
             <div id="inner" 
-                className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2"
+                className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2 p-2"
                 style={{maxWidth: "800px"}}>
                 <div className="flex-grow-1 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
                     style={{
                         flexBasis: "50%",
                         backgroundColor: "rgba(255,255,255,0.8)"
                         }}>
-                        <div className="flex-grow-1 flex-shrink-1 overflow-auto">
-                            <h1>{title}</h1>
-                            <h2 className="h4">{description}</h2>
+                        <div className="flex-grow-1 flex-shrink-1 overflow-y-auto">
+                            <h1 className="display-3 fw-bold">{title}</h1>
+                            <h2 className="mb-5" style={{fontWeight: 300}}>{description}</h2>
                             <h5>How to navigate the Treasure Hunt</h5>
                             <div id="instructions"
                                 dangerouslySetInnerHTML={{__html: instructions}}></div>
