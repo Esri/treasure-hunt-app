@@ -196,16 +196,41 @@ function App() {
                       marginBottom: "15px"}}></PhotoCredits>
                   {
                   selectedQuestion.solved &&
-                  <div className="alert alert-success" 
-                      dangerouslySetInnerHTML={{__html: "<strong>Answer:</strong> "+selectedQuestion.exclamation}}></div>
+                  <div className="alert alert-success"
+                      style={{animation: "swoopy .5s linear"}}
+                      dangerouslySetInnerHTML={
+                        { 
+                          __html: 
+                          "<strong>Answer:</strong> "+selectedQuestion.exclamation
+                        }
+                      }></div>
                   }
                   {
                   selectedQuestion.hintActivated &&
-                  <div className={`alert ${selectedQuestion.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+selectedQuestion.hint}}></div>
+                  <div className={
+                      [
+                        "alert", 
+                        selectedQuestion.solved ? "alert-secondary" : "alert-info"
+                      ].join(" ")
+                    }
+                    style={selectedQuestion.solved ? {animation: "swoopy .5s linear"} : {}} 
+                    dangerouslySetInnerHTML={
+                      {
+                        __html: "<strong>Hint:</strong> "+selectedQuestion.hint
+                      }
+                    }></div>
                   }
-                  <div className={`alert ${selectedQuestion.hintActivated || selectedQuestion.solved ? "alert-secondary" : "alert-info"}`} 
-                      dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></div>                                  
+                  <div className={
+                      [
+                        "alert",
+                        selectedQuestion.hintActivated || selectedQuestion.solved ? "alert-secondary" : "alert-info"
+                      ].join(" ")
+                    } 
+                    dangerouslySetInnerHTML={
+                      {
+                        __html: "<strong>Question:</strong> "+selectedQuestion.prompt
+                      }
+                    }></div>                                  
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3 mb-1">
