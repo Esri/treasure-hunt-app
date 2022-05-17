@@ -213,7 +213,7 @@ function App() {
                         selectedQuestion.solved ? "alert-secondary" : "alert-info"
                       ].join(" ")
                     }
-                    style={selectedQuestion.solved ? {animation: "swoopy .5s linear"} : {}} 
+                    style={!selectedQuestion.solved ? {animation: "swoopy .5s linear"} : {}} 
                     dangerouslySetInnerHTML={
                       {
                         __html: "<strong>Hint:</strong> "+selectedQuestion.hint
