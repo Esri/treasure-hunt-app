@@ -2,7 +2,8 @@ import { useRef, useEffect } from "react";
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import Extent from "@arcgis/core/geometry/Extent";
-import Point from "@arcgis/core/geometry/Point"
+import Point from "@arcgis/core/geometry/Point";
+import esriConfig from "@arcgis/core/config";
 import { whenTrue } from "@arcgis/core/core/watchUtils";
 import Graphic from "@arcgis/core/Graphic";
 import pngMarker from "./marker.png";
@@ -137,10 +138,10 @@ export const THMap = ({
         () => {
 
             console.log("map::creating map");
-
+            esriConfig.apiKey = "AAPKc281cec04c56424bb82093c8925ea337x_K4mBEA-vKPfea5-iSQuzoKoHc5eupD1JQwl-4R_a3AoGuNVdUfNdzbDEQn2jZ2"
             const view = new MapView(
                 {
-                    map: new Map({ basemap: "streets-vector"}), 
+                    map: new Map({ basemap: "arcgis-community"}), 
                     container: "map",
                     center: _homeCenter.current, 
                     zoom: _homeZoom.current,
