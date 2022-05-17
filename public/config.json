@@ -26,11 +26,13 @@
     {
         "title": "Famous Romances",
         "path": "famous-romances",
+        "description": "You'll fall hard for this love-themed treasure hunt! It's like a dating app, but instead of swiping right, you zoom and pan!",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_dc0094b65caa4af1a2d6761c471d7059_stakeholder/FeatureServer/0"
     },
     {
         "title": "Cities",
         "path": "cities",
+        "description": "You won't find any urban legends here—just fun facts about concrete jungles across the globe.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_318f12a8143b4156988ad787927ad2a9_stakeholder/FeatureServer/0"
     }                        
 ]
