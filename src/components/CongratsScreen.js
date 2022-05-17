@@ -18,7 +18,7 @@ export const CongratsScreen = ({
         <div id="intro" className={className} style={style}>
             <div id="inner" 
                 className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2 p-2"
-                style={{maxWidth: "800px"}}>
+                style={{maxWidth: "1000px"}}>
                 <div className="flex-grow-1 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
                     style={{
                         flexBasis: "50%",
