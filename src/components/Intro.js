@@ -11,14 +11,14 @@ export const Intro = ({
     return(
         <div id="intro" className={className} style={style}>
             <div id="inner" 
-                className="d-flex h-auto mh-95 w-95 position-relative overflow-hidden border bg-white ms-2 me-2 p-2"
-                style={{maxWidth: "800px"}}>
+                className="d-flex h-100 w-100 position-relative overflow-hidden bg-white p-2">
                 <div className="flex-grow-1 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
                     style={{
-                        flexBasis: "50%",
-                        backgroundColor: "rgba(255,255,255,0.8)"
+                        maxWidth: "800px",
+                        flexBasis: "60%",
+                        backgroundColor: "rgba(255,255,255,0.8)",
                         }}>
-                        <div className="flex-grow-1 flex-shrink-1 overflow-y-auto">
+                        <div className="overflow-auto">
                             <h1 className="display-3 fw-bold">{title}</h1>
                             <h2 className="mb-5" style={{fontWeight: 300}}>{description}</h2>
                             <h5>How to navigate the Treasure Hunt</h5>
@@ -26,12 +26,12 @@ export const Intro = ({
                                 dangerouslySetInnerHTML={{__html: instructions}}></div>
                         </div>
                         <button type="button" 
-                                className="btn btn-primary align-self-center mt-2" 
-                            onClick={()=>dismiss()}>Start!</button>
+                                className="btn btn-primary align-self-center mt-4" 
+                            onClick={()=>dismiss()}>Got it!</button>
                 </div>
                 <div className="flex-grow-1 d-none d-sm-block m-0 m-sm-2 ms-sm-1" 
                     style={{
-                        flexBasis: "50%",
+                        flexBasis: "40%",
                         backgroundImage: `url(${hero})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
