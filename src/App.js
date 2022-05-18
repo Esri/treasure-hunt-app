@@ -125,7 +125,7 @@ function App() {
 
   return (
 
-    <div className="App vh-100 p-md-3 p-sm-2 p-1 d-flex flex-column">
+    <div className="App vh-100 pb-md-2 p-md-3 p-sm-2 pb-sm-1 p-1 d-flex flex-column">
       {
       config && 
       <>
@@ -263,7 +263,7 @@ function App() {
         </section>
 
 
-        <footer className="d-flex justify-content-end small pt-1"></footer>
+        <footer className="d-flex justify-content-end pt-1 small text-muted"><span>Check out our <a className="link-primary" href="https://github.com/leebock/treasure-hunt-v3" target="_blank" rel="noreferrer">Github repo</a> for info on creating your own Treasure Hunt.</span></footer>
       </>
       }
     </div>
