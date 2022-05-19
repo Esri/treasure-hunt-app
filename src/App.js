@@ -207,25 +207,24 @@ function App() {
                   }
                   {
                   selectedQuestion.hintActivated &&
-                  <div className={
-                      [
-                        "alert", 
-                        selectedQuestion.solved ? "alert-secondary" : "alert-info"
-                      ].join(" ")
-                    }
-                    style={!selectedQuestion.solved ? {animation: "swoopy .5s linear"} : {}} 
+                  <div className="alert alert-info"
+                    style={
+                      !selectedQuestion.solved ? 
+                        {animation: "swoopy .5s linear"} : 
+                        {color: "gray", opacity:"0.7"}
+                    } 
                     dangerouslySetInnerHTML={
                       {
                         __html: "<strong>Hint:</strong> "+selectedQuestion.hint
                       }
                     }></div>
                   }
-                  <div className={
-                      [
-                        "alert",
-                        selectedQuestion.hintActivated || selectedQuestion.solved ? "alert-secondary" : "alert-info"
-                      ].join(" ")
-                    } 
+                  <div className="alert alert-info"
+                    style={
+                      selectedQuestion.hintActivated || selectedQuestion.solved ? 
+                      {color: "gray", opacity:"0.7"} : 
+                      {animation: "swoopy .5s linear"}
+                    }
                     dangerouslySetInnerHTML={
                       {
                         __html: "<strong>Question:</strong> "+selectedQuestion.prompt
