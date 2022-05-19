@@ -31,6 +31,12 @@
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b7040c290ef2430481668cecd4682e7d_stakeholder/FeatureServer/0"
     },
     {
+        "title": "Halloween",
+        "path": "halloween",
+        "description": "Are you scary smart? Test your knowledge with our Halloween Hunt!",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b61363afc3654bff90763f6adfd74889_stakeholder/FeatureServer/0"
+    },
+    {
         "title": "Places Lee has been struck with an Egg",
         "path": "egg-struck",
         "description": "Have you got what it takes to beat this egg-stremely harrowing challenge?",
