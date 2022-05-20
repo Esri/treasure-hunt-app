@@ -30,23 +30,6 @@
     }
 }
 
-section#main > div#map {
-    flex-basis: 40%;
-}
-
-section#main > div#controls {
-    flex-basis: 60%;
-}
-
-@media (min-width: 576px) {
-    section#main > div#map {
-        flex-basis: auto!important;
-    }
-    div#intro > div#inner > div:nth-child(2) {
-        flex-basis: auto!important;
-    }
-}
-
 .esri-popup {margin-bottom: 35px;}
 .esri-popup__footer {display: none}
 .esri-view-width-medium .esri-popup__main-container {width: auto;}

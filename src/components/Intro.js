@@ -12,7 +12,7 @@ export const Intro = ({
         <div id="intro" className={className} style={style}>
             <div id="inner" 
                 className="d-flex h-100 w-100 position-relative overflow-hidden bg-white p-2">
-                <div className="flex-grow-1 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
+                <div className="flex-grow-1 flex-shrink-0 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
                     style={{
                         maxWidth: "600px",
                         flexBasis: "60%",
