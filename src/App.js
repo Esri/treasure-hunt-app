@@ -211,7 +211,7 @@ function App() {
                     style={
                       !selectedQuestion.solved ? 
                         {animation: "swoopy .5s linear"} : 
-                        {color: "gray", opacity:"0.7"}
+                        {color: "gray", opacity:"0.9"}
                     } 
                     dangerouslySetInnerHTML={
                       {
@@ -222,7 +222,7 @@ function App() {
                   <div className="alert alert-info"
                     style={
                       selectedQuestion.hintActivated || selectedQuestion.solved ? 
-                      {color: "gray", opacity:"0.7"} : 
+                      {color: "gray", opacity:"0.9"} : 
                       {animation: "swoopy .5s linear"}
                     }
                     dangerouslySetInnerHTML={
