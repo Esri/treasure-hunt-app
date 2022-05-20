@@ -161,7 +161,7 @@ function App() {
           {
           selectedQuestion && 
           <THMap id="map" 
-                className="flex-grow-1 flex-shrink-0"
+                className="flex-grow-1 flex-shrink-0 flex-sm-shrink-1"
                 homeCenter={config.homeCenter}
                 homeZoom={config.homeZoom}
                 minZoom={config.minZoom}
@@ -174,8 +174,8 @@ function App() {
           {
           selectedQuestion &&
           <div id="controls"
-                className="flex-sm-grow-1 flex-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-sm-0 me-sm-3" 
-                style={{maxWidth: "600px"}}>
+                className="flex-sm-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-sm-0 me-sm-3" 
+                style={{flexBasis: "60%", maxWidth: "600px"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header">Question #{findItemIndex(selectedQuestion.objectid)+1}</div>
               <img src={selectedQuestion.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
