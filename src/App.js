@@ -195,7 +195,8 @@ function App() {
                     style={{
                       backgroundImage: `url(${selectedQuestion.imageURL})`,
                       backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center"      
+                      backgroundPosition: "center",
+                      WebkitOverflowScrolling: "touch"
                     }}>
                   <PhotoCredits 
                     attribution={selectedQuestion.image_attribution}
