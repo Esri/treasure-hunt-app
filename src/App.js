@@ -73,6 +73,18 @@ function App() {
     [config]
   )
 
+
+  useEffect(
+    ()=> {
+      console.log(document.querySelector(".card-body"));
+      const element = document.querySelector(".card-body");
+      if (element) {
+        element.scrollTo({top:0})
+      }
+    },
+    [selectedQuestion]
+  )
+
   const doNext = () => {
     const idx = findItemIndex(selectedQuestion.objectid);
     setSelectedQuestion(
