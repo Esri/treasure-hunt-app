@@ -25,19 +25,35 @@ function App() {
         (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
       );
       (async () => {
+
         const response = await fetch("./config.json");
         const json = await response.json();
+
         const protoConfig = json.filter(
           (value)=>value.path === "heritage-sites"
         ).shift();
+
+        let runningConfig = protoConfig;
+
         const args = parseArgs();
-        let editionConfig = args.edition && 
+
+        const editionConfig = args.edition && 
           json.filter((value)=>value.path === args.edition).shift();
-        setConfig(
-          !editionConfig ? 
-          protoConfig : 
-          {...protoConfig, ...editionConfig}
-        );
+
+        if (editionConfig) {
+          runningConfig = {...runningConfig, ...editionConfig}
+        }
+        
+        if (args.serviceURL) {
+          runningConfig = {...runningConfig, serviceURL: args.serviceURL}
+        }
+
+        if (args.title) {
+          runningConfig = {...runningConfig, title: args.title}
+        }
+
+        setConfig(runningConfig);
+
       })();      
     },
     []
@@ -76,7 +92,6 @@ function App() {
 
   useEffect(
     ()=> {
-      console.log(document.querySelector(".card-body"));
       const element = document.querySelector(".card-body");
       if (element) {
         element.scrollTo({top:0})

@@ -28,7 +28,7 @@ export const parseArgs = () =>
     var args = {};
     
     if (parts.length > 1) {
-        args = parts[1].toLowerCase().split("&").reduce(
+        args = parts[1].split("&").reduce(
             function(accumulator, value) {
                 var temp = value.split("=");
                 if (temp.length > 1) {accumulator[temp[0]] = temp[1];}
