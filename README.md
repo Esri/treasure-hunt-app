@@ -8,7 +8,7 @@ This is the Github repo for the <a href="https://treasure-hunt-map.netlify.app/"
 
 ### Creating the data
 
-The data for a particular Treasure Hunt is hosted in an ArcGIS Online Feature Layer.  The publisher builds this layer using the Survey 123 app.  More to come...
+Each Treasure Hunt gets its content from its own dedicated ArcGIS Online Feature Layer.  The TH publisher builds this layer using the <a href="https://survey123.arcgis.com/">ArcGIS Survey 123 app</a>.  For more information on building a Treasure Hunt dataset, consult <a href="https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/">this Google Doc</a>.
 
 ### Publish
 
@@ -16,15 +16,11 @@ There are two ways to publish your own Treasure Hunt.
 
 #### Use the Esri hosted version of the application
 
-More to come...
+Once you have created your Treasure Hunt feature layer, you're invited to fill out <b>this form</b> (coming soon) to register your treasure hunt with our hosted application.  In doing so, you will create a specific version of the Treasure Hunt URL at which your users can access your treasure hunt.
 
 #### Download the files and host your own instance of the app
 
-More to come...
-
-### Configuration options
-
-More to come...
+You also have the option of downloading the source code from this very repo.  Developer notes are below.
 
 ## Developer notes
 
