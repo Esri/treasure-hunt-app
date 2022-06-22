@@ -1,70 +1,65 @@
 # Treasure Hunt App
 
-This is the Github repo for the <a href="https://treasure-hunt-map.netlify.app/">Treasure Hunt App</a>.
+This is the Github repo for the Treasure Hunt Application, which is a location based quiz application (for the browser) built w/ JavaScript, React, and the ArcGIS API for JavaScript.
 
-<img src="https://github.com/leebock/treasure-hunt-v3/blob/main/public/th-screensave.png"/>
+[View it live](https://treasure-hunt-map.netlify.app/)
 
-## How to make your own Treasure Hunt
+![App](https://raw.githubusercontent.com/leebock/treasure-hunt-app/main/public/th-screensave.png)
 
-### Creating the data
+The remainder of this README is intended for developers who wish to download and modify the source code or host the application on their own servers.  
 
-Each Treasure Hunt gets its content from its own dedicated ArcGIS Online Feature Layer.  The TH publisher builds this layer using the <a href="https://survey123.arcgis.com/">ArcGIS Survey 123 app</a>.  For more information on building a Treasure Hunt dataset, consult <a href="https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/">this Google Doc</a>.
+<strong>IF YOU ARE MERELY LOOKING FOR INFORMATION ON HOW TO CREATE YOUR OWN TREASURE HUNT DATASET (which you can publish either through Esri's hosted instance of the application or your own), PLEASE CONSULT [THIS DOCUMENT](https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/).</strong>
 
-### Publish
+## Instructions
 
-There are two ways to publish your own Treasure Hunt.
+1. Fork and then clone the repo. 
+2. Install dependencies
 
-#### Use the Esri hosted version of the application
+```bash
+npm install
+```
 
-Once you have created your Treasure Hunt feature layer, you're invited to fill out <b>this form</b> (coming soon) to register your treasure hunt with our hosted application.  In doing so, you will create a specific version of the Treasure Hunt URL at which your users can access your treasure hunt.
+3. Runs the app in the development mode.
 
-#### Download the files and host your own instance of the app
+```bash
+npm run start
+```
 
-You also have the option of downloading the source code from this very repo.  Developer notes are below.
+## Requirements
 
-## Developer notes
+* [Node JS](https://nodejs.org/) (w/ npm) in order to run development environment.
+
+## Resources
+
+* [Node JS](https://nodejs.org/)
+* [ArcGIS API for Javascript](https://developers.arcgis.com/javascript/)
+* [React](https://reactjs.org/)
+* [Bootstrap](https://getbootstrap.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Available Scripts
+## Issues
 
-In the project directory, you can run:
+Find a bug or want to request a new feature?  Please let us know by submitting an issue.
 
-#### `npm start`
+## Contributing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Licensing
 
-#### `npm test`
+Copyright 2016 Esri
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-#### `npm run build`
+   http://www.apache.org/licenses/LICENSE-2.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-#### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+A copy of the license is available in the repository's [license.txt]( https://raw.githubusercontent.com/leebock/treasure-hunt-app/main/license.txt) file.
