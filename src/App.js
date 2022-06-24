@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@arcgis/core/assets/esri/css/main.css';
 import './viewfinder.css';
 import './App.css';
-import { parseArgs, fetchFeatures, getImageURL } from './Utils';
+import { parseArgs, fetchFeatures, getImageURL, getItemInfo } from './Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
@@ -41,15 +41,17 @@ function App() {
           json.filter((value)=>value.path === args.edition).shift();
 
         if (editionConfig) {
-          runningConfig = {...runningConfig, ...editionConfig}
-        }
-        
-        if (args.serviceURL) {
-          runningConfig = {...runningConfig, serviceURL: args.serviceURL}
+          runningConfig = {...runningConfig, ...editionConfig};
         }
 
-        if (args.title) {
-          runningConfig = {...runningConfig, title: args.title}
+        const itemInfo = args.itemid && await getItemInfo(args.itemid);
+        
+        if (itemInfo) {
+          console.log(itemInfo.serviceURL)
+          runningConfig = {
+            ...runningConfig, 
+            ...itemInfo
+          };
         }
 
         setConfig(runningConfig);
