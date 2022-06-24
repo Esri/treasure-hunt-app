@@ -1,0 +1,50 @@
+﻿[
+    {
+        "author": "Esri Story Maps",
+        "title": "World Heritage Sites",
+        "path": "heritage-sites",
+        "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0",
+        "instructions": "<ul><li>Each question hints at a place somewhere in the world.</li><li>To answer the question, frame your guess location within the viewfinder using the map's pan/zoom functions.</li><li>Viewfinder color indicates how close you're getting to the correct spot:<ul style='margin-top: 10px'><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: green; opacity: 0.5; margin-right: 10px'></div>Getting closer!</li><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: red; opacity: 0.5; margin-right: 10px'></div>Look somewhere else...</li></ul></li></ul>",
+        "homeCenter": [-40, 29],
+        "homeZoom": 3,
+        "minZoom": 2,
+        "maxZoom": 16,
+        "scaleDenominator": 120
+    },
+    {
+        "title": "Famous Romances",
+        "path": "famous-romances",
+        "description": "You'll fall hard for this love-themed treasure hunt! It's like a dating app, but instead of swiping right, you zoom and pan!",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_dc0094b65caa4af1a2d6761c471d7059_stakeholder/FeatureServer/0"
+    },
+    {
+        "title": "Cities",
+        "path": "cities",
+        "description": "You won't find any urban legends here—just fun facts about concrete jungles across the globe.",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_318f12a8143b4156988ad787927ad2a9_stakeholder/FeatureServer/0"
+    },
+    {
+        "title": "Mountains",
+        "path": "mountains",
+        "description": "This 10-question quiz is sure to take your geo-IQ to new heights.",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b7040c290ef2430481668cecd4682e7d_stakeholder/FeatureServer/0"
+    },
+    {
+        "title": "Halloween",
+        "path": "halloween",
+        "description": "Are you scary smart? Test your knowledge with our Halloween Hunt!",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b61363afc3654bff90763f6adfd74889_stakeholder/FeatureServer/0"
+    },
+    {
+        "title": "Places Lee has been struck with an Egg",
+        "path": "egg-struck",
+        "description": "Have you got what it takes to beat this egg-stremely harrowing challenge?",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_c8efe7fc207c417fa0e00e6638b3dcae_stakeholder/FeatureServer/0",
+        "instructions": "<ul><li>Each question hints at a place somewhere in the US.</li><li>To answer the question, frame your guess location within the viewfinder using the map's pan/zoom functions.</li><li>Viewfinder color indicates how close you're getting to the correct spot:<ul style='margin-top: 10px'><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: green; opacity: 0.5; margin-right: 10px'></div>Getting closer!</li><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: red; opacity: 0.5; margin-right: 10px'></div>Look somewhere else...</li></ul></li></ul>",
+        "homeCenter": [-100, 40],
+        "homeZoom": 6,
+        "minZoom": 5,
+        "scaleDenominator": 15
+    }
+]
