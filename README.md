@@ -2,13 +2,9 @@
 
 This is the Github repo for the Treasure Hunt Application, which is a location based quiz application (for the browser) built w/ JavaScript, React, and the ArcGIS API for JavaScript.
 
-[View it live](https://treasure-hunt-map.netlify.app/)
-
 ![App](./public/th-screensave.png?raw=true)
 
-The remainder of this README is intended for developers who wish to download and modify the source code or host the application on their own servers.  
-
-<strong>IF YOU ARE MERELY LOOKING FOR INFORMATION ON HOW TO CREATE YOUR OWN TREASURE HUNT DATASET (which you can publish either through Esri's hosted instance of the application or your own), PLEASE CONSULT [THIS DOCUMENT](https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/).</strong>
+The remainder of this README is intended for developers who wish to download and modify the source code or host the application on their own servers.
 
 ## Instructions
 
