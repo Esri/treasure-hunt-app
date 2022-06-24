@@ -4,7 +4,7 @@ This is the Github repo for the Treasure Hunt Application, which is a location b
 
 [View it live](https://treasure-hunt-map.netlify.app/)
 
-![App](https://raw.githubusercontent.com/leebock/treasure-hunt-app/main/public/th-screensave.png)
+![App](./public/th-screensave.png?raw=true)
 
 The remainder of this README is intended for developers who wish to download and modify the source code or host the application on their own servers.  
 
@@ -19,7 +19,7 @@ The remainder of this README is intended for developers who wish to download and
 npm install
 ```
 
-3. Runs the app in the development mode.
+3. Run the app in the development mode.
 
 ```bash
 npm run start
@@ -48,7 +48,7 @@ Esri welcomes contributions from anyone and everyone. Please see our [guidelines
 
 ## Licensing
 
-Copyright 2016 Esri
+Copyright 2022 Esri
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -62,4 +62,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [license.txt]( https://raw.githubusercontent.com/leebock/treasure-hunt-app/main/license.txt) file.
+A copy of the license is available in the repository's [license.txt](./license.txt?raw=true) file.
