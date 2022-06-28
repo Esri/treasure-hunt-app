@@ -72,6 +72,14 @@ function App() {
           };
         }
 
+        const initCenter = 
+            args.initcenter && 
+            args.initcenter.split(",").filter((str)=>!isNaN(parseFloat(str)));
+
+        if (initCenter && initCenter.length === 2) {
+          runningConfig = {...runningConfig, initCenter: initCenter};
+        }
+
         setConfig(runningConfig);
 
       })();      
