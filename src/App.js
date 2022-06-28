@@ -215,7 +215,7 @@ function App() {
           selectedQuestion && 
           <THMap id="map" 
                 className="flex-grow-1 flex-shrink-0 flex-sm-shrink-1"
-                homeCenter={config.homeCenter}
+                initCenter={config.initCenter}
                 homeZoom={config.homeZoom}
                 minZoom={config.minZoom}
                 maxZoom={config.maxZoom}

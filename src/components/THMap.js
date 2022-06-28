@@ -35,7 +35,7 @@ const toggleViewFinder = (visible)=> {
 export const THMap = ({
     id,
     className,
-    homeCenter,
+    initCenter,
     homeZoom,
     minZoom,
     maxZoom,
@@ -44,7 +44,7 @@ export const THMap = ({
     onSolve}) => {
 
     console.log("Map render", selected);
-    const _homeCenter = useRef(homeCenter);
+    const _initCenter = useRef(initCenter);
     const _homeZoom = useRef(homeZoom);
     const _minZoom = useRef(minZoom);
     const _maxZoom = useRef(maxZoom);
@@ -158,7 +158,7 @@ export const THMap = ({
                 {
                     map: new Map({ basemap: "arcgis-community"}), 
                     container: "map",
-                    center: _homeCenter.current, 
+                    center: _initCenter.current, 
                     zoom: _homeZoom.current,
                     constraints: {
                         minZoom: _minZoom.current, 
