@@ -80,6 +80,21 @@ function App() {
           runningConfig = {...runningConfig, initCenter: initCenter};
         }
 
+        const homeZoom = args.homezoom && parseInt(args.homezoom);
+        if (homeZoom) {
+          runningConfig = {...runningConfig, homeZoom: homeZoom};
+        }
+
+        const maxZoom = args.maxzoom && parseInt(args.maxzoom);
+        if (maxZoom) {
+          runningConfig = {...runningConfig, maxZoom: maxZoom}; 
+        }
+
+        const minZoom = args.minzoom && parseInt(args.minzoom);
+        if (minZoom) {
+          runningConfig = {...runningConfig, minZoom: minZoom}; 
+        }
+
         setConfig(runningConfig);
 
       })();      
