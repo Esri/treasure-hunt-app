@@ -23,10 +23,12 @@ import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
 import { Intro } from './components/Intro';
 import { CongratsScreen } from './components/CongratsScreen';
+import Multipoint from "@arcgis/core/geometry/Multipoint";
 
 function App() {
 
   const [config, setConfig] = useState(null);
+  const [scaleDenominator, setScaleDenominator] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [hideInstructions, setHideInstructions] = useState(false);
   const [hideCongratsScreen, setHideCongratsScreen] = useState(true);
@@ -35,10 +37,12 @@ function App() {
 
   useEffect(
     () => {
+
       document.addEventListener(
         "keydown", 
         (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
       );
+
       (async () => {
 
         const response = await fetch("./config.json");
@@ -62,7 +66,6 @@ function App() {
         const itemInfo = args.itemid && await getItemInfo(args.itemid);
         
         if (itemInfo) {
-          console.log(itemInfo.serviceURL)
           runningConfig = {
             ...runningConfig, 
             ...itemInfo
@@ -99,6 +102,12 @@ function App() {
                 }
               ) // features.map           
             ) // await Promise.all
+          setScaleDenominator(
+            new Multipoint({
+              points: 
+              _records.current.map((value)=>[value.x, value.y])
+            }).extent.width
+          )
           setSelectedQuestion(_records.current.slice().shift())
         })();
       }
@@ -210,7 +219,7 @@ function App() {
                 homeZoom={config.homeZoom}
                 minZoom={config.minZoom}
                 maxZoom={config.maxZoom}
-                scaleDenominator={config.scaleDenominator}
+                scaleDenominator={scaleDenominator}
                 selected={selectedQuestion}
                 onSolve={(objectid)=>markSolved(objectid)}></THMap>
           }

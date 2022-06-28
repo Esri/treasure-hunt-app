@@ -9,8 +9,7 @@
         "homeCenter": [-40, 29],
         "homeZoom": 3,
         "minZoom": 2,
-        "maxZoom": 16,
-        "scaleDenominator": 120
+        "maxZoom": 16
     },
     {
         "title": "Famous Romances",
@@ -44,7 +43,6 @@
         "instructions": "<ul><li>Each question hints at a place somewhere in the US.</li><li>To answer the question, frame your guess location within the viewfinder using the map's pan/zoom functions.</li><li>Viewfinder color indicates how close you're getting to the correct spot:<ul style='margin-top: 10px'><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: green; opacity: 0.5; margin-right: 10px'></div>Getting closer!</li><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: red; opacity: 0.5; margin-right: 10px'></div>Look somewhere else...</li></ul></li></ul>",
         "homeCenter": [-100, 40],
         "homeZoom": 6,
-        "minZoom": 5,
-        "scaleDenominator": 15
+        "minZoom": 5
     }
 ]
