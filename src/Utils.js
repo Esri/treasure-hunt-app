@@ -13,6 +13,59 @@
 * limitations under the License.
 */
 
+export const parseConfig = async () =>
+{
+  const response = await fetch("./config.json");
+  const json = await response.json();
+  const args = parseArgs();
+
+  let runningConfig = json.filter(
+    (value)=>value.path === "heritage-sites"
+  ).shift();
+
+  const editionConfig = args.edition && 
+    json.filter((value)=>value.path === args.edition).shift();
+
+  if (editionConfig) {
+    runningConfig = {...runningConfig, ...editionConfig};
+  }
+
+  const itemInfo = args.itemid && await getItemInfo(args.itemid);
+  
+  if (itemInfo) {
+    runningConfig = {
+      ...runningConfig, 
+      ...itemInfo
+    };
+  }
+
+  const initCenter = 
+      args.initcenter && 
+      args.initcenter.split(",").filter((str)=>!isNaN(parseFloat(str)));
+
+  if (initCenter && initCenter.length === 2) {
+    runningConfig = {...runningConfig, initCenter: initCenter};
+  }
+
+  const homeZoom = args.homezoom && parseInt(args.homezoom);
+  if (homeZoom) {
+    runningConfig = {...runningConfig, homeZoom: homeZoom};
+  }
+
+  const maxZoom = args.maxzoom && parseInt(args.maxzoom);
+  if (maxZoom) {
+    runningConfig = {...runningConfig, maxZoom: maxZoom}; 
+  }
+
+  const minZoom = args.minzoom && parseInt(args.minzoom);
+  if (minZoom) {
+    runningConfig = {...runningConfig, minZoom: minZoom}; 
+  }
+
+  return runningConfig;
+
+}
+
 export const fetchFeatures = async (serviceURL) => 
 {
   const response = await fetch(

@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@arcgis/core/assets/esri/css/main.css';
 import './viewfinder.css';
 import './App.css';
-import { parseArgs, fetchFeatures, getImageURL, getItemInfo } from './Utils';
+import { parseConfig, fetchFeatures, getImageURL} from './Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
@@ -43,61 +43,7 @@ function App() {
         (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
       );
 
-      (async () => {
-
-        const response = await fetch("./config.json");
-        const json = await response.json();
-
-        const protoConfig = json.filter(
-          (value)=>value.path === "heritage-sites"
-        ).shift();
-
-        let runningConfig = protoConfig;
-
-        const args = parseArgs();
-
-        const editionConfig = args.edition && 
-          json.filter((value)=>value.path === args.edition).shift();
-
-        if (editionConfig) {
-          runningConfig = {...runningConfig, ...editionConfig};
-        }
-
-        const itemInfo = args.itemid && await getItemInfo(args.itemid);
-        
-        if (itemInfo) {
-          runningConfig = {
-            ...runningConfig, 
-            ...itemInfo
-          };
-        }
-
-        const initCenter = 
-            args.initcenter && 
-            args.initcenter.split(",").filter((str)=>!isNaN(parseFloat(str)));
-
-        if (initCenter && initCenter.length === 2) {
-          runningConfig = {...runningConfig, initCenter: initCenter};
-        }
-
-        const homeZoom = args.homezoom && parseInt(args.homezoom);
-        if (homeZoom) {
-          runningConfig = {...runningConfig, homeZoom: homeZoom};
-        }
-
-        const maxZoom = args.maxzoom && parseInt(args.maxzoom);
-        if (maxZoom) {
-          runningConfig = {...runningConfig, maxZoom: maxZoom}; 
-        }
-
-        const minZoom = args.minzoom && parseInt(args.minzoom);
-        if (minZoom) {
-          runningConfig = {...runningConfig, minZoom: minZoom}; 
-        }
-
-        setConfig(runningConfig);
-
-      })();      
+      (async () => setConfig(await parseConfig()))();      
     },
     []
   );
