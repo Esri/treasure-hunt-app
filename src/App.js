@@ -40,7 +40,7 @@ function App() {
 
       document.addEventListener(
         "keydown", 
-        (event) => {if (event.keyCode === 27) {setHideInstructions(true);}}
+        (event) => {if (event.code === "Escape") {setHideInstructions(true);}}
       );
 
       (async () => setConfig(await parseConfig()))();      
