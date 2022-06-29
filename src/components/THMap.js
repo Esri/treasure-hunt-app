@@ -43,7 +43,6 @@ export const THMap = ({
     selected, 
     onSolve}) => {
 
-    console.log("Map render", selected);
     const _initCenter = useRef(initCenter);
     const _homeZoom = useRef(homeZoom);
     const _minZoom = useRef(minZoom);
@@ -152,7 +151,6 @@ export const THMap = ({
     useEffect(
         () => {
 
-            console.log("map::creating map");
             esriConfig.apiKey = "AAPKc281cec04c56424bb82093c8925ea337x_K4mBEA-vKPfea5-iSQuzoKoHc5eupD1JQwl-4R_a3AoGuNVdUfNdzbDEQn2jZ2"
             const view = new MapView(
                 {
@@ -308,8 +306,6 @@ export const THMap = ({
 
 const boxToExtent = (view, square) => {
 
-    console.log("boxToExtent", view, square);
-
     const lowerLeft = view.toMap(
         new Point(
             [
@@ -335,4 +331,5 @@ const boxToExtent = (view, square) => {
             wkid: 4326
         }
     });
+
 }
