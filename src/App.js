@@ -15,9 +15,9 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@arcgis/core/assets/esri/css/main.css';
-import './viewfinder.css';
+import './components/viewfinder.css';
 import './App.css';
-import { parseConfig, fetchFeatures, getImageURL} from './Utils';
+import { parseConfig, fetchFeatures, getImageURL} from './components/Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
