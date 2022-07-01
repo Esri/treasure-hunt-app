@@ -44,5 +44,11 @@
         "initCenter": [-100, 40],
         "homeZoom": 6,
         "minZoom": 5
+    },
+    {
+        "title": "Holiday Grab Bag",
+        "path": "holiday",
+        "description": "Test your Geo-IQ with this map-based quiz",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_956328352fca48738226b1ffa8626d0e_stakeholder/FeatureServer/0"
     }
 ]
