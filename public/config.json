@@ -1,15 +1,19 @@
 ﻿[
     {
-        "author": "Esri Story Maps",
-        "title": "World Heritage Sites",
-        "path": "heritage-sites",
-        "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0",
+        "title": "Prototype Config",
+        "path": "proto-config",
+        "description": "Test your Geo-IQ with this map-based quiz",
         "instructions": "<ul><li>Each question hints at a place somewhere in the world.</li><li>To answer the question, frame your guess location within the viewfinder using the map's pan/zoom functions.</li><li>Viewfinder color indicates how close you're getting to the correct spot:<ul style='margin-top: 10px'><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: green; opacity: 0.5; margin-right: 10px'></div>Getting closer!</li><li style='display: flex; align-items: center'><div style='width: 20px; height: 20px; background-color: red; opacity: 0.5; margin-right: 10px'></div>Look somewhere else...</li></ul></li></ul>",
         "initCenter": [-40, 29],
         "homeZoom": 3,
         "minZoom": 2,
         "maxZoom": 16
+    },
+    {
+        "title": "World Heritage Sites",
+        "path": "heritage-sites",
+        "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0"
     },
     {
         "title": "Famous Romances",
