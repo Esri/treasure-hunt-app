@@ -71,12 +71,10 @@ function App() {
                 }
               ) // features.map           
             ) // await Promise.all
-          setScaleDenominator(
-            new Multipoint({
-              points: 
-              _records.current.map((value)=>[value.x, value.y])
-            }).extent.width
-          )
+          const extentWidth = new Multipoint({
+            points: _records.current.map((value)=>[value.x, value.y])
+          }).extent.width;
+          setScaleDenominator(extentWidth < 100 ? extentWidth : 100);
           setSelectedQuestion(_records.current.slice().shift())
         })();
       }
