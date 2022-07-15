@@ -140,9 +140,18 @@ export const THMap = ({
             );
 
             const distance = viewCenter.distance(selectedPoint);
+            const distanceRatio = (distance / _scaleDenominator.current);
+            const intensity = 1-distanceRatio;
 
-            const green = parseInt(255*(1-distance/_scaleDenominator.current));
-            const red = parseInt(255*(distance/_scaleDenominator.current));
+            console.log("************************************")
+            console.log("distance", distance);
+            console.log("scale denominator", scaleDenominator)
+            console.log("distance ratio", distanceRatio);
+            console.log("intensity", intensity);
+
+            const green = parseInt(255*intensity);
+            const red = parseInt(255*(1-intensity));            
+
             square.style.backgroundColor = `rgba(${red+","+green+",0,0.6"}`;
 
         }
