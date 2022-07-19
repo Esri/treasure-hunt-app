@@ -174,7 +174,7 @@ function App() {
                 title={config.title} 
                 description={config.description}
                 instructions={config.instructions} 
-                hero={selectedQuestion.imageURL}
+                hero={config.introImage || selectedQuestion.imageURL}
                 onDismiss={()=>dismissInstructions()}></Intro>
           }
 
