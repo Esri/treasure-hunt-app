@@ -52,7 +52,11 @@
     {
         "title": "Holiday Grab Bag",
         "path": "holiday",
-        "description": "Test your Geo-IQ with this map-based quiz",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_956328352fca48738226b1ffa8626d0e_stakeholder/FeatureServer/0"
+    },
+    {
+        "title": "Beaches",
+        "path": "beaches",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_543b67cfba4e4d04b3ab5f31b3827986_stakeholder/FeatureServer/0"
     }
 ]
