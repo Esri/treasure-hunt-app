@@ -57,12 +57,14 @@
     {
         "title": "Holiday Grab Bag",
         "path": "holiday",
+        "description": "When what to my wondering eyes should appear but trivia...across the hemispheres.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_956328352fca48738226b1ffa8626d0e_stakeholder/FeatureServer/0",
         "introImage": "./Chapel.jpg"
     },
     {
         "title": "Beaches",
         "path": "beaches",
+        "description": "Do you have beaches on the brain? Put your seaside trivia skills to the test.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_543b67cfba4e4d04b3ab5f31b3827986_stakeholder/FeatureServer/0",
         "introImage": "./Waikiki_Beach.jpg"
     }
