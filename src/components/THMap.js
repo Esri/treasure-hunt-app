@@ -226,6 +226,24 @@ export const THMap = ({
             const reset = _selected.current.objectid !== selected.objectid;
 
             if (!reset) {
+                if (selected.skipped) {
+                    _view.current.goTo(
+                        {
+                            center: new Point(
+                                {
+                                    x: selected.x, 
+                                    y: selected.y, 
+                                    spatialReference: {wkid: 4326}
+                                }
+                            ) 
+                        },
+                        {
+                            animate: true,
+                            duration: 1000,
+                            easing: "ease-out"
+                        }
+                    )                    
+                }
                 return;
             }
 

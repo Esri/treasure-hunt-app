@@ -21,17 +21,19 @@ import { parseConfig, fetchFeatures, getImageURL} from './components/Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
-import { Intro } from './components/Intro';
+import { Loader } from './components/Loader';
 import { CongratsScreen } from './components/CongratsScreen';
 import Multipoint from "@arcgis/core/geometry/Multipoint";
+import { Instructions } from './components/Instructions';
 
 function App() {
 
   const [config, setConfig] = useState(null);
   const [scaleDenominator, setScaleDenominator] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [hideInstructions, setHideInstructions] = useState(false);
   const [hideCongratsScreen, setHideCongratsScreen] = useState(true);
+  const [hideInstructions, setHideInstructions] = useState(true);
+  const [firstThreeSeconds, setFirstThreeSeconds] = useState(true);
 
   const _records = useRef([]);
 
@@ -44,6 +46,9 @@ function App() {
       );
 
       (async () => setConfig(await parseConfig()))();      
+
+      setTimeout(()=>setFirstThreeSeconds(false), 3000)
+
     },
     []
   );
@@ -65,6 +70,7 @@ function App() {
                     ),
                     solved: false,
                     hintActivated: false,
+                    skipped: false,
                     x: feature.geometry.x,
                     y: feature.geometry.y  
                   }
@@ -94,6 +100,7 @@ function App() {
   )
 
   const doNext = () => {
+    setHideInstructions(true);
     const idx = findItemIndex(selectedQuestion.objectid);
     setSelectedQuestion(
       idx < _records.current.length - 1 ? 
@@ -102,25 +109,20 @@ function App() {
     );
   }
 
-  const doPrev = () => {
-    const idx = findItemIndex(selectedQuestion.objectid);
-    setSelectedQuestion(
-      idx !== 0 ? 
-      _records.current[idx-1] :
-      selectedQuestion 
-    );
+  const doSkip = () => {
+    markSkipped(selectedQuestion.objectid);
   }
 
   const showCongratsScreen = () => {
     setHideCongratsScreen(false);
   }
 
-  const dismissCongratsScreen = () => {
-    setHideCongratsScreen(true);
+  const showInstructions = () => {
+    setHideInstructions(false);
   }
 
-  const dismissInstructions = () => {
-    setHideInstructions(true);
+  const dismissCongratsScreen = () => {
+    setHideCongratsScreen(true);
   }
 
   const markSolved = (objectid) => {
@@ -139,10 +141,24 @@ function App() {
     setSelectedQuestion(marked);
   }
 
+  const markSkipped = (objectid) => {
+    const idx = findItemIndex(objectid);
+    const question = _records.current[idx]
+    const marked = {...question, skipped: true};
+    _records.current.splice(idx, 1, marked);
+    setSelectedQuestion(marked);
+  }
+
   const findItemIndex = (objectid) => {
     return _records.current.findIndex((element)=>element.objectid === objectid)
   }
-
+  
+  const calculateScore = () => {
+    const numCorrect = _records.current.filter((value) =>value.solved && !value.skipped).length;
+    const denominator = _records.current.filter((value)=>value.solved).length;
+    return denominator && (numCorrect / denominator)*100;
+  }
+  
   return (
 
     <div className="App vh-100 pb-md-2 p-md-3 p-sm-2 pb-sm-1 p-1 d-flex flex-column">
@@ -168,16 +184,14 @@ function App() {
           }
 
           {
-          !hideInstructions && selectedQuestion &&
-          <Intro className="position-absolute w-100 h-100"
+          (!selectedQuestion || firstThreeSeconds) && 
+          <Loader className="position-absolute w-100 h-100"
                 style={{zIndex: 2000, backgroundColor: "rgba(0,0,0,0.6)"}} 
-                title={config.title} 
-                description={config.description}
-                instructions={config.instructions} 
-                hero={config.introImage || selectedQuestion.imageURL}
-                onDismiss={()=>dismissInstructions()}></Intro>
+                title={config.title}></Loader>
           }
-
+          {
+          !hideInstructions && <Instructions onDismiss={()=>setHideInstructions(true)}/>
+          }
           {
           selectedQuestion && 
           <THMap id="map" 
@@ -197,7 +211,12 @@ function App() {
                 className="flex-sm-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-sm-0 me-sm-3" 
                 style={{flexBasis: "60%", maxWidth: "600px"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
-              <div className="card-header">Question #{findItemIndex(selectedQuestion.objectid)+1} of {_records.current.length}</div>
+              <div className="card-header d-flex justify-content-between">
+                <span>Question #{findItemIndex(selectedQuestion.objectid)+1} of {_records.current.length}</span>
+                {selectedQuestion.skipped && <span>Skipped</span>}
+                {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
+                <span>Score: {parseInt(calculateScore())}%</span>
+              </div>
               <img src={selectedQuestion.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
@@ -217,14 +236,21 @@ function App() {
                       marginBottom: "15px"}}></PhotoCredits>
                   {
                   selectedQuestion.solved &&
-                  <div className="alert alert-success"
-                      style={{animation: "swoopy .5s linear"}}
-                      dangerouslySetInnerHTML={
-                        { 
-                          __html: 
-                          "<strong>Answer:</strong> "+selectedQuestion.exclamation
-                        }
-                      }></div>
+                  <div className="alert alert-success d-flex align-items-center justify-content-between"
+                      style={{animation: "swoopy .5s linear"}}>
+                      <p dangerouslySetInnerHTML={{__html: "<strong>Answer: </strong>"+selectedQuestion.exclamation}}></p>
+                      {
+                      findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 && 
+                      selectedQuestion.solved && 
+                      <button className="btn btn-sm btn-primary ms-4" onClick={doNext}>Next</button>
+                      }                      
+                      {
+                      findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 && 
+                      _records.current.filter((question)=>question.solved).length === _records.current.length &&
+                      <button className="btn btn-sm btn-primary ms-4" 
+                              onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
+                      }
+                    </div>
                   }
                   {
                   selectedQuestion.hintActivated &&
@@ -254,27 +280,13 @@ function App() {
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3 mb-1">
-              <button className={`btn ${findItemIndex(selectedQuestion.objectid) === 0 ? "btn-outline-secondary" : "btn-outline-dark"}`}
-                      disabled={findItemIndex(selectedQuestion.objectid) === 0}
-                      onClick={doPrev}>Prev</button>
-              {
-              !selectedQuestion.hintActivated && !selectedQuestion.solved &&
-              <button className="btn btn-outline-dark" 
+              <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>Instructions</button>
+              <button className="btn btn-sm btn-outline-secondary btn-light" 
+                      disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
                       onClick={()=>markHintActivated(selectedQuestion.objectid)}>Psst...need a hint?</button>
-              }
-              {
-              findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 &&
-              <button className={`btn ${selectedQuestion.solved ? "btn-primary" : "btn-outline-secondary"}`} 
-                      disabled={!selectedQuestion.solved || findItemIndex(selectedQuestion.objectid) === _records.current.length - 1}
-                      onClick={doNext}>Next</button>
-              }
-              {
-              findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 &&
-              <button className="btn btn-primary"
-                      disabled={_records.current.filter((question)=>question.solved).length < _records.current.length} 
-                      onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
-              }
-
+              <button className="btn btn-sm btn-outline-secondary btn-light"
+                      disabled={selectedQuestion.solved || selectedQuestion.skipped}
+                      onClick={doSkip}>Auto solve</button>
             </div>
           </div>
           }

@@ -17,6 +17,19 @@
     font-family: "Open Sans", sans-serif!important;
 }
 
+.zigzag {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: -1200;
+    animation: dash 2s ease-out forwards;  
+}
+  
+  
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
 @keyframes swoopy {
 	from {
 		transform: scale(0);
