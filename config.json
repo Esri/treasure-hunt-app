@@ -67,5 +67,12 @@
         "description": "Do you have beaches on the brain? Put your seaside trivia skills to the test.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_543b67cfba4e4d04b3ab5f31b3827986_stakeholder/FeatureServer/0",
         "introImage": "./Waikiki_Beach.jpg"
+    },
+    {
+        "title": "Places and Foods",
+        "path": "places-and-foods",
+        "description": "Calling all foodies! See if you can locate the origins of each cuisine.",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_101f2a2d26fe44cfa33741d4db70dad7_stakeholder/FeatureServer/0",
+        "introImage": "./PatsCheesesteak.jpg"
     }
 ]
