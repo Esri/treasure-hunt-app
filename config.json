@@ -80,6 +80,9 @@
         "path": "virginia",
         "description": "Virginia is for lovers...of geography treasure hunts! Challenge your mastery of Old Dominion culture, history, and geography!",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_9912e8cf258c4635925d400021f1b336_stakeholder/FeatureServer/0",
-        "introImage": "./Wild_Pony_at_Assateague.jpg"
+        "introImage": "./Wild_Pony_at_Assateague.jpg",
+        "initCenter": [-78.76, 37.51],
+        "homeZoom": 8,
+        "minZoom": 7
     }
 ]
