@@ -13,8 +13,10 @@
 * limitations under the License.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Literata:wght@100;400&display=swap');
+
 * {
-    font-family: "Open Sans", sans-serif!important;
+    font-family: "Literata";
 }
 
 .zigzag {
@@ -22,8 +24,7 @@
     stroke-dashoffset: -1200;
     animation: dash 2s ease-out forwards;  
 }
-  
-  
+
 @keyframes dash {
     to {
         stroke-dashoffset: 0;

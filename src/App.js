@@ -166,8 +166,9 @@ function App() {
       config && 
       <>
 
-        <header className="border-bottom border-bottom-1 mb-2">
+        <header className="border-bottom border-bottom-1 mb-2 d-flex justify-content-between align-items-center">
           <h1 className="h4 ms-1">Treasure Hunt: {config.title}</h1>
+          <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>How to use this app</button>
         </header>
 
         <section id="main" 
@@ -280,13 +281,12 @@ function App() {
               </div>
             </div>
             <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3 mb-1">
-              <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>Instructions</button>
               <button className="btn btn-sm btn-outline-secondary btn-light" 
                       disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
                       onClick={()=>markHintActivated(selectedQuestion.objectid)}>Psst...need a hint?</button>
               <button className="btn btn-sm btn-outline-secondary btn-light"
                       disabled={selectedQuestion.solved || selectedQuestion.skipped}
-                      onClick={doSkip}>Auto solve</button>
+                      onClick={doSkip}>Reveal</button>
             </div>
           </div>
           }
@@ -295,7 +295,7 @@ function App() {
         </section>
 
 
-        <footer className="d-flex justify-content-end pt-1 small text-muted"><span>Check out our <a className="link-primary" href="https://github.com/leebock/treasure-hunt-v3" target="_blank" rel="noreferrer">Github repo</a> for info on creating your own Treasure Hunt.</span></footer>
+        <footer className="d-flex justify-content-end pt-1 small text-muted"><span>Check out <a className="link-primary" href="https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/" target="_blank" rel="noreferrer">this doc</a> for info on creating your own Treasure Hunt.</span></footer>
       </>
       }
     </div>
