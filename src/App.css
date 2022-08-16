@@ -42,6 +42,13 @@
 	}
 }
 
+
+@media (min-width: 1000px) {
+    #controls {
+        max-width: 600px;
+    }    
+}
+
 .card-img-top {
     display: block;
 }

@@ -172,7 +172,7 @@ function App() {
         </header>
 
         <section id="main" 
-                className="flex-grow-1 d-flex flex-column flex-sm-row-reverse position-relative overflow-hidden">
+                className="flex-grow-1 d-flex flex-column flex-lg-row-reverse position-relative overflow-hidden">
 
           {
           !hideCongratsScreen &&
@@ -196,7 +196,7 @@ function App() {
           {
           selectedQuestion && 
           <THMap id="map" 
-                className="flex-grow-1 flex-shrink-0 flex-sm-shrink-1"
+                className="flex-grow-1 flex-shrink-0 flex-lg-shrink-1"
                 initCenter={config.initCenter}
                 homeZoom={config.homeZoom}
                 minZoom={config.minZoom}
@@ -209,8 +209,8 @@ function App() {
           {
           selectedQuestion &&
           <div id="controls"
-                className="flex-sm-grow-1 align-self-center align-self-sm-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-sm-0 me-sm-3" 
-                style={{flexBasis: "60%", maxWidth: "600px"}}>
+                className="flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
+                style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header d-flex justify-content-between">
                 <span>Question #{findItemIndex(selectedQuestion.objectid)+1} of {_records.current.length}</span>
