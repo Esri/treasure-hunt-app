@@ -67,5 +67,22 @@
         "description": "Do you have beaches on the brain? Put your seaside trivia skills to the test.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_543b67cfba4e4d04b3ab5f31b3827986_stakeholder/FeatureServer/0",
         "introImage": "./Waikiki_Beach.jpg"
+    },
+    {
+        "title": "Places and Foods",
+        "path": "places-and-foods",
+        "description": "Calling all foodies! See if you can locate the origins of each cuisine.",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_101f2a2d26fe44cfa33741d4db70dad7_stakeholder/FeatureServer/0",
+        "introImage": "./PatsCheesesteak.jpg"
+    },
+    {
+        "title": "Virginia State Trivia",
+        "path": "virginia",
+        "description": "Virginia is for lovers...of geography treasure hunts! Challenge your mastery of Old Dominion culture, history, and geography!",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_9912e8cf258c4635925d400021f1b336_stakeholder/FeatureServer/0",
+        "introImage": "./Wild_Pony_at_Assateague.jpg",
+        "initCenter": [-78.76, 37.51],
+        "homeZoom": 8,
+        "minZoom": 7
     }
 ]
