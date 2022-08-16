@@ -14,11 +14,11 @@
 */
 
 @keyframes blinkingBorder{
-    0%		{ border-color: green;}
-    25%		{ border-color: lime;}
-    50%		{ border-color: green;}
-    75%		{ border-color: lime;}
-    100%	{ border-color: green;}
+    0%		{ border-color: darkred;}
+    25%		{ border-color: red;}
+    50%		{ border-color: darkred;}
+    75%		{ border-color: red;}
+    100%	{ border-color: darkred;}
 }
 
 #square, #axis-y-top, #axis-y-bottom, #axis-x-left, #axis-x-right {

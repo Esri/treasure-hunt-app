@@ -149,10 +149,10 @@ export const THMap = ({
             console.log("distance ratio", distanceRatio);
             console.log("intensity", intensity);
 
-            const green = parseInt(255*intensity);
-            const red = parseInt(255*(1-intensity));            
+            const red = parseInt(255*intensity);
+            const blue = parseInt(255*(1-intensity));            
 
-            square.style.backgroundColor = `rgba(${red+","+green+",0,0.6"}`;
+            square.style.backgroundColor = `rgba(${red+",0,"+blue+",0.6"}`;
 
         }
     );
