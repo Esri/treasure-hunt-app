@@ -209,7 +209,7 @@ function App() {
           {
           selectedQuestion &&
           <div id="controls"
-                className="flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
+                className="w-100 flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header d-flex justify-content-between">
@@ -218,7 +218,15 @@ function App() {
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <span>Score: {parseInt(calculateScore())}%</span>
               </div>
-              <img src={selectedQuestion.imageURL} className="card-img-top align-self-center mt-2" alt="..." style={{height:"45%", maxHeight: "350px", width:"auto"}}></img>              
+              <div id="question-image" 
+                className="w-100 align-self-center mt-2"
+                style={{
+                  backgroundImage: `url(${selectedQuestion.imageURL})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  height:"45%", maxHeight: "350px", width:"auto"
+                }}>
+              </div>
               <div className="card-body overflow-auto d-flex flex-column"
                     style={{
                       backgroundImage: `url(${selectedQuestion.imageURL})`,

@@ -43,22 +43,18 @@
 }
 
 
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
     #controls {
         max-width: 600px;
     }    
-}
-
-.card-img-top {
-    display: block;
 }
 
 .card-body {
     background-size: 0%;
 }
 
-@media (max-height: 700px), (max-width: 576px) {
-    .card-img-top {
+@media (max-height: 700px), (max-width: 992px) {
+    #question-image {
         display: none;
     }
     .card-body {
