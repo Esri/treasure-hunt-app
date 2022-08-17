@@ -223,7 +223,8 @@ function App() {
                 style={{
                   backgroundImage: `url(${selectedQuestion.imageURL})`,
                   backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
+                  backgroundPosition: "top center",
+                  backgroundSize: "cover",
                   height:"45%", maxHeight: "350px", width:"auto"
                 }}>
               </div>
