@@ -25,6 +25,49 @@
     animation: dash 2s ease-out forwards;  
 }
 
+#map-balloon-help {
+    background-color: lemonchiffon;
+    z-index: 2000;
+    top: 50%;
+    left: 50%;
+    margin-left: 40px;
+    margin-top: -120px;
+    max-width: 150px;
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+    padding: 5px;
+}
+
+.fading {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    transition-timing-function: ease;    
+}
+
+.bouncy {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: bounce;
+    animation-timing-function: ease;
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-100px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+}
+
 @keyframes dash {
     to {
         stroke-dashoffset: 0;

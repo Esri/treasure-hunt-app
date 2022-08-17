@@ -142,13 +142,13 @@ export const THMap = ({
             const distance = viewCenter.distance(selectedPoint);
             const distanceRatio = (distance / _scaleDenominator.current);
             const intensity = 1-distanceRatio;
-
+            /*
             console.log("************************************")
             console.log("distance", distance);
             console.log("scale denominator", scaleDenominator)
             console.log("distance ratio", distanceRatio);
             console.log("intensity", intensity);
-
+            */
             const red = parseInt(255*intensity);
             const blue = parseInt(255*(1-intensity));            
 
@@ -199,7 +199,23 @@ export const THMap = ({
             axisXRight.setAttribute("id", "axis-x-right")
             view.ui.add(axisXRight, "manual");
 
+            const popupHelp = document.createElement("div");
+            popupHelp.setAttribute("id", "map-balloon-help");
+            popupHelp.setAttribute("class", "bouncy");
+            popupHelp.innerHTML = "Use the map's pan/zoom functions to frame your guess location within the viewfinder circle!";
+            view.ui.add(popupHelp, "manual");
+
             _view.current = view;
+
+            view.on(
+                ["pointer-down","key-down"], 
+                ()=>{
+                    const balloon = document.getElementById("map-balloon-help");
+                    balloon.classList.add("fading");
+                    balloon.classList.remove("bouncy");
+                    setTimeout(()=>balloon.style.display = "none", 900);                        
+                }
+            );
 
             view.when(
                 ()=> {
