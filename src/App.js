@@ -246,21 +246,24 @@ function App() {
                       marginBottom: "15px"}}></PhotoCredits>
                   {
                   selectedQuestion.solved &&
-                  <div className="alert alert-success d-flex align-items-center justify-content-between"
+                  <div className="alert alert-success"
                       style={{animation: "swoopy .5s linear"}}>
-                      <p dangerouslySetInnerHTML={{__html: "<strong>Answer: </strong>"+selectedQuestion.exclamation}}></p>
-                      {
-                      findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 && 
-                      selectedQuestion.solved && 
-                      <button className="btn btn-sm btn-primary ms-4" onClick={doNext}>Next</button>
-                      }                      
-                      {
-                      findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 && 
-                      _records.current.filter((question)=>question.solved).length === _records.current.length &&
-                      <button className="btn btn-sm btn-primary ms-4" 
-                              onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
-                      }
-                    </div>
+                    {
+                    findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 && 
+                    selectedQuestion.solved && 
+                    <button className="btn btn-sm btn-primary ms-3 w-100" 
+                            style={{maxWidth: "120px", float: "right"}}
+                            onClick={doNext}>Next Question</button>
+                    }                      
+                    {
+                    findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 && 
+                    _records.current.filter((question)=>question.solved).length === _records.current.length &&
+                    <button className="btn btn-sm btn-primary ms-3 w-100" 
+                            style={{maxWidth: "120px", float: "right"}}
+                            onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
+                    }
+                    <p dangerouslySetInnerHTML={{__html: "<strong>Answer: </strong>"+selectedQuestion.exclamation}}></p>
+                  </div>
                   }
                   {
                   selectedQuestion.hintActivated &&
@@ -269,41 +272,34 @@ function App() {
                       !selectedQuestion.solved ? 
                         {animation: "swoopy .5s linear"} : 
                         {color: "gray", opacity:"0.9"}
-                    } 
-                    dangerouslySetInnerHTML={
-                      {
-                        __html: "<strong>Hint:</strong> "+selectedQuestion.hint
-                      }
-                    }></div>
+                    }>
+                    <button className="btn btn-sm btn-outline-info w-100 ms-3"
+                            style={{maxWidth: "120px", float: "right"}}
+                            disabled={selectedQuestion.solved || selectedQuestion.skipped}
+                            onClick={doSkip}>Stumped? Reveal the answer.</button>
+
+                    <p dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+selectedQuestion.hint}}></p>
+                  </div>
                   }
                   <div className="alert alert-info"
                     style={
                       selectedQuestion.hintActivated || selectedQuestion.solved ? 
                       {color: "gray", opacity:"0.9"} : 
                       {animation: "swoopy .5s linear"}
-                    }
-                    dangerouslySetInnerHTML={
-                      {
-                        __html: "<strong>Question:</strong> "+selectedQuestion.prompt
-                      }
-                    }></div>                                  
+                    }>
+                      <button target="blank" 
+                                className="btn btn-sm btn-outline-info w-100 ms-3"
+                                style={{maxWidth: "120px", float: "right"}}
+                                disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
+                                onClick={()=>markHintActivated(selectedQuestion.objectid)}>Pssst...Need a hint?</button>
+                      <p dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></p>
+
+                  </div>                                  
               </div>
-            </div>
-            <div className="w-100 d-flex mt-2 justify-content-between ms-3 me-3 mb-1">
-              <button className="btn btn-sm btn-outline-secondary btn-light" 
-                      disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
-                      onClick={()=>markHintActivated(selectedQuestion.objectid)}>Psst...need a hint?</button>
-              <button className="btn btn-sm btn-outline-secondary btn-light"
-                      disabled={selectedQuestion.solved || selectedQuestion.skipped}
-                      onClick={doSkip}>Reveal</button>
             </div>
           </div>
           }
-
-
         </section>
-
-
         <footer className="d-flex justify-content-end pt-1 small text-muted"><span>Check out <a className="link-primary" href="https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/" target="_blank" rel="noreferrer">this doc</a> for info on creating your own Treasure Hunt.</span></footer>
       </>
       }
