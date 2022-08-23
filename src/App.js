@@ -273,12 +273,10 @@ function App() {
                         {animation: "swoopy .5s linear"} : 
                         {color: "gray", opacity:"0.9"}
                     }>
-                    <button className="btn btn-sm btn-outline-info w-100 ms-3"
-                            style={{maxWidth: "120px", float: "right"}}
-                            disabled={selectedQuestion.solved || selectedQuestion.skipped}
-                            onClick={doSkip}>Stumped? Reveal the answer.</button>
-
                     <p dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+selectedQuestion.hint}}></p>
+                    <button className="btn btn-sm btn-outline-info"
+                            disabled={selectedQuestion.solved || selectedQuestion.skipped}
+                            onClick={doSkip}>Stumped? Reveal the answer.</button>                    
                   </div>
                   }
                   <div className="alert alert-info"
@@ -287,13 +285,11 @@ function App() {
                       {color: "gray", opacity:"0.9"} : 
                       {animation: "swoopy .5s linear"}
                     }>
+                      <p dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></p>
                       <button target="blank" 
-                                className="btn btn-sm btn-outline-info w-100 ms-3"
-                                style={{maxWidth: "120px", float: "right"}}
+                                className="btn btn-sm btn-outline-info"
                                 disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
                                 onClick={()=>markHintActivated(selectedQuestion.objectid)}>Pssst...Need a hint?</button>
-                      <p dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></p>
-
                   </div>                                  
               </div>
             </div>
