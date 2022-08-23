@@ -201,7 +201,7 @@ export const THMap = ({
 
             const popupHelp = document.createElement("div");
             popupHelp.setAttribute("id", "map-balloon-help");
-            popupHelp.setAttribute("class", "bouncy");
+            popupHelp.setAttribute("class", "pulsing");
             popupHelp.innerHTML = "Use the map's pan/zoom functions to frame your guess location within the viewfinder circle!";
             view.ui.add(popupHelp, "manual");
 
@@ -212,7 +212,7 @@ export const THMap = ({
                 ()=>{
                     const balloon = document.getElementById("map-balloon-help");
                     balloon.classList.add("fading");
-                    balloon.classList.remove("bouncy");
+                    balloon.classList.remove("pulsing");
                     setTimeout(()=>balloon.style.display = "none", 900);                        
                 }
             );

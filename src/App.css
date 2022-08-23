@@ -30,8 +30,8 @@
     z-index: 2000;
     top: 50%;
     left: 50%;
-    margin-left: 40px;
-    margin-top: -120px;
+    margin-left: 45px;
+    margin-top: -125px;
     max-width: 150px;
     border: solid;
     border-width: 1px;
@@ -45,10 +45,10 @@
     transition-timing-function: ease;    
 }
 
-.bouncy {
+.pulsing {
     animation-duration: 2s;
     animation-iteration-count: infinite;
-    animation-name: bounce;
+    animation-name: pulse;
     animation-timing-function: ease;
 }
 
@@ -61,11 +61,21 @@
     }
 }
 
-@keyframes bounce {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-100px); }
-    50%  { transform: translateY(0); }
-    100% { transform: translateY(0); }
+@keyframes pulse {
+	0% {
+		transform: scale(0.98);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(0.98);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
 }
 
 @keyframes dash {
