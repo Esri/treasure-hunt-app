@@ -213,10 +213,9 @@ function App() {
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header d-flex justify-content-between">
-                <span><strong>{findItemIndex(selectedQuestion.objectid)+1}</strong> of <strong>{_records.current.length}</strong></span>
-                {selectedQuestion.skipped && <span>Skipped</span>}
+                <h3 className="h5">{findItemIndex(selectedQuestion.objectid)+1} <span className="fw-lighter">of</span> {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
-                <span>Score: {parseInt(calculateScore())}%</span>
+                <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
               </div>
               <div id="question-image" 
                 className="w-100 align-self-center mt-2"
@@ -262,7 +261,8 @@ function App() {
                             style={{maxWidth: "120px", float: "right"}}
                             onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
                     }
-                    <p dangerouslySetInnerHTML={{__html: "<strong>Answer: </strong>"+selectedQuestion.exclamation}}></p>
+                    <h4 className="h6 fw-bolder">ANSWER</h4>
+                    <p dangerouslySetInnerHTML={{__html: selectedQuestion.exclamation}}></p>
                   </div>
                   }
                   {
@@ -273,7 +273,8 @@ function App() {
                         {animation: "swoopy .5s linear"} : 
                         {color: "gray", opacity:"0.9"}
                     }>
-                    <p dangerouslySetInnerHTML={{__html: "<strong>Hint:</strong> "+selectedQuestion.hint}}></p>
+                    <h4 className="h6 fw-bolder">HINT</h4>
+                    <p dangerouslySetInnerHTML={{__html: selectedQuestion.hint}}></p>
                     <button className="btn btn-sm btn-outline-info"
                             disabled={selectedQuestion.solved || selectedQuestion.skipped}
                             onClick={doSkip}>Stumped? Reveal the answer.</button>                    
@@ -285,7 +286,8 @@ function App() {
                       {color: "gray", opacity:"0.9"} : 
                       {animation: "swoopy .5s linear"}
                     }>
-                      <p dangerouslySetInnerHTML={{__html: "<strong>Question:</strong> "+selectedQuestion.prompt}}></p>
+                      <h4 className="h6 fw-bolder">QUESTION</h4>
+                      <p dangerouslySetInnerHTML={{__html: selectedQuestion.prompt}}></p>
                       <button target="blank" 
                                 className="btn btn-sm btn-outline-info"
                                 disabled={selectedQuestion.hintActivated || selectedQuestion.solved}

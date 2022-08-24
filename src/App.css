@@ -15,10 +15,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Literata:wght@100;400&display=swap');
 
-* {
-    font-family: "Literata";
-}
-
 .zigzag {
     stroke-dasharray: 1200;
     stroke-dashoffset: -1200;
@@ -95,6 +91,9 @@
 	}
 }
 
+.card-body p {
+    font-family: "Literata";
+}
 
 @media (min-width: 992px) {
     #controls {
