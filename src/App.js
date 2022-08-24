@@ -213,7 +213,7 @@ function App() {
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header d-flex justify-content-between">
-                <span>Question #{findItemIndex(selectedQuestion.objectid)+1} of {_records.current.length}</span>
+                <span><strong>{findItemIndex(selectedQuestion.objectid)+1}</strong> of <strong>{_records.current.length}</strong></span>
                 {selectedQuestion.skipped && <span>Skipped</span>}
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <span>Score: {parseInt(calculateScore())}%</span>
