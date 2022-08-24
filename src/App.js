@@ -244,55 +244,57 @@ function App() {
                     style={{
                       marginTop: "-10px", 
                       marginBottom: "15px"}}></PhotoCredits>
-                  {
-                  selectedQuestion.solved &&
-                  <div className="alert alert-success"
-                      style={{animation: "swoopy .5s linear"}}>
+                  <div id="bubble-container" className="d-flex flex-column-reverse">
                     {
-                    findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 && 
-                    selectedQuestion.solved && 
-                    <button className="btn btn-sm btn-primary ms-3 w-100" 
-                            style={{maxWidth: "120px", float: "right"}}
-                            onClick={doNext}>Next Question</button>
-                    }                      
-                    {
-                    findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 && 
-                    _records.current.filter((question)=>question.solved).length === _records.current.length &&
-                    <button className="btn btn-sm btn-primary ms-3 w-100" 
-                            style={{maxWidth: "120px", float: "right"}}
-                            onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
+                    selectedQuestion.solved &&
+                    <div className="alert alert-success"
+                        style={{animation: "swoopy .5s linear"}}>
+                      {
+                      findItemIndex(selectedQuestion.objectid) < _records.current.length - 1 && 
+                      selectedQuestion.solved && 
+                      <button className="btn btn-sm btn-primary ms-3 w-100" 
+                              style={{maxWidth: "120px", float: "right"}}
+                              onClick={doNext}>Next Question</button>
+                      }                      
+                      {
+                      findItemIndex(selectedQuestion.objectid) === _records.current.length - 1 && 
+                      _records.current.filter((question)=>question.solved).length === _records.current.length &&
+                      <button className="btn btn-sm btn-primary ms-3 w-100" 
+                              style={{maxWidth: "120px", float: "right"}}
+                              onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
+                      }
+                      <h4 className="h6 fw-bolder">ANSWER</h4>
+                      <p dangerouslySetInnerHTML={{__html: selectedQuestion.exclamation}}></p>
+                    </div>
                     }
-                    <h4 className="h6 fw-bolder">ANSWER</h4>
-                    <p dangerouslySetInnerHTML={{__html: selectedQuestion.exclamation}}></p>
-                  </div>
-                  }
-                  {
-                  selectedQuestion.hintActivated &&
-                  <div className="alert alert-info"
-                    style={
-                      !selectedQuestion.solved ? 
-                        {animation: "swoopy .5s linear"} : 
-                        {color: "gray", opacity:"0.9"}
-                    }>
-                    <h4 className="h6 fw-bolder">HINT</h4>
-                    <p dangerouslySetInnerHTML={{__html: selectedQuestion.hint}}></p>
-                    <button className="btn btn-sm btn-outline-info"
-                            disabled={selectedQuestion.solved || selectedQuestion.skipped}
-                            onClick={doSkip}>Stumped? Reveal the answer.</button>                    
-                  </div>
-                  }
-                  <div className="alert alert-info"
-                    style={
-                      selectedQuestion.hintActivated || selectedQuestion.solved ? 
-                      {color: "gray", opacity:"0.9"} : 
-                      {animation: "swoopy .5s linear"}
-                    }>
-                      <h4 className="h6 fw-bolder">QUESTION</h4>
-                      <p dangerouslySetInnerHTML={{__html: selectedQuestion.prompt}}></p>
-                      <button target="blank" 
-                                className="btn btn-sm btn-outline-info"
-                                disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
-                                onClick={()=>markHintActivated(selectedQuestion.objectid)}>Pssst...Need a hint?</button>
+                    {
+                    selectedQuestion.hintActivated &&
+                    <div className="alert alert-info"
+                      style={
+                        !selectedQuestion.solved ? 
+                          {animation: "swoopy .5s linear"} : 
+                          {color: "gray", opacity:"0.9"}
+                      }>
+                      <h4 className="h6 fw-bolder">HINT</h4>
+                      <p dangerouslySetInnerHTML={{__html: selectedQuestion.hint}}></p>
+                      <button className="btn btn-sm btn-outline-info"
+                              disabled={selectedQuestion.solved || selectedQuestion.skipped}
+                              onClick={doSkip}>Stumped? Reveal the answer.</button>                    
+                    </div>
+                    }
+                    <div className="alert alert-info"
+                      style={
+                        selectedQuestion.hintActivated || selectedQuestion.solved ? 
+                        {color: "gray", opacity:"0.9"} : 
+                        {animation: "swoopy .5s linear"}
+                      }>
+                        <h4 className="h6 fw-bolder">QUESTION</h4>
+                        <p dangerouslySetInnerHTML={{__html: selectedQuestion.prompt}}></p>
+                        <button target="blank" 
+                                  className="btn btn-sm btn-outline-info"
+                                  disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
+                                  onClick={()=>markHintActivated(selectedQuestion.objectid)}>Pssst...Need a hint?</button>
+                    </div>
                   </div>                                  
               </div>
             </div>
