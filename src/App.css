@@ -21,59 +21,6 @@
     animation: dash 2s ease-out forwards;  
 }
 
-#map-balloon-help {
-    background-color: lemonchiffon;
-    z-index: 2000;
-    top: 50%;
-    left: 50%;
-    margin-left: 45px;
-    margin-top: -125px;
-    max-width: 150px;
-    border: solid;
-    border-width: 1px;
-    border-color: black;
-    padding: 5px;
-}
-
-.fading {
-    animation-name: fadeOut;
-    animation-duration: 1s;
-    transition-timing-function: ease;    
-}
-
-.pulsing {
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-name: pulse;
-    animation-timing-function: ease;
-}
-
-@keyframes fadeOut {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-}
-
-@keyframes pulse {
-	0% {
-		transform: scale(0.98);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
-	}
-
-	70% {
-		transform: scale(0.98);
-		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-	}
-
-	100% {
-		transform: scale(1);
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-	}
-}
-
 @keyframes dash {
     to {
         stroke-dashoffset: 0;

@@ -16,6 +16,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@arcgis/core/assets/esri/css/main.css';
 import './components/viewfinder.css';
+import './components/BalloonHelp.css';
 import './App.css';
 import { parseConfig, fetchFeatures, getImageURL} from './components/Utils';
 import {useEffect, useState, useRef} from "react";
