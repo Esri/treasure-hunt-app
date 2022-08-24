@@ -169,7 +169,7 @@ function App() {
 
         <header className="border-bottom border-bottom-1 mb-2 d-flex justify-content-between align-items-center">
           <h1 className="h4 ms-1">Treasure Hunt: {config.title}</h1>
-          <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>How to use this app</button>
+          <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>Instructions</button>
         </header>
 
         <section id="main" 
@@ -214,7 +214,7 @@ function App() {
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 overflow-hidden">
               <div className="card-header d-flex justify-content-between">
-                <h3 className="h5">{findItemIndex(selectedQuestion.objectid)+1} <span className="fw-lighter">of</span> {_records.current.length}</h3>
+                <h3 className="h5">QUESTION {findItemIndex(selectedQuestion.objectid)+1} OF {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
               </div>
@@ -277,7 +277,7 @@ function App() {
                       }>
                       <h4 className="h6 fw-bolder">HINT</h4>
                       <p dangerouslySetInnerHTML={{__html: selectedQuestion.hint}}></p>
-                      <button className="btn btn-sm btn-outline-info"
+                      <button className="btn btn-sm btn-outline-primary"
                               disabled={selectedQuestion.solved || selectedQuestion.skipped}
                               onClick={doSkip}>Stumped? Reveal the answer.</button>                    
                     </div>
@@ -291,9 +291,9 @@ function App() {
                         <h4 className="h6 fw-bolder">QUESTION</h4>
                         <p dangerouslySetInnerHTML={{__html: selectedQuestion.prompt}}></p>
                         <button target="blank" 
-                                  className="btn btn-sm btn-outline-info"
+                                  className="btn btn-sm btn-outline-primary"
                                   disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
-                                  onClick={()=>markHintActivated(selectedQuestion.objectid)}>Pssst...Need a hint?</button>
+                                  onClick={()=>markHintActivated(selectedQuestion.objectid)}>Need a hint?</button>
                     </div>
                   </div>                                  
               </div>
