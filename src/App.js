@@ -172,7 +172,7 @@ function App() {
         </header>
 
         <section id="main" 
-                className="flex-grow-1 d-flex flex-column flex-lg-row-reverse position-relative overflow-hidden">
+                className="flex-grow-1 d-flex flex-column flex-lg-row-reverse position-relative overflow-hidden pb-2">
 
           {
           !hideCongratsScreen &&
@@ -296,7 +296,6 @@ function App() {
           </div>
           }
         </section>
-        <footer className="d-flex justify-content-end pt-1 small text-muted"><span>Check out <a className="link-primary" href="https://docs.google.com/document/d/1OugT0XSNt4jaxMXEA58smUbK5D9u0ZeWdCxfGGBwf_w/" target="_blank" rel="noreferrer">this doc</a> for info on creating your own Treasure Hunt.</span></footer>
       </>
       }
     </div>
