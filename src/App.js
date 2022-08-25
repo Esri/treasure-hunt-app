@@ -230,22 +230,21 @@ function App() {
                   maxHeight: "350px", width:"auto"
                 }}>
               </div>
-              <div className="card-body overflow-auto d-flex flex-column"
+              <PhotoCredits 
+                    attribution={selectedQuestion.image_attribution}
+                    sourceReferenceURL={selectedQuestion.image_source_reference_page}
+                    license={selectedQuestion.image_license}
+                    licenseReferenceURL={selectedQuestion.image_license_reference_page}
+                    className='small p-1'
+                    style={{}}></PhotoCredits>
+
+              <div className="card-body d-flex flex-column overflow-auto"
                     style={{
                       backgroundImage: `url(${selectedQuestion.imageURL})`,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
                       WebkitOverflowScrolling: "touch"
                     }}>
-                  <PhotoCredits 
-                    attribution={selectedQuestion.image_attribution}
-                    sourceReferenceURL={selectedQuestion.image_source_reference_page}
-                    license={selectedQuestion.image_license}
-                    licenseReferenceURL={selectedQuestion.image_license_reference_page}
-                    className='small'
-                    style={{
-                      marginTop: "-10px", 
-                      marginBottom: "15px"}}></PhotoCredits>
                   <div id="bubble-container" className="d-flex flex-column">
                     {
                     selectedQuestion.solved &&
