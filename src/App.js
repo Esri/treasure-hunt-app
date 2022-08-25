@@ -212,7 +212,7 @@ function App() {
           <div id="controls"
                 className="w-100 flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
                 style={{flexBasis: "60%"}}>
-            <div className="w-100 card flex-grow-1 overflow-hidden">
+            <div className="w-100 card flex-grow-1 d-flex flex-column overflow-hidden">
               <div className="card-header d-flex justify-content-between">
                 <h3 className="h5">QUESTION {findItemIndex(selectedQuestion.objectid)+1} OF {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
@@ -225,7 +225,9 @@ function App() {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "top center",
                   backgroundSize: "cover",
-                  height:"45%", maxHeight: "350px", width:"auto"
+                  flexBasis: "45%",
+                  flexShrink: "0",
+                  maxHeight: "350px", width:"auto"
                 }}>
               </div>
               <div className="card-body overflow-auto d-flex flex-column"
