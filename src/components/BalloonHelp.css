@@ -10,6 +10,7 @@
     border-width: 1px;
     border-color: black;
     padding: 5px;
+    display: none;
 }
 
 .fading {
