@@ -244,7 +244,7 @@ function App() {
                     style={{
                       marginTop: "-10px", 
                       marginBottom: "15px"}}></PhotoCredits>
-                  <div id="bubble-container" className="d-flex flex-column-reverse">
+                  <div id="bubble-container" className="d-flex flex-column">
                     {
                     selectedQuestion.solved &&
                     <div className="alert alert-success"
