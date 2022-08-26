@@ -92,9 +92,10 @@ function App() {
 
   useEffect(
     ()=> {
-      const element = document.querySelector(".card-body");
-      if (element) {
-        element.scrollTo({top:0})
+      const cardBody = document.querySelector(".card-body");
+      const bubbleContainer = document.querySelector("#bubble-container");
+      if (cardBody && bubbleContainer) {
+        cardBody.scrollTo({top:bubbleContainer.offsetHeight,behavior:"smooth"})
       }
     },
     [selectedQuestion]
@@ -245,7 +246,7 @@ function App() {
                       backgroundPosition: "center",
                       WebkitOverflowScrolling: "touch"
                     }}>
-                  <div id="bubble-container" className="d-flex flex-column">
+                  <div id="bubble-container" className="d-flex flex-column-reverse">
                     {
                     selectedQuestion.solved &&
                     <div className="alert alert-success"
