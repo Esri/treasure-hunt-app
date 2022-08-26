@@ -31,8 +31,8 @@ export const CongratsScreen = ({
 
   const tweetText = encodeURI(
     "I've navigated a Geography Treasure Hunt in search of " +
-      title +
-      ". Try it yourself!"
+    title +
+    ". Try it yourself!"
   );
 
   className = className + " d-flex justify-content-center align-items-center";
@@ -70,9 +70,7 @@ export const CongratsScreen = ({
               </p>
               <ul className="h5" style={{ fontWeight: 400 }}>
                 <li className="mb-1">
-                  <a className="link-primary" href={certificateURL} download>
-                    Download
-                  </a>{" "}
+                  Write your name, download
                   and print the Certificate of Achievement
                 </li>
                 <li>
@@ -169,10 +167,11 @@ export const CongratsScreen = ({
               type="button"
               class="btn btn-outline-primary btn-sm my-1"
             >
-              Downoad Pdf{" "}
+              Download Pdf{" "}
             </button>
             <img
               src={hero}
+              alt="certificate"
               style={{
                 width: "100%",
               }}
