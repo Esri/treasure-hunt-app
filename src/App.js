@@ -275,7 +275,7 @@ function App() {
                       style={
                         !selectedQuestion.solved ? 
                           {animation: "swoopy .5s linear"} : 
-                          {color: "gray", opacity:"0.9"}
+                          {opacity:"0.8"}
                       }>
                       <h4 className="h6 fw-bolder">HINT</h4>
                       <p dangerouslySetInnerHTML={{__html: selectedQuestion.hint}}></p>
@@ -287,7 +287,7 @@ function App() {
                     <div className="alert alert-info"
                       style={
                         selectedQuestion.hintActivated || selectedQuestion.solved ? 
-                        {color: "gray", opacity:"0.9"} : 
+                        {opacity:"0.8"} : 
                         {animation: "swoopy .5s linear"}
                       }>
                         <h4 className="h6 fw-bolder">QUESTION</h4>
