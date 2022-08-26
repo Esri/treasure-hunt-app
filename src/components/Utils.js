@@ -13,6 +13,10 @@
 * limitations under the License.
 */
 
+import download from "downloadjs";
+import { PDFDocument, rgb } from "pdf-lib";
+import fontkit from "@pdf-lib/fontkit";
+
 export const parseConfig = async () =>
 {
   const response = await fetch("./config.json");
@@ -135,3 +139,33 @@ export const parseArgs = () =>
     return args;
 
 }	  
+
+export async function modifyPdf(name) {
+  const url = "./certificate.pdf";
+  const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+
+  const fontUrl = "https://rsms.me/inter/font-files/Inter-Medium.woff2";
+  const fontBytes = await fetch(fontUrl).then((res) => res.arrayBuffer());
+
+  const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+  pdfDoc.registerFontkit(fontkit);
+  const ubuntuFont = await pdfDoc.embedFont(fontBytes);
+
+  const pages = pdfDoc.getPages();
+  const firstPage = pages[0];
+
+  const textSize = 80;
+  const textWidth = ubuntuFont.widthOfTextAtSize(name, textSize);
+
+  firstPage.drawText(name, {
+    x: 1022 - textWidth / 2,
+    y: 810,
+    size: textSize,
+    font: ubuntuFont,
+    color: rgb(0.25, 0.47, 0.396),
+  });
+
+  const pdfBytes = await pdfDoc.save();
+  download(pdfBytes, "certificate.pdf", "application/pdf");
+}
