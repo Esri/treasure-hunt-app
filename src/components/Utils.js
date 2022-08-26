@@ -144,7 +144,7 @@ export async function modifyPdf(name) {
   const url = "./certificate.pdf";
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
-  const fontUrl = "https://rsms.me/inter/font-files/Inter-Medium.woff2";
+  const fontUrl = "https://rsms.me/inter/font-files/Inter-Medium.woff2?v=3.19";
   const fontBytes = await fetch(fontUrl).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
