@@ -92,13 +92,21 @@ function App() {
 
   useEffect(
     ()=> {
+      if (!config) {
+        return;
+      };
       const cardBody = document.querySelector(".card-body");
       const bubbleContainer = document.querySelector("#bubble-container");
-      if (cardBody && bubbleContainer) {
+      if (!(cardBody && bubbleContainer)) {
+        return;
+      }
+      if (config.stacking === "bottom") {
         cardBody.scrollTo({top:bubbleContainer.offsetHeight,behavior:"smooth"})
+      } else {
+        cardBody.scrollTo({top:0,behavior:"smooth"})
       }
     },
-    [selectedQuestion]
+    [config, selectedQuestion]
   )
 
   const doNext = () => {
@@ -246,7 +254,7 @@ function App() {
                       backgroundPosition: "center",
                       WebkitOverflowScrolling: "touch"
                     }}>
-                  <div id="bubble-container" className="d-flex flex-column-reverse">
+                  <div id="bubble-container" className={`d-flex ${config.stacking === "top" ? "flex-column" : "flex-column-reverse"}`}>
                     {
                     selectedQuestion.solved &&
                     <div className="alert alert-success"

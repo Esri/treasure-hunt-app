@@ -62,6 +62,9 @@ export const parseConfig = async () =>
     runningConfig = {...runningConfig, minZoom: minZoom}; 
   }
 
+  const stacking = args.stacking === "top" ? "top" : "bottom";
+  runningConfig = {...runningConfig, stacking: stacking};
+
   return runningConfig;
 
 }
