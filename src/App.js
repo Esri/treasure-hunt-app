@@ -100,7 +100,10 @@ function App() {
       if (!(cardBody && bubbleContainer)) {
         return;
       }
-      if (config.stacking === "bottom") {
+      if (
+        config.stacking === "bottom" && 
+        (selectedQuestion.hintActivated || selectedQuestion.solved)
+      ) {
         cardBody.scrollTo({top:bubbleContainer.offsetHeight,behavior:"smooth"})
       } else {
         cardBody.scrollTo({top:0,behavior:"smooth"})
@@ -240,18 +243,15 @@ function App() {
                 }}>
               </div>
               <PhotoCredits 
+                    id="photo-credits-1"
                     attribution={selectedQuestion.image_attribution}
                     sourceReferenceURL={selectedQuestion.image_source_reference_page}
                     license={selectedQuestion.image_license}
                     licenseReferenceURL={selectedQuestion.image_license_reference_page}
-                    className='small p-1'
-                    style={{}}></PhotoCredits>
+                    className='small p-1'></PhotoCredits>
 
               <div className="card-body d-flex flex-column overflow-auto"
                     style={{
-                      backgroundImage: `url(${selectedQuestion.imageURL})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center",
                       WebkitOverflowScrolling: "touch"
                     }}>
                   <div id="bubble-container" className={`d-flex ${config.stacking === "top" ? "flex-column" : "flex-column-reverse"}`}>
@@ -304,6 +304,24 @@ function App() {
                                   className="btn btn-sm btn-outline-primary"
                                   disabled={selectedQuestion.hintActivated || selectedQuestion.solved}
                                   onClick={()=>markHintActivated(selectedQuestion.objectid)}>Need a hint?</button>
+                    </div>
+                    <div id="question-image-2" 
+                          className="align-self-center flex-column align-items-center mb-2" 
+                          style={{width: "80%", display: "none"}}>
+                      <div style={{
+                            width: "100%", maxWidth: "400px", paddingTop: "75%",
+                            backgroundImage: `url(${selectedQuestion.imageURL})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "top center",
+                            backgroundSize: "cover"
+                          }}></div>
+                      <PhotoCredits 
+                            id="photo-credits-2"
+                            attribution={selectedQuestion.image_attribution}
+                            sourceReferenceURL={selectedQuestion.image_source_reference_page}
+                            license={selectedQuestion.image_license}
+                            licenseReferenceURL={selectedQuestion.image_license_reference_page}
+                            className='small p-1'></PhotoCredits>
                     </div>
                   </div>                                  
               </div>

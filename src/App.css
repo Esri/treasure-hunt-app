@@ -48,16 +48,15 @@
     }    
 }
 
-.card-body {
-    background-size: 0%;
-}
-
 @media (max-height: 700px), (max-width: 992px) {
     #question-image {
         display: none;
     }
-    .card-body {
-        background-size: cover
+    #photo-credits-1 {
+        display: none!important;
+    }
+    #question-image-2 {
+        display: flex!important;
     }
 }
 

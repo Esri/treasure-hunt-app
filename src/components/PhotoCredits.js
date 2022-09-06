@@ -14,6 +14,7 @@
 */
 
 export const PhotoCredits = ({
+    id,
     className, 
     style, 
     attribution, 
@@ -22,7 +23,7 @@ export const PhotoCredits = ({
     licenseReferenceURL
     }) => {
     return(
-        <div className={className} style={style}>
+        <div id={id} className={className} style={style}>
         Photo credit:
         {
         sourceReferenceURL && 
