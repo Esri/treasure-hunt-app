@@ -224,8 +224,10 @@ function App() {
           <div id="controls"
                 className="w-100 flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
                 style={{flexBasis: "60%"}}>
-            <div className="w-100 card flex-grow-1 d-flex flex-column overflow-hidden">
-              <div className="card-header d-flex justify-content-between">
+            <div className="w-100 card flex-grow-1 d-flex flex-column overflow-hidden" 
+                style={{border: "none"}}>
+              <div className="card-header d-flex justify-content-between ps-0 pe-0" 
+                  style={{border: "none", background: "none"}}>
                 <h3 className="h5">QUESTION {findItemIndex(selectedQuestion.objectid)+1} OF {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
@@ -239,7 +241,8 @@ function App() {
                   backgroundSize: "cover",
                   flexBasis: "45%",
                   flexShrink: "0",
-                  maxHeight: "350px", width:"auto"
+                  maxHeight: "350px", width:"auto",
+                  borderRadius: "0.25rem"
                 }}>
               </div>
               <PhotoCredits 
