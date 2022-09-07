@@ -49,11 +49,8 @@
 }
 
 @media (max-height: 700px), (max-width: 992px) {
-    #question-image {
+    #question-image-1 {
         display: none;
-    }
-    #photo-credits-1 {
-        display: none!important;
     }
     #question-image-2 {
         display: flex!important;

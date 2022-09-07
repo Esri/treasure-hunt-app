@@ -174,7 +174,7 @@ function App() {
   
   return (
 
-    <div className="App vh-100 pb-md-2 p-md-3 p-sm-2 pb-sm-1 p-1 d-flex flex-column">
+    <div className="App vh-100 pb-md-2 pb-sm-1 p-0 d-flex flex-column">
       {
       config && 
       <>
@@ -222,40 +222,45 @@ function App() {
           {
           selectedQuestion &&
           <div id="controls"
-                className="w-100 flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0 me-lg-3" 
+                className="w-100 flex-lg-grow-1 align-self-center align-self-lg-stretch overflow-hidden d-flex flex-column align-items-center p-2 p-lg-0" 
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 d-flex flex-column overflow-hidden" 
                 style={{border: "none"}}>
-              <div className="card-header d-flex justify-content-between ps-0 pe-0" 
+              <div className="card-header d-flex justify-content-between ps-3 pe-3" 
                   style={{border: "none", background: "none"}}>
                 <h3 className="h5">QUESTION {findItemIndex(selectedQuestion.objectid)+1} OF {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
               </div>
-              <div id="question-image" 
-                className="w-100 align-self-center mt-2"
-                style={{
-                  backgroundImage: `url(${selectedQuestion.imageURL})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "top center",
-                  backgroundSize: "cover",
-                  flexBasis: "45%",
-                  flexShrink: "0",
-                  maxHeight: "350px", width:"auto",
-                  borderRadius: "0.25rem"
-                }}>
-              </div>
-              <PhotoCredits 
+              <div id="question-image-1" 
+                  className="w-100 align-self-center p-3 mb-3"
+                  style={{
+                    flexBasis: "45%",
+                    flexShrink: "0"
+                  }}>
+                <div className="w-100 h-100"
+                  style={{
+                    backgroundImage: `url(${selectedQuestion.imageURL})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top center",
+                    backgroundSize: "cover",
+                    maxHeight: "350px", width:"auto",
+                    borderRadius: "0.25rem"
+                  }}>
+                </div>
+                <PhotoCredits 
                     id="photo-credits-1"
                     attribution={selectedQuestion.image_attribution}
                     sourceReferenceURL={selectedQuestion.image_source_reference_page}
                     license={selectedQuestion.image_license}
                     licenseReferenceURL={selectedQuestion.image_license_reference_page}
                     className='small p-1'></PhotoCredits>
+              </div>
 
-              <div className="card-body d-flex flex-column overflow-auto"
+              <div className="card-body d-flex flex-column overflow-auto p-4 pb-0 border-top-2"
                     style={{
-                      WebkitOverflowScrolling: "touch"
+                      WebkitOverflowScrolling: "touch",
+                      boxShadow: "inset 0px 11px 8px -10px #CCC"
                     }}>
                   <div id="bubble-container" className={`d-flex ${config.stacking === "top" ? "flex-column" : "flex-column-reverse"}`}>
                     {
