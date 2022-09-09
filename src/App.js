@@ -179,9 +179,11 @@ function App() {
       config && 
       <>
 
-        <header className="border-bottom border-bottom-1 mb-2 d-flex justify-content-between align-items-center">
-          <h1 className="h4 ms-1">Treasure Hunt: {config.title}</h1>
-          <button className="btn btn-sm btn-outline-secondary btn-light" onClick={()=>showInstructions()}>Instructions</button>
+        <header className="border-bottom border-bottom-1 mb-2 d-flex justify-content-between align-items-center p-3">
+          <h1 className="fs-5 ms-2">Treasure Hunt: {config.title}</h1>
+          <button className="btn btn-sm fw-bold btn-outline-secondary btn-light me-2" 
+                style={{borderColor: "navy"}}
+                onClick={()=>showInstructions()}>Instructions</button>
         </header>
 
         <section id="main" 
@@ -226,14 +228,14 @@ function App() {
                 style={{flexBasis: "60%"}}>
             <div className="w-100 card flex-grow-1 d-flex flex-column overflow-hidden" 
                 style={{border: "none"}}>
-              <div className="card-header d-flex justify-content-between ps-3 pe-3" 
+              <div className="card-header d-flex justify-content-between ps-4 pe-4" 
                   style={{border: "none", background: "none"}}>
                 <h3 className="h5">QUESTION {findItemIndex(selectedQuestion.objectid)+1} OF {_records.current.length}</h3>
                 {!selectedQuestion.skipped && selectedQuestion.solved && <span>Solved</span>}
                 <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
               </div>
               <div id="question-image-1" 
-                  className="w-100 align-self-center p-3 mb-3"
+                  className="w-100 align-self-center p-4 mb-3"
                   style={{
                     flexBasis: "45%",
                     flexShrink: "0"
