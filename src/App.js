@@ -235,18 +235,19 @@ function App() {
                 <h3 className="h5 fw-bolder">SCORE: {parseInt(calculateScore())}%</h3>
               </div>
               <div id="question-image-1" 
-                  className="w-100 align-self-center p-4 mb-3"
+                  className="w-100 align-self-center p-4 pt-1 mb-3"
                   style={{
                     flexBasis: "45%",
-                    flexShrink: "0"
+                    flexShrink: "0", 
+                    maxHeight: "400px"
                   }}>
-                <div className="w-100 h-100"
+                <div className="h-100"
                   style={{
                     backgroundImage: `url(${selectedQuestion.imageURL})`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "top center",
                     backgroundSize: "cover",
-                    maxHeight: "350px", width:"auto",
+                    width:"auto",
                     borderRadius: "0.25rem"
                   }}>
                 </div>
