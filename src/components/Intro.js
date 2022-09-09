@@ -18,7 +18,6 @@ export const Intro = ({
     style,
     title,
     description,
-    instructions,
     hero,
     onDismiss:dismiss
     }) => {
@@ -26,31 +25,30 @@ export const Intro = ({
     return(
         <div id="intro" className={className} style={style}>
             <div id="inner" 
-                className="d-flex h-100 w-100 position-relative overflow-hidden bg-white p-2">
-                <div className="flex-grow-1 flex-shrink-0 d-flex flex-column position-relative overflow-hidden p-2 m-0 m-sm-2 me-sm-1"
+                className="d-flex flex-column-reverse flex-md-row h-100 w-100 justify-content-center align-items-center p-3 p-md-4">
+                <div className="flex-grow-1 flex-shrink-0 d-flex flex-column overflow-hidden m-2 m-md-3"
                     style={{
                         maxWidth: "600px",
-                        flexBasis: "60%",
+                        flexBasis: "50%",
                         backgroundColor: "rgba(255,255,255,0.8)",
                         }}>
                         <div className="overflow-auto">
-                            <h1 className="display-3 fw-bold">{title}</h1>
-                            <h2 className="mb-5" style={{fontWeight: 300}}>{description}</h2>
-                            <h5>How to navigate the Treasure Hunt</h5>
-                            <div id="instructions"
-                                dangerouslySetInnerHTML={{__html: instructions}}></div>
+                            <h1 className="display-3 fw-bold mb-3">{title}</h1>
+                            <h2 className="" style={{fontFamily: "Literata",fontWeight: 300}}>{description}</h2>
                         </div>
                         <button type="button" 
-                                className="btn btn-primary align-self-center mt-4" 
-                            onClick={()=>dismiss()}>Got it!</button>
+                                className="btn btn-primary align-self-start mt-3 mt-md-5" 
+                            onClick={()=>dismiss()}>Get started! >></button>
                 </div>
-                <div className="flex-grow-1 d-none d-sm-block m-0 m-sm-2 ms-sm-1" 
+                <div className="flex-grow-1 h-100 w-100 m-2 m-md-3" 
                     style={{
-                        flexBasis: "40%",
+                        flexBasis: "50%",
+                        maxWidth: "600px",
                         backgroundImage: `url(${hero})`,
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
-                        backgroundSize: "cover"
+                        backgroundSize: "cover",
+                        maxHeight: "500px"
                     }}>            
                 </div>
             </div>

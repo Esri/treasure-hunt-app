@@ -23,6 +23,7 @@ import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
 import { Loader } from './components/Loader';
+import {Intro} from "./components/Intro"
 import { CongratsScreen } from './components/CongratsScreen';
 import Multipoint from "@arcgis/core/geometry/Multipoint";
 import { Instructions } from './components/Instructions';
@@ -32,6 +33,7 @@ function App() {
   const [config, setConfig] = useState(null);
   const [scaleDenominator, setScaleDenominator] = useState(null);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [hideIntro, setHideIntro] = useState(false);
   const [hideCongratsScreen, setHideCongratsScreen] = useState(true);
   const [hideInstructions, setHideInstructions] = useState(true);
   const [firstThreeSeconds, setFirstThreeSeconds] = useState(true);
@@ -197,6 +199,16 @@ function App() {
                       hero="./certificate.jpg"
                       certificateURL="./certificate.pdf" 
                       onDismiss={()=>dismissCongratsScreen()}></CongratsScreen>
+          }
+
+          {
+          selectedQuestion && !hideIntro &&
+          <Intro className="position-absolute w-100 h-100 bg-white"
+                style={{zIndex: 2000}} 
+                title={config.title} 
+                description={config.description}
+                hero={selectedQuestion.imageURL}
+                onDismiss={()=>{setHideIntro(true)}}></Intro>
           }
 
           {
