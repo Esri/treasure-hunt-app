@@ -78,18 +78,21 @@ export const fetchFeatures = async (serviceURL) =>
   return json.features;
 }      
 
-
-
-export const getImageURL = async (serviceURL, objectid) =>
+export const getImageURLs = async(serviceURL, objectIds) =>
 {
   const response = await fetch(
-    serviceURL+"/queryAttachments?objectIds="+objectid+"&f=pjson"
+    serviceURL+"/queryAttachments?objectIds="+objectIds.join(",")+"&f=pjson"
   );
   const json = await response.json();
-  return serviceURL+
-          "/"+objectid+
-          "/attachments/"+
-          json.attachmentGroups.shift().attachmentInfos.shift().id;
+  return json.attachmentGroups.map(
+    (entry)=>{
+      const attachmentInfo = entry.attachmentInfos.shift();
+      return {
+        objectId: entry.parentObjectId,
+        imageURL: `${serviceURL}/${entry.parentObjectId}/attachments/${attachmentInfo.id}`
+      };
+    }
+  );
 }
 
 export const getItemInfo = async(itemID) =>

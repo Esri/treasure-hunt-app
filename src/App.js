@@ -18,7 +18,7 @@ import '@arcgis/core/assets/esri/css/main.css';
 import './components/viewfinder.css';
 import './components/BalloonHelp.css';
 import './App.css';
-import { parseConfig, fetchFeatures, getImageURL} from './components/Utils';
+import { parseConfig, fetchFeatures, getImageURLs} from './components/Utils';
 import {useEffect, useState, useRef} from "react";
 import {THMap} from './components/THMap';
 import { PhotoCredits } from './components/PhotoCredits';
@@ -61,25 +61,23 @@ function App() {
       if (config) {
         (async () => {
           const features = await fetchFeatures(config.serviceURL);
-          _records.current = 
-            await Promise.all(
-              features.map(
-                async (feature)=>{
-                  return {
-                    ...feature.attributes, 
-                    imageURL: await getImageURL(
-                      config.serviceURL, 
-                      feature.attributes.objectid
-                    ),
-                    solved: false,
-                    hintActivated: false,
-                    skipped: false,
-                    x: feature.geometry.x,
-                    y: feature.geometry.y  
-                  }
-                }
-              ) // features.map           
-            ) // await Promise.all
+          const imageURLs = await getImageURLs(
+            config.serviceURL, 
+            features.map((feature)=>feature.attributes.objectid)
+          );
+          _records.current = features.map(
+            (feature)=>{
+              return {
+                ...feature.attributes, 
+                imageURL: imageURLs.filter((value)=>value.objectId === feature.attributes.objectid).shift().imageURL,
+                solved: false,
+                hintActivated: false,
+                skipped: false,
+                x: feature.geometry.x,
+                y: feature.geometry.y
+              }
+            }
+          )
           const extentWidth = new Multipoint({
             points: _records.current.map((value)=>[value.x, value.y])
           }).extent.width;
@@ -90,7 +88,6 @@ function App() {
     },
     [config]
   )
-
 
   useEffect(
     ()=> {
