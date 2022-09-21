@@ -193,10 +193,10 @@ function App() {
           <CongratsScreen className="position-absolute w-100 h-100"
                       style={{zIndex: 2000, backgroundColor: "rgba(0,0,0,0.6)"}} 
                       title={config.title}
-                      hero="./certificate.jpg"
-                      certificateURL="./certificate.pdf" 
+                      score={parseInt(calculateScore())}
+                      records={_records.current}
                       onDismiss={()=>dismissCongratsScreen()}></CongratsScreen>
-          }
+        }
 
           {
           selectedQuestion && !hideIntro &&
@@ -291,7 +291,7 @@ function App() {
                       _records.current.filter((question)=>question.solved).length === _records.current.length &&
                       <button className="btn btn-sm btn-primary ms-3 w-100" 
                               style={{maxWidth: "120px", float: "right"}}
-                              onClick={() => showCongratsScreen()}>Claim. Your. PRIZE!!!</button>
+                              onClick={() => showCongratsScreen()}>See your results!</button>
                       }
                       <h4 className="h6 fw-bolder">ANSWER</h4>
                       <p dangerouslySetInnerHTML={{__html: selectedQuestion.exclamation}}></p>
