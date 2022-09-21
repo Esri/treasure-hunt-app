@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.59092b02.css",
-    "main.js": "./static/js/main.454eb5aa.js",
+    "main.css": "./static/css/main.f7c123b0.css",
+    "main.js": "./static/js/main.18c1f155.js",
     "static/js/519.e137396e.chunk.js": "./static/js/519.e137396e.chunk.js",
     "static/js/5626.ffd51007.chunk.js": "./static/js/5626.ffd51007.chunk.js",
     "static/js/9512.c22f7f35.chunk.js": "./static/js/9512.c22f7f35.chunk.js",
@@ -208,6 +208,8 @@
     "static/js/7898.d976d244.chunk.js": "./static/js/7898.d976d244.chunk.js",
     "static/js/2622.d5cdb5ba.chunk.js": "./static/js/2622.d5cdb5ba.chunk.js",
     "static/js/4958.6c2ab75d.chunk.js": "./static/js/4958.6c2ab75d.chunk.js",
+    "static/media/bootstrap-icons.woff?": "./static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "./static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "static/media/CalciteWebCoreIcons.svg?qt9ftt": "./static/media/CalciteWebCoreIcons.4ec084bc91a5d4a8552f.svg",
     "static/media/CalciteWebCoreIcons.woff?qt9ftt": "./static/media/CalciteWebCoreIcons.f01aab1c0953fd1af6ef.woff",
     "static/media/CalciteWebCoreIcons.ttf?qt9ftt": "./static/media/CalciteWebCoreIcons.5fc6e10f8f6d0489bbcb.ttf",
@@ -288,8 +290,8 @@
     "index.html": "./index.html",
     "static/media/SM-Slider_TrackBackground_hover.svg": "./static/media/SM-Slider_TrackBackground_hover.5dcf34ac7d59f98735ad.svg",
     "static/media/SM-Slider_TrackBackground_idle.svg": "./static/media/SM-Slider_TrackBackground_idle.cc7bd7014a003ba1844f.svg",
-    "main.59092b02.css.map": "./static/css/main.59092b02.css.map",
-    "main.454eb5aa.js.map": "./static/js/main.454eb5aa.js.map",
+    "main.f7c123b0.css.map": "./static/css/main.f7c123b0.css.map",
+    "main.18c1f155.js.map": "./static/js/main.18c1f155.js.map",
     "519.e137396e.chunk.js.map": "./static/js/519.e137396e.chunk.js.map",
     "5626.ffd51007.chunk.js.map": "./static/js/5626.ffd51007.chunk.js.map",
     "9512.c22f7f35.chunk.js.map": "./static/js/9512.c22f7f35.chunk.js.map",
@@ -496,7 +498,7 @@
     "4958.6c2ab75d.chunk.js.map": "./static/js/4958.6c2ab75d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.59092b02.css",
-    "static/js/main.454eb5aa.js"
+    "static/css/main.f7c123b0.css",
+    "static/js/main.18c1f155.js"
   ]
 }
