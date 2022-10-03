@@ -204,7 +204,7 @@ function App() {
                 style={{zIndex: 2000}} 
                 title={config.title} 
                 description={config.description}
-                hero={selectedQuestion.imageURL}
+                hero={config.introImage || selectedQuestion.imageURL}
                 onDismiss={()=>{setHideIntro(true)}}></Intro>
           }
 
