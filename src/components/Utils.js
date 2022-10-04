@@ -23,10 +23,8 @@ export const parseConfig = async () =>
     (value)=>value.path === "proto-config"
   ).shift();
 
-  const edition = args.edition || "heritage-sites";
-  const editionConfig = json.filter((value)=>value.path === edition).shift();
-
-  if (editionConfig) {
+  if (args.edition) {
+    const editionConfig = json.filter((value)=>value.path === args.edition).shift();
     runningConfig = {...runningConfig, ...editionConfig};
   }
 
