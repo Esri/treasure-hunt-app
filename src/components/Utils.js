@@ -106,7 +106,7 @@ export const getItemInfo = async(itemID) =>
     const featureServiceItem = json.results.filter(
       (value)=>value.type==="Feature Service" && 
               value.access==="public" && 
-              value.name.includes("stakeholder")
+              (value.name.includes("stakeholder") || value.name.includes("results"))
     ).shift();
 
     return surveyFormItem && featureServiceItem ?
