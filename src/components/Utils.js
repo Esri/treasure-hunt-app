@@ -19,9 +19,12 @@ export const parseConfig = async () =>
   const json = await response.json();
   const args = parseArgs();
 
-  let runningConfig = json.filter(
-    (value)=>value.path === "proto-config"
-  ).shift();
+  let runningConfig = {
+    initCenter: [-40, 29],
+    homeZoom: 3,
+    minZoom: 2,
+    maxZoom: 16
+  }
 
   if (args.edition) {
     const editionConfig = json.filter((value)=>value.path === args.edition).shift();
@@ -35,6 +38,10 @@ export const parseConfig = async () =>
       ...runningConfig, 
       ...itemInfo
     };
+  }
+
+  if (!runningConfig.serviceURL || !runningConfig.serviceURL.trim().length) {
+    runningConfig = {...runningConfig, ...json[0]}
   }
 
   const initCenter = 
