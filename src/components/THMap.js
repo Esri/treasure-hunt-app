@@ -13,6 +13,8 @@
 * limitations under the License.
 */
 
+import '@arcgis/core/assets/esri/css/main.css';
+
 import { useRef, useEffect } from "react";
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
@@ -173,6 +175,14 @@ export const THMap = ({
                     }
                 }
             );
+
+            const style = document.createElement('style');
+            style.textContent = ".esri-popup {margin-bottom: 35px;}"+
+            ".esri-popup__footer {display: none}"+
+            ".esri-view-width-medium .esri-popup__main-container {width: auto;}"+
+            ".esri-view-orientation-landscape .esri-popup__main-container {width: auto;}"+
+            ".esri-view-width-less-than-medium .esri-popup__main-container {width: auto;}";
+            document.head.append(style);
 
             view.popup.visibleElements = {closeButton: false};
             view.popup.dockOptions.buttonEnabled = false;
