@@ -76,7 +76,23 @@ function App() {
                 y: feature.geometry.y
               }
             }
-          )
+          );
+
+          // if configuration includes sort keys, re-configure the records so that
+          // those items are first.
+          if (config.sortKeys) {
+            var keys = config.sortKeys.slice();
+            var sorted = [];
+            while (keys.length) {
+              const key = keys.shift();
+              const found = _records.current.find((record)=>record.objectid === key);
+              if (found) {
+                sorted.push(found);
+              }
+            }
+            _records.current = [...new Set([...sorted, ..._records.current])];
+          }
+
           const extentWidth = new Multipoint({
             points: _records.current.map((value)=>[value.x, value.y])
           }).extent.width;
