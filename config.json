@@ -1,17 +1,10 @@
 ﻿[
     {
         "title": "World Heritage Sites",
-        "path": "proto-config",
         "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0",
-        "introImage": "./statue_of_liberty.jpg",
-        "initCenter": [-40, 29],
-        "homeZoom": 3,
-        "minZoom": 2,
-        "maxZoom": 16
-    },
-    {
-        "path": "heritage-sites"
+        "path": "heritage-sites",
+        "introImage": "./statue_of_liberty.jpg"
     },
     {
         "title": "Famous Romances",
@@ -79,5 +72,13 @@
         "initCenter": [-78.76, 37.51],
         "homeZoom": 8,
         "minZoom": 7
+    },
+    {
+        "title": "GIS in the Wild!",
+        "path": "gis-day-2022",
+        "description": "In honor of GIS Day 2022, we celebrate the ubiquity of GIS solutions and their role in improving the world.",
+        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_267cf8ef601e46098207dc2877aa3405_stakeholder/FeatureServer/0",
+        "introImage": "./rose-parade-2.jpg",
+        "sortKeys": [1,4,6,10,500,9,3,13,5,12,11,8,7]
     }
 ]
