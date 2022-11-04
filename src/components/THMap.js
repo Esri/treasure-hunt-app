@@ -21,7 +21,7 @@ import MapView from "@arcgis/core/views/MapView";
 import Extent from "@arcgis/core/geometry/Extent";
 import Point from "@arcgis/core/geometry/Point";
 import esriConfig from "@arcgis/core/config";
-import { whenTrue } from "@arcgis/core/core/watchUtils";
+import * as reactiveUtils from "@arcgis/core/core/reactiveUtils";
 import Graphic from "@arcgis/core/Graphic";
 import pngMarker from "./marker.png";
 
@@ -233,13 +233,12 @@ export const THMap = ({
                     _updateCrosshairColor.current();
 
                     view.watch("center",()=>_updateCrosshairColor.current())
-                    whenTrue(
-                        view, 
-                        "stationary", 
-                        ()=>{
-                            _performCrossHairTest.current();
-                        }
-                    )
+
+                    reactiveUtils.when(
+                        () => view?.stationary === true,
+                        () => {_performCrossHairTest.current();}
+                    );            
+        
                 }
             );
 
