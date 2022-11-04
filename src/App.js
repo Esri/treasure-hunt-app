@@ -193,7 +193,7 @@ function App() {
       config && 
       <>
 
-        <header className="border-bottom border-bottom-1 mb-2 d-flex justify-content-between align-items-center p-3">
+        <header className="border-bottom border-bottom-1 d-flex justify-content-between align-items-center p-3">
           <h1 className="fs-5 ms-2">Treasure Hunt: {config.title}</h1>
           <button className="btn btn-sm fw-bold btn-outline-secondary btn-light me-2" 
                 style={{borderColor: "navy"}}
