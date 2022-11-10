@@ -74,7 +74,7 @@
         "minZoom": 7
     },
     {
-        "title": "GIS in the Wild!",
+        "title": "GIS around the World!",
         "path": "gis-day-2022",
         "description": "In honor of GIS Day 2022, we celebrate GIS solutions all over the world and their role in improving our lives.",
         "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_267cf8ef601e46098207dc2877aa3405_stakeholder/FeatureServer/0",
