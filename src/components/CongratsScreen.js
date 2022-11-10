@@ -94,6 +94,7 @@ export const CongratsScreen = ({
                             </svg>                                                        
                         </button>
                     </div>
+                    <div className="mt-3 d-flex justify-content-center">You can check out other treasure hunts <a href="https://storymaps.arcgis.com/collections/eee4392c4b1c4927aadbcd1b478e71da" target="_blank" rel="noreferrer" className="ms-1">here</a>!</div>
                 </div>
             </div>
 
