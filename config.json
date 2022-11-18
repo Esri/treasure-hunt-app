@@ -1,84 +1,11 @@
-﻿[
-    {
-        "title": "World Heritage Sites",
-        "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0",
-        "path": "heritage-sites",
-        "introImage": "./statue_of_liberty.jpg"
-    },
-    {
-        "title": "Famous Romances",
-        "path": "famous-romances",
-        "description": "You'll fall hard for this love-themed treasure hunt! It's like a dating app, but instead of swiping right, you zoom and pan!",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_dc0094b65caa4af1a2d6761c471d7059_stakeholder/FeatureServer/0",
-        "introImage": "./Cleopatra_greets_Antony.jpg"
-    },
-    {
-        "title": "Cities",
-        "path": "cities",
-        "description": "You won't find any urban legends here—just fun facts about concrete jungles across the globe.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_318f12a8143b4156988ad787927ad2a9_stakeholder/FeatureServer/0",
-        "introImage": "./Skyscrapers_of_Shinjuku_2009_January.jpg"
-    },
-    {
-        "title": "Mountains",
-        "path": "mountains",
-        "description": "This 10-question quiz is sure to take your geo-IQ to new heights.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b7040c290ef2430481668cecd4682e7d_stakeholder/FeatureServer/0",
-        "introImage": "./Everest_from_Kalatop_April_2015.jpg"
-    },
-    {
-        "title": "Halloween",
-        "path": "halloween",
-        "description": "Are you scary smart? Test your knowledge with our Halloween Hunt!",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_b61363afc3654bff90763f6adfd74889_stakeholder/FeatureServer/0",
-        "introImage": "./Candy-Corn.jpg"
-    },
-    {
-        "title": "Places Lee has been struck with an Egg",
-        "path": "egg-struck",
-        "description": "Have you got what it takes to beat this egg-stremely harrowing challenge?",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_c8efe7fc207c417fa0e00e6638b3dcae_stakeholder/FeatureServer/0",
-        "initCenter": [-100, 40],
-        "homeZoom": 6,
-        "minZoom": 5
-    },
-    {
-        "title": "Holiday Grab Bag",
-        "path": "holiday",
-        "description": "When what to my wondering eyes should appear but trivia...across the hemispheres.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_956328352fca48738226b1ffa8626d0e_stakeholder/FeatureServer/0",
-        "introImage": "./Chapel.jpg"
-    },
-    {
-        "title": "Beaches",
-        "path": "beaches",
-        "description": "Do you have beaches on the brain? Put your seaside trivia skills to the test.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_543b67cfba4e4d04b3ab5f31b3827986_stakeholder/FeatureServer/0",
-        "introImage": "./Waikiki_Beach.jpg"
-    },
-    {
-        "title": "Places and Foods",
-        "path": "places-and-foods",
-        "description": "Calling all foodies! See if you can locate the origins of each cuisine.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_101f2a2d26fe44cfa33741d4db70dad7_stakeholder/FeatureServer/0"
-    },
-    {
-        "title": "Virginia State Trivia",
-        "path": "virginia",
-        "description": "Virginia is for lovers...of geography treasure hunts! Challenge your mastery of Old Dominion culture, history, and geography!",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_9912e8cf258c4635925d400021f1b336_stakeholder/FeatureServer/0",
-        "introImage": "./Wild_Pony_at_Assateague.jpg",
-        "initCenter": [-78.76, 37.51],
-        "homeZoom": 8,
-        "minZoom": 7
-    },
-    {
-        "title": "GIS around the World!",
-        "path": "gis-day-2022",
-        "description": "In honor of GIS Day 2022, we celebrate GIS solutions all over the world and their role in improving our lives.",
-        "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_267cf8ef601e46098207dc2877aa3405_stakeholder/FeatureServer/0",
-        "introImage": "./rose-parade-2.jpg",
-        "sortKeys": [1,4,6,10,500,9,3,13,5,12,11,8,7]
-    }
-]
+﻿{
+    "title": "World Heritage Sites",
+    "description": "Is your wanderlust strong enough to earn a perfect score on this quiz? There's only one way to find out...",
+    "serviceURL": "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_06c53142eb21471999e11794c9e595ff_stakeholder/FeatureServer/0",
+    "path": "heritage-sites",
+    "introImage": "./statue_of_liberty.jpg",
+    "initCenter": [-40, 29],
+    "homeZoom": 3,
+    "minZoom": 2,
+    "maxZoom": 16
+}
