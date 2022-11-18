@@ -27,7 +27,7 @@ export const parseConfig = async () =>
   }
 
   if (args.edition) {
-    const editionConfig = json.filter((value)=>value.path === args.edition).shift();
+    const editionConfig = await lookUpConfig(args.edition);
     runningConfig = {...runningConfig, ...editionConfig};
   }
 
@@ -41,7 +41,7 @@ export const parseConfig = async () =>
   }
 
   if (!runningConfig.serviceURL || !runningConfig.serviceURL.trim().length) {
-    runningConfig = {...runningConfig, ...json[0]}
+    runningConfig = {...runningConfig, ...json}
   }
 
   const initCenter = 
@@ -72,6 +72,33 @@ export const parseConfig = async () =>
 
   return runningConfig;
 
+}
+
+const lookUpConfig = async(edition) => 
+{
+  const featureLayerRegistryURL = "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_aedff645769549a5bea20220e2da313f_results/FeatureServer/0"
+  const response = await fetch(
+    featureLayerRegistryURL+"/query?where=edition='"+edition+"'&outFields=*&returnGeometry=true&f=pjson"
+  );
+  const json = await response.json();
+  let config = null;
+  if (json.features.length) {
+    const attributes = json.features[0].attributes;
+    const itemInfo = await getItemInfo(attributes.item_id);
+    const imageURLs = await getImageURLs(featureLayerRegistryURL, [attributes.objectid]);
+    config = {
+      title: attributes.title,
+      description: attributes.subtitle,
+      serviceURL: itemInfo.serviceURL,
+      homeZoom: parseInt(attributes.home_zoom),
+      minZoom: parseInt(attributes.minimum_zoom),
+      maxZoom: parseInt(attributes.maximum_zoom),
+      initCenter: [json.features[0].geometry.x, json.features[0].geometry.y],
+      introImage: imageURLs.length ? imageURLs[0].imageURL : null,
+      sortKeys: attributes.sort_keys && attributes.sort_keys.split(",").map((value)=>parseInt(value))
+    }
+  }
+  return config;
 }
 
 export const fetchFeatures = async (serviceURL) => 
@@ -116,13 +143,11 @@ export const getItemInfo = async(itemID) =>
               (value.name.includes("stakeholder") || value.name.includes("results"))
     ).shift();
 
-    return surveyFormItem && featureServiceItem ?
-          {
-            title: surveyFormItem.title, 
-            description: surveyFormItem.description,
+    return {
+            title: (surveyFormItem && surveyFormItem.title) || "Your title here", 
+            description: (surveyFormItem && surveyFormItem.description) || "You're subtitle here too (once you add your Treasure Hunt to the registry).",
             serviceURL: featureServiceItem.url+"/0"
-          } : 
-          null;
+          };
 
 }
 
