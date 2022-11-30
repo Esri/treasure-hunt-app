@@ -270,7 +270,7 @@ function App() {
                     backgroundImage: `url(${selectedQuestion.imageURL})`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "top center",
-                    backgroundSize: "cover",
+                    backgroundSize: "contain",
                     width:"auto",
                     borderRadius: "0.25rem"
                   }}>
