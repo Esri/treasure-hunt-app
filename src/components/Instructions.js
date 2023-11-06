@@ -29,7 +29,7 @@ export const Instructions = ({onDismiss:dismiss}) => {
                         <li className="d-flex flex-column">
                             <img className="align-self-center" alt="" src="./viewfinder.png"/>
                         </li>
-                        <li>Circle color indicates whether you're getting hotter or colder!</li>
+                        <li>The circle color indicates whether you're getting hotter or colder!</li>
                         <li>Feel free to ask for a hint -- it won't cost you a thing.</li>
                         <li>You can also opt to "Reveal", but beware it counts against your score.</li>
                     </ul>
