@@ -76,7 +76,7 @@ export const parseConfig = async () =>
 
 const lookUpConfig = async(edition) => 
 {
-  const featureLayerRegistryURL = "https://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/survey123_aedff645769549a5bea20220e2da313f_results/FeatureServer/0"
+  const featureLayerRegistryURL = "https://services1.arcgis.com/ySdDRRYRdCC5uUJz/arcgis/rest/services/survey123_074a98c447b64bf5a8e49d6d16b3e64f/FeatureServer"
   const response = await fetch(
     featureLayerRegistryURL+"/query?where=edition='"+edition+"'&outFields=*&returnGeometry=true&f=pjson"
   );
