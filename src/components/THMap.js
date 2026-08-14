@@ -162,7 +162,7 @@ export const THMap = ({
     useEffect(
         () => {
 
-            esriConfig.apiKey = "AAPKc281cec04c56424bb82093c8925ea337x_K4mBEA-vKPfea5-iSQuzoKoHc5eupD1JQwl-4R_a3AoGuNVdUfNdzbDEQn2jZ2"
+            esriConfig.apiKey = process.env.REACT_APP_ARCGIS_API_KEY;
             const view = new MapView(
                 {
                     map: new Map({ basemap: "arcgis-community"}), 

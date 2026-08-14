@@ -17,7 +17,21 @@ The remainder of this README is intended for developers who wish to download and
 npm install
 ```
 
-3. Run the app in the development mode.
+3. Configure environment variables
+
+Copy `.env.example` to `.env.local` and add your own ArcGIS API key:
+
+```bash
+cp .env.example .env.local
+```
+
+```
+REACT_APP_ARCGIS_API_KEY=your-arcgis-api-key-here
+```
+
+`.env.local` is git-ignored, so your key stays local and out of source control. If you deploy via a service that builds from your repo (e.g. Netlify), you'll also need to set `REACT_APP_ARCGIS_API_KEY` as an environment variable in that service's own dashboard — it must be present at build time, not just in your local `.env.local`.
+
+4. Run the app in the development mode.
 
 ```bash
 npm run start
